@@ -18,6 +18,7 @@
         <strong>open Summer of code 2017</strong>
       </div>
 	  <div id="layers" class="overlay">
+		<input type="checkbox" name="layer" value="diff" class="layer" checked>Diff<br>
 	  </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -27,6 +28,7 @@
       proj4.defs("EPSG:31370","+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs");
 
 	  var layers = [];
+	  var diffLayer;
 	  var routes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "a", "b", "c", "ck", "mm", "pp", "sz"];
 	  
 	  $.each(routes, function(key, value) {
@@ -36,10 +38,19 @@
 	  $(".layer").change(function() {
 		var index = $(this).attr("value");
 	  
-		if ($(this).is(':checked')) {
-			layers[index].setVisible(true);
+		if (index === "diff") {
+			if ($(this).is(':checked')) {
+				diffLayer.setVisible(true);
+			} else {
+				diffLayer.setVisible(false);
+			}
 		} else {
-			layers[index].setVisible(false);
+			index = parseInt(index);
+			if ($(this).is(':checked')) {
+				layers[index].setVisible(true);
+			} else {
+				layers[index].setVisible(false);
+			}
 		}
 	  });
 	  
@@ -187,7 +198,7 @@
 		  return vectorLayer;
 	  }
 
-	  loadData("data/difference.geojson");
+	  diffLayer = loadData("data/difference.geojson");
 	  
 	  $.each(routes, function(key, value) {
 		layers[key] = loadData("data/routes/route_" + value + ".geojson");
