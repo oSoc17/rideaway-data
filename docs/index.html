@@ -194,14 +194,19 @@
 			});
 			map.addLayer(vectorLayer);
 			//map.getView().fit(vectorSource.getExtent());
+			
+			if (index) {
+				layers[index] = vectorLayer;
+			} else {
+				diffLayer = vectorLayer;
+			}
 		  });
-		  return vectorLayer;
 	  }
 
-	  diffLayer = loadData("data/difference.geojson");
+	  loadData("data/difference.geojson");
 	  
 	  $.each(routes, function(key, value) {
-		layers[key] = loadData("data/routes/route_" + value + ".geojson");
+		loadData("data/routes/route_" + value + ".geojson");
 	  });
       
   </script>
