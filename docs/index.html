@@ -32,7 +32,7 @@
 	  var routes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "a", "b", "c", "ck", "mm", "pp", "sz"];
 	  
 	  $.each(routes, function(key, value) {
-		$("#layers").append('<input type="checkbox" name="layer" value="' + key + '" class="layer" checked> ' + value + '<br>');
+		$("#layers").append('<input type="checkbox" name="layer" value="' + key + '" class="layer"> ' + value + '<br>');
 	  });
 	  
 	  $(".layer").change(function() {
@@ -193,6 +193,7 @@
 			  }
 			});
 			map.addLayer(vectorLayer);
+			vectorLayer.setVisible(false);
 			//map.getView().fit(vectorSource.getExtent());
 			
 			if (typeof index !== 'undefined') {
