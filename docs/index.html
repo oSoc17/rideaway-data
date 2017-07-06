@@ -17,6 +17,8 @@
       <div id="info" class="overlay">
         <strong>open Summer of code 2017</strong>
       </div>
+	  <div id="layers" class="overlay">
+	  </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://openlayers.org/en/v3.20.1/build/ol.js"></script>
@@ -24,6 +26,23 @@
     <script>
       proj4.defs("EPSG:31370","+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs");
 
+	  var layers = [];
+	  var routes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "a", "b", "c", "ck", "mm", "pp", "sz"];
+	  
+	  $.each(routes, function(key, value) {
+		$("#layers").append('<input type="checkbox" name="layer" value="' + key + '" class="layer" checked> ' + value + '<br>');
+	  });
+	  
+	  $(".layer").change(function() {
+		var index = $(this).attr("value");
+	  
+		if ($(this).is(':checked')) {
+			layers[index].setVisible(true);
+		} else {
+			layers[index].setVisible(false);
+		}
+	  });
+	  
       var baselayers = {
         "opencycle": new ol.layer.Tile({
           source: new ol.source.XYZ({
@@ -133,37 +152,47 @@
         map.getView().setZoom(event.state.zoom);
         shouldUpdate = false;
       });
+	  
+	  var loadData = function(file, index) {
+		  var vectorSource, vectorLayer;
+		  $.getJSON(file, function (json) {
+			vectorSource = new ol.source.Vector({
+			  features: (new ol.format.GeoJSON()).readFeatures(json, {
+				dataProjection: "EPSG:31370",
+				featureProjection: "EPSG:3857"
+			  })
+			});
+			vectorLayer = new ol.layer.Vector({
+			  source: vectorSource,
+			  style: function (feature) {
+				var properties = feature.getProperties();
+				var color = ol.color.asArray(properties.colour || "#000000");
 
-      var vectorSource, vectorLayer;
-	  $.getJSON("data/difference.geojson", function (json) {
-        vectorSource = new ol.source.Vector({
-          features: (new ol.format.GeoJSON()).readFeatures(json, {
-            dataProjection: "EPSG:31370",
-            featureProjection: "EPSG:3857"
-          })
-        });
-        vectorLayer = new ol.layer.Vector({
-          source: vectorSource,
-          style: function (feature) {
-            var properties = feature.getProperties();
-            var color = ol.color.asArray(properties.colour || "#000000");
+				color[3] = 0.8;
 
-            color[3] = 0.8;
+				var stroke = new ol.style.Stroke({
+				  color: color,
+				  width: 10
+				});
+				return [
+				  new ol.style.Style({
+					stroke: stroke
+				  })
+				];
+			  }
+			});
+			map.addLayer(vectorLayer);
+			//map.getView().fit(vectorSource.getExtent());
+		  });
+		  return vectorLayer;
+	  }
 
-            var stroke = new ol.style.Stroke({
-              color: color,
-              width: 10
-            });
-            return [
-              new ol.style.Style({
-                stroke: stroke
-              })
-            ];
-          }
-        });
-        map.addLayer(vectorLayer);
-        //map.getView().fit(vectorSource.getExtent());
-      });
+	  loadData("data/difference.geojson");
+	  
+	  $.each(routes, function(key, value) {
+		layers[key] = loadData("data/routes/route_" + value);
+	  });
+      
   </script>
   </body>
 </html>
