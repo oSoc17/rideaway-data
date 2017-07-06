@@ -195,7 +195,7 @@
 			map.addLayer(vectorLayer);
 			//map.getView().fit(vectorSource.getExtent());
 			
-			if (index) {
+			if (typeof index !== 'undefined') {
 				layers[index] = vectorLayer;
 			} else {
 				diffLayer = vectorLayer;
