@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['95.85.5.56']
 # Application definition
 
 INSTALLED_APPS = [
+    'brumob.apps.BrumobConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
