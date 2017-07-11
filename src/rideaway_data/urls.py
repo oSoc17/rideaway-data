@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url,include
 from django.contrib import admin
+from django.http import HttpResponseRedirect
 
 urlpatterns = [
+    url(r'^$', lambda r: HttpResponseRedirect('brumob/')),
     url(r'^brumob/',include('brumob.urls')),
-    
     url(r'^admin/', admin.site.urls),
 ]
