@@ -52,4 +52,4 @@ general.runalg('qgis:difference',osmshape,gfr_bufferedshape,False,"/home/rideawa
 outputLayer2 = QgsVectorLayer("/home/rideaway/rideaway-data/src/qgis_Scripts/finaloutput.shp", "gfrshape", "ogr")
 
 #output as geojson
-QgsVectorFileWriter.writeAsVectorFormat(outputLayer2,'/home/mramachi/rideaway-data/src/qgis_Scripts/output/output.geojson', 'utf-8', None, 'GeoJSON')
+QgsVectorFileWriter.writeAsVectorFormat(outputLayer2,'/home/rideaway/rideaway-data/src/qgis_Scripts/output/output.geojson', 'utf-8', None, 'GeoJSON')
