@@ -1,7 +1,7 @@
 import geojson, pyproj
 from constants import *
 
-colours = {
+COLOURS = {
     '1': '#89C13D',
     '2': '#77AAD2',
     '3': '#ED1C24',
@@ -58,7 +58,7 @@ def convert_tags(ref, properties):
         "network": "rcn",
         "ref": ref,
         "operator": "Bruxelles Mobilit\u00e9 - Brussel Mobiliteit",
-        "colour": colours[properties['icr']]
+        "colour": COLOURS[properties['icr']]
     }
 
 
@@ -78,7 +78,7 @@ def project_coordinates(multi_line_string):
     return converted
 
 
-if __name__ == "__main__":
+def preprocess():
     routes = extract_routes()
 
     for ref, feature in routes.items():

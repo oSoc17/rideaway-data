@@ -86,8 +86,7 @@ class RelationHandler(o.SimpleHandler):
                 route.ways.append(way)
 
                 for member in w.nodes:
-                    if member.type == 'n':
-                        way.add_needed_nodes(member.ref)
+                    way.add_needed_nodes(member.ref)
 
 
 class WayHandler(o.SimpleHandler):
@@ -153,7 +152,7 @@ def dump_geojson(route, relation):
         fp.write(geojson.dumps(geojson.FeatureCollection(features)))
 
 
-if __name__ == '__main__':
+def process_osm():
     relations = extract_routes()
     for route in relations:
         dump_geojson(route, relations[route])
