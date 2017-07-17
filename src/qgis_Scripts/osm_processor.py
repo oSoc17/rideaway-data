@@ -4,6 +4,7 @@ import geojson
 OSM_LOCATION = "../data/map.osm"
 OUTPUT_LOCATION = "../data/"
 
+
 class Member:
     def __init__(self, m_id, tags):
         self.id = m_id
@@ -39,6 +40,7 @@ class Relation(Member):
 
         self.__needed_ways = set()
         self.ways = []
+        self.child_relations = []
 
     def add_needed_way(self, w_id):
         self.__needed_ways.add(w_id)
@@ -48,38 +50,46 @@ class Relation(Member):
 
 
 class CycleRouteHandler(o.SimpleHandler):
-    def __init__(self, relations):
+    def __init__(self, routes):
         super(CycleRouteHandler, self).__init__()
-        self.relations = relations
+        self.routes = routes
+        self.relations = {}
+        self.needed_relations = {}
 
     def relation(self, r):
         tags = r.tags
+        self.needed_relations[r.id] = set()
+        self.relations[r.id] = Relation(r)
 
         if 'type' in tags and tags['type'] == 'route' \
                 and 'route' in tags and tags['route'] == 'bicycle' \
-                and 'network' in tags and tags['network'] == 'lcn'\
-                and 'ref' in tags and self.relations.has_key(tags['ref']):
+                and 'network' in tags and tags['network'] == 'lcn' \
+                and 'ref' in tags and tags['ref'] in self.routes:
             relation = Relation(r)
 
             for member in r.members:
-                relation.add_needed_way(member.ref)
+                if member.type == 'w':
+                    relation.add_needed_way(member.ref)
+                elif member.type == 'r':
+                    self.needed_relations[r.id].add(member.ref)
 
-            self.relations[tags['ref']] = relation
+            self.routes[tags['ref']] = relation
 
 
 class RelationHandler(o.SimpleHandler):
-    def __init__(self, relations):
+    def __init__(self, routes):
         super(RelationHandler, self).__init__()
-        self.relations = relations
+        self.routes = routes
 
     def way(self, w):
-        for relation in filter(lambda x: x is not None, self.relations.values()):
-            if relation.is_needed(w.id):
+        for route in filter(lambda x: x is not None, self.routes.values()):
+            if route.is_needed(w.id):
                 way = Way(w)
-                relation.ways.append(way)
+                route.ways.append(way)
 
                 for member in w.nodes:
-                    way.add_needed_nodes(member.ref)
+                    if member.type == 'n':
+                        way.add_needed_nodes(member.ref)
 
 
 class WayHandler(o.SimpleHandler):
@@ -93,37 +103,42 @@ class WayHandler(o.SimpleHandler):
             self.nodes[n.id] = Node(n)
 
 
-def extract_relations():
+def extract_routes():
     with open("routes") as fp:
-        relations = {route.strip(): None for route in fp.readlines()}
+        routes = {route.strip(): None for route in fp.readlines()}
 
-    cycle_handler = CycleRouteHandler(relations)
+    cycle_handler = CycleRouteHandler(routes)
     cycle_handler.apply_file(OSM_LOCATION)
 
-    relation_handler = RelationHandler(cycle_handler.relations)
+    for r_id in cycle_handler.needed_relations.keys():
+        route = cycle_handler.relations[r_id]
+        for needed in cycle_handler.needed_relations[r_id]:
+            route.child_relations.append(cycle_handler.relations[needed])
+
+    relation_handler = RelationHandler(cycle_handler.routes)
     relation_handler.apply_file(OSM_LOCATION)
 
-    relations = relation_handler.relations
+    routes = relation_handler.routes
 
     needed_nodes = set()
-    for relation in filter(lambda x: x is not None, relations.values()):
-        for way in relation.ways:
+    for route in filter(lambda x: x is not None, routes.values()):
+        for way in route.ways:
             needed_nodes = needed_nodes.union(set(way.needed_nodes))
 
     way_handler = WayHandler(needed_nodes)
     way_handler.apply_file(OSM_LOCATION, locations=True)
     nodes = way_handler.nodes
 
-    for relation in filter(lambda x: x is not None, relations.values()):
-        for way in relation.ways:
+    for route in filter(lambda x: x is not None, routes.values()):
+        for way in route.ways:
             for id in way.needed_nodes:
                 way.nodes.append(nodes[id])
 
-    for route in relations:
-        if relations[route] is None:
-            relations[route] = Relation()
+    for route in routes:
+        if routes[route] is None:
+            routes[route] = Relation()
 
-    return relations
+    return routes
 
 
 def dump_geojson(route, relation):
@@ -141,6 +156,6 @@ def dump_geojson(route, relation):
 
 
 if __name__ == '__main__':
-    relations = extract_relations()
+    relations = extract_routes()
     for route in relations:
         dump_geojson(route, relations[route])
