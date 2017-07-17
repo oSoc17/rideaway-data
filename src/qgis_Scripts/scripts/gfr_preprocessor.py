@@ -1,4 +1,5 @@
 import geojson
+import pyproj
 
 GFR_LOCATION = "../../data/gfr.json"
 OUTPUT_LOCATION = "../../data/gfr/"
@@ -24,6 +25,7 @@ colours = {
     'B': '#F6A31A',
     'C': '#F6A31A'
 }
+
 
 def to_ref(icr, part):
     if part is not None:
@@ -61,11 +63,31 @@ def convert_tags(ref, properties):
         "colour": colours[properties['icr']]
     }
 
+
+def project_coordinates(multi_line_string):
+    wgs84 = pyproj.Proj("+init=EPSG:4326")
+    lambert72 = pyproj.Proj("+init=EPSG:31370")
+    converted = []
+
+    for line_string in multi_line_string:
+        new = []
+        for coordinates in line_string:
+            x, y = pyproj.transform(lambert72, wgs84, coordinates[0], coordinates[1])
+            new.append([x, y])
+
+        converted.append(new)
+
+    return converted
+
+
 if __name__ == "__main__":
     routes = extract_routes()
 
     for ref, feature in routes.items():
         feature.properties = convert_tags(ref, feature.properties)
+
+    for feature in routes.values():
+        feature.geometry.coordinates = project_coordinates(feature.geometry.coordinates)
 
     for ref, feature in routes.items():
         with open(OUTPUT_LOCATION + ref + ".geojson", "w") as fp:
