@@ -1,8 +1,7 @@
 import geojson
 import pyproj
 
-# GFR_LOCATION = "../../data/gfr.json"
-GFR_LOCATION = "../gfr.geojson"
+GFR_LOCATION = "../../data/gfr.json"
 OUTPUT_LOCATION = "../../data/gfr/"
 
 colours = {
