@@ -2,6 +2,8 @@ GFR_SOURCE = "http://data-mobility.brussels/geoserver/bm_bike/wfs?service=wfs&re
 OSM_SOURCE = "http://overpass-api.de/api/map?bbox="
 BBOX = [4.24124261076, 50.7631624449, 4.47975783302, 50.9133209049]
 
+DATA_FOLDER = "../data/"
+
 GFR_LOCATION = "../data/gfr.geojson"
 OSM_LOCATION = "../data/map.osm"
 
@@ -9,3 +11,5 @@ OSM_ROUTES_LOCATION = "../data/osm/"
 GFR_ROUTES_LOCATION = "../data/gfr/"
 TAGS_LOCATION = "../data/tags/"
 MISSING_LOCATION = "../data/missing/"
+
+DATA_FOLDERS = [OSM_ROUTES_LOCATION, GFR_ROUTES_LOCATION, TAGS_LOCATION, MISSING_LOCATION]
