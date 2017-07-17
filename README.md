@@ -10,6 +10,7 @@ This tool supports the community in this mapping process of the cycling network 
 * Install the following dependencies with `pip`:
   - django
   - geojson
+  - pyproj
 * Install the PyOsmium library from [here](https://github.com/osmcode/pyosmium)
 
 The webtool can be started by running the Django development server or by setting up a web server like Apache or NGINX.
