@@ -1,6 +1,6 @@
 import urllib2
 
-GFR_SOURCE = "http://data-mobility.irisnet.be/resources/icr-2016-01-01.json"
+GFR_SOURCE = "http://data-mobility.brussels/geoserver/bm_bike/wfs?service=wfs&request=GetFeature&typeName=bm_bike:icr&outputFormat=application/json"
 OSM_SOURCE = "http://overpass-api.de/api/map?bbox="
 BBOX = [4.24124261076, 50.7631624449, 4.47975783302, 50.9133209049]
 
@@ -23,4 +23,4 @@ download_file(GFR_SOURCE, GFR_LOCATION)
 
 # Download OSM data
 
-download_file(OSM_SOURCE + ','.join(map(str, BBOX)), GFR_LOCATION)
+download_file(OSM_SOURCE + ','.join(map(str, BBOX)), OSM_LOCATION)
