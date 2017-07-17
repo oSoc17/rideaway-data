@@ -1,7 +1,8 @@
 import geojson
 import pyproj
 
-GFR_LOCATION = "../../data/gfr.json"
+# GFR_LOCATION = "../../data/gfr.json"
+GFR_LOCATION = "../gfr.geojson"
 OUTPUT_LOCATION = "../../data/gfr/"
 
 colours = {
@@ -44,10 +45,11 @@ def extract_routes():
         properties = feature.properties
         ref = to_ref(properties['icr'], properties['part'])
 
-        if ref in routes:
-            routes[ref].geometry.coordinates.extend(feature.geometry.coordinates)
-        else:
-            routes[ref] = feature
+        if properties['colour'] is not None:
+            if ref in routes:
+                routes[ref].geometry.coordinates.extend(feature.geometry.coordinates)
+            else:
+                routes[ref] = feature
 
     return routes
 
