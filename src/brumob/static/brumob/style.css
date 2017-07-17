@@ -43,6 +43,11 @@ html, body {
   right: 15px;
   width: 250px;
 }
+#layers {
+  top: 113px;
+  right: 15px;
+  width: 250px
+}
 
 .ol-attribution.ol-logo-only,
 .ol-attribution.ol-uncollapsible {
