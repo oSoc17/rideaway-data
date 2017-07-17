@@ -1,8 +1,10 @@
 import geojson, os
+from shutil import copyfile
 
 GFR_LOCATION = "../../data/gfr/"
 OSM_LOCATION = "../../data/osm/"
-OUTPUT_LOCATION = "../../data/tags/"
+TAGS_LOCATION = "../../data/tags/"
+MISSING_LOCATION = "../../data/missing/"
 
 
 def compare_tags(gfr, osm):
@@ -32,5 +34,7 @@ for route_file in os.listdir(GFR_LOCATION):
         if errors != "":
             osm.features[0].properties['errors'] = errors
 
-        with open(OUTPUT_LOCATION + route_file, 'w') as fp:
+        with open(TAGS_LOCATION + route_file, 'w') as fp:
             fp.write(geojson.dumps(osm))
+    else:
+        copyfile(GFR_LOCATION + route_file, MISSING_LOCATION + route_file)
