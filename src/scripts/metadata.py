@@ -1,10 +1,6 @@
 import geojson, os
 from shutil import copyfile
-
-GFR_LOCATION = "../../data/gfr/"
-OSM_LOCATION = "../../data/osm/"
-TAGS_LOCATION = "../../data/tags/"
-MISSING_LOCATION = "../../data/missing/"
+from constants import *
 
 
 def compare_tags(gfr, osm):

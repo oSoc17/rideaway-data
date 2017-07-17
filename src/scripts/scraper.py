@@ -1,11 +1,5 @@
 import urllib2
-
-GFR_SOURCE = "http://data-mobility.brussels/geoserver/bm_bike/wfs?service=wfs&request=GetFeature&typeName=bm_bike:icr&outputFormat=application/json"
-OSM_SOURCE = "http://overpass-api.de/api/map?bbox="
-BBOX = [4.24124261076, 50.7631624449, 4.47975783302, 50.9133209049]
-
-GFR_LOCATION = "../data/gfr.geojson"
-OSM_LOCATION = "../data/map.osm"
+from constants import *
 
 CHUNK_SIZE = 16 * 1024
 

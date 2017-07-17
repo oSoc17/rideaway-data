@@ -1,8 +1,6 @@
 import osmium as o
 import geojson
-
-OSM_LOCATION = "../data/map.osm"
-OUTPUT_LOCATION = "../data/"
+from constants import *
 
 
 class Member:
@@ -151,7 +149,7 @@ def dump_geojson(route, relation):
     ])
     features.append(geojson.Feature(geometry=multi_line_string, properties=relation.tags))
 
-    with open(OUTPUT_LOCATION + route + ".geojson", "w") as fp:
+    with open(OSM_ROUTES_LOCATION + route + ".geojson", "w") as fp:
         fp.write(geojson.dumps(geojson.FeatureCollection(features)))
 
 

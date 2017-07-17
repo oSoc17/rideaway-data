@@ -1,8 +1,5 @@
-import geojson
-import pyproj
-
-GFR_LOCATION = "../../data/gfr.json"
-OUTPUT_LOCATION = "../../data/gfr/"
+import geojson, pyproj
+from constants import *
 
 colours = {
     '1': '#89C13D',
@@ -91,6 +88,6 @@ if __name__ == "__main__":
         feature.geometry.coordinates = project_coordinates(feature.geometry.coordinates)
 
     for ref, feature in routes.items():
-        with open(OUTPUT_LOCATION + ref + ".geojson", "w") as fp:
+        with open(GFR_ROUTES_LOCATION + ref + ".geojson", "w") as fp:
             feature_collection = geojson.FeatureCollection([feature])
             fp.write(geojson.dumps(feature_collection).decode('unicode-escape'))
