@@ -37,7 +37,7 @@ def merge_differences(missing_file, wrong_file, output):
 
 
 def post_process():
-    for route in os.listdir(GFR_LOCATION):
+    for route in os.listdir(GFR_ROUTES_LOCATION):
         if os.path.isfile(MISSING_LOCATION + route):
             copyfile(MISSING_LOCATION + route, OUTPUT_LOCATION + route)
         elif merge_differences(DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION, OUTPUT_LOCATION + route):
