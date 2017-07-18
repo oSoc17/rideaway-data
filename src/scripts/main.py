@@ -1,7 +1,7 @@
 from shutil import rmtree
 import os, errno
 
-import scraper, gfr_preprocessor, osm_processor, metadata
+import scraper, gfr_preprocessor, osm_processor, metadata, post_processor
 from constants import *
 
 
@@ -30,3 +30,4 @@ if __name__ == "__main__":
     gfr_preprocessor.preprocess()
     osm_processor.process_osm()
     metadata.check_metadata()
+    post_processor.post_process()
