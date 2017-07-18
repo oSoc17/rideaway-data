@@ -19,19 +19,22 @@ def compare_tags(gfr, osm):
 
 def check_metadata():
     for route_file in os.listdir(GFR_ROUTES_LOCATION):
-        if os.path.isfile(OSM_LOCATION + route_file):
+        if os.path.isfile(OSM_ROUTES_LOCATION + route_file):
             with open(GFR_ROUTES_LOCATION + route_file) as fp:
                 gfr = geojson.loads(fp.read())
 
             with open(OSM_ROUTES_LOCATION + route_file) as fp:
                 osm = geojson.loads(fp.read())
 
-            errors = compare_tags(gfr, osm)
+            if len(osm.features[0].geometry.coordinates) > 0:
+                errors = compare_tags(gfr, osm)
 
-            if errors != "":
-                osm.features[0].properties['errors'] = errors
+                if errors != "":
+                    osm.features[0].properties['errors'] = errors
 
-            with open(TAGS_LOCATION + route_file, 'w') as fp:
-                fp.write(geojson.dumps(osm))
+                with open(TAGS_LOCATION + route_file, 'w') as fp:
+                    fp.write(geojson.dumps(osm))
+            else:
+                copyfile(GFR_ROUTES_LOCATION + route_file, MISSING_LOCATION + route_file)
         else:
             copyfile(GFR_ROUTES_LOCATION + route_file, MISSING_LOCATION + route_file)
