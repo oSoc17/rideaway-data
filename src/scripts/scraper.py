@@ -11,9 +11,10 @@ def download_file(url, output_location):
             fp.write(chunk)
 
 
-def scrape():
+def scrape(download_osm=True):
     # Download Brussels GFR data
     download_file(GFR_SOURCE, GFR_LOCATION)
 
-    # Download OSM data
-    download_file(OSM_SOURCE + ','.join(map(str, BBOX)), OSM_LOCATION)
+    if download_osm:
+        # Download OSM data
+        download_file(OSM_SOURCE + ','.join(map(str, BBOX)), OSM_LOCATION)

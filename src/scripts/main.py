@@ -26,7 +26,7 @@ def clean(clean_osm=True):
 if __name__ == "__main__":
     clean(clean_osm=False)
 
-    scraper.scrape()
+    scraper.scrape(download_osm=False)
     gfr_preprocessor.preprocess()
     osm_processor.process_osm()
     metadata.check_metadata()
