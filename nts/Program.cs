@@ -18,7 +18,7 @@ namespace NTS_BufferingTest
             foreach(var feature in features1.Features)
             {
                 var op = new NetTopologySuite.Operation.Buffer.BufferOp(feature.Geometry);
-                var geometry = op.GetResultGeometry(0.02);
+                var geometry = op.GetResultGeometry(0.0003);
 
                 var bufferedFeature = new Feature(geometry, new AttributesTable());
 

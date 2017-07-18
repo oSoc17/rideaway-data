@@ -1,0 +1,14 @@
+/home/rideaway/rideaway-data/nts/obj/Debug/.NETFramework,Version=v4.5.2.AssemblyAttribute.cs
+/home/rideaway/rideaway-data/nts/bin/Debug/source1.geojson
+/home/rideaway/rideaway-data/nts/bin/Debug/source2.geojson
+/home/rideaway/rideaway-data/nts/bin/Debug/source3.geojson
+/home/rideaway/rideaway-data/nts/bin/Debug/NTS-BufferingTest.exe.config
+/home/rideaway/rideaway-data/nts/bin/Debug/NTS-BufferingTest.pdb
+/home/rideaway/rideaway-data/nts/bin/Debug/NTS-BufferingTest.exe
+/home/rideaway/rideaway-data/nts/obj/Debug/NTS-BufferingTest.exe
+/home/rideaway/rideaway-data/nts/obj/Debug/NTS-BufferingTest.pdb
+/home/rideaway/rideaway-data/nts/bin/Debug/GeoAPI.dll
+/home/rideaway/rideaway-data/nts/bin/Debug/NetTopologySuite.dll
+/home/rideaway/rideaway-data/nts/bin/Debug/NetTopologySuite.IO.GeoJSON.dll
+/home/rideaway/rideaway-data/nts/bin/Debug/Newtonsoft.Json.dll
+/home/rideaway/rideaway-data/nts/bin/Debug/PowerCollections.dll
