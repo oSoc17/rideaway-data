@@ -1,28 +1,6 @@
 import geojson, pyproj
 from constants import *
 
-COLOURS = {
-    '1': '#89C13D',
-    '2': '#77AAD2',
-    '3': '#ED1C24',
-    '4': '#C23E96',
-    '5': '#009549',
-    '6': '#009549',
-    '7': '#932F34',
-    '8': '#89C13D',
-    '9': '#C23E96',
-    '10': '#ED1C24',
-    '11': '#77AAD2',
-    '12': '#009549',
-    'PP': '#932F34',
-    'MM': '#2E3192',
-    'SZ': '#00A9E9',
-    'CK': '#00A9E9',
-    'A': '#F6A31A',
-    'B': '#F6A31A',
-    'C': '#F6A31A'
-}
-
 
 def to_ref(icr, part):
     if part is not None:
@@ -52,12 +30,12 @@ def extract_routes():
 
 def convert_tags(ref, properties):
     return {
-        "name": "Itin\u00e9raires Cyclables R\u00e9gionaux - Gewestelijke Fietsroutes",
-        "type": "route",
-        "route": "bicycle",
-        "network": "rcn",
+        "name": NAME_TAG,
+        "type": TYPE_TAG,
+        "route": ROUTE_TAG,
+        "network": NETWORK_TAG,
         "ref": ref,
-        "operator": "Bruxelles Mobilit\u00e9 - Brussel Mobiliteit",
+        "operator": OPERATOR_TAG,
         "colour": COLOURS[properties['icr']]
     }
 
