@@ -44,7 +44,14 @@ class Relation(Member):
         self.__needed_ways.add(w_id)
 
     def is_needed(self, w_id):
-        return w_id in self.__needed_ways
+        if w_id in self.__needed_ways:
+            return True
+        else:
+            for child in self.child_relations:
+                if child.is_needed(w_id):
+                    return True
+
+        return False
 
 
 class CycleRouteHandler(o.SimpleHandler):
