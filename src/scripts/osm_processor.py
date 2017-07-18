@@ -46,7 +46,14 @@ class Relation(Member):
         self.__needed_ways.add(w_id)
 
     def is_needed(self, w_id):
-        return w_id in self.__needed_ways
+        if w_id in self.__needed_ways:
+            return True
+        else:
+            for child in self.child_relations:
+                if child.is_needed(w_id):
+                    return True
+
+        return False
 
 
 class CycleRouteHandler(o.SimpleHandler):
@@ -88,8 +95,7 @@ class RelationHandler(o.SimpleHandler):
                 route.ways.append(way)
 
                 for member in w.nodes:
-                    if member.type == 'n':
-                        way.add_needed_nodes(member.ref)
+                    way.add_needed_nodes(member.ref)
 
 
 class WayHandler(o.SimpleHandler):
