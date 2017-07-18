@@ -66,9 +66,10 @@ class CycleRouteHandler(o.SimpleHandler):
         self.needed_relations[r.id] = set()
         self.relations[r.id] = Relation(r)
 
-        if 'type' in tags and tags['type'] == 'route' \
-                and 'route' in tags and tags['route'] == 'bicycle' \
-                and 'network' in tags and tags['network'] == 'lcn' \
+        if 'type' in tags and tags['type'] == TYPE_TAG \
+                and 'route' in tags and tags['route'] == ROUTE_TAG \
+                and 'network' in tags and tags['network'] == NETWORK_TAG \
+                and 'operator' in tags and tags['operator'] == OPERATOR_TAG \
                 and 'ref' in tags and tags['ref'] in self.routes:
             relation = Relation(r)
 
