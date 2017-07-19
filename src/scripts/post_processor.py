@@ -10,21 +10,21 @@ def merge_differences(missing_file, wrong_file, output):
     with open(wrong_file) as fp:
         wrong = geojson.loads(fp.read())
 
-    if len(missing.features.geometry.coordinates) > 0 and len(wrong.features.geometry.coordinates) == 0:
+    if len(missing.features[0].geometry.coordinates) > 0 and len(wrong.features[0].geometry.coordinates) == 0:
         missing.features[0].properties['difference_type'] = 'missing'
 
         with open(output, 'w') as fp:
             fp.write(geojson.dumps(missing))
 
         return True
-    elif len(wrong.features.geometry.coordinates) > 0 and len(missing.features.geometry.coordinates) == 0:
+    elif len(wrong.features[0].geometry.coordinates) > 0 and len(missing.features[0].geometry.coordinates) == 0:
         wrong.features[0].properties['difference_type'] = 'wrong'
 
         with open(output, 'w') as fp:
             fp.write(geojson.dumps(wrong))
 
         return True
-    elif len(missing.features.geometry.coordinates) > 0 and len(wrong.features.geometry.coordinates) > 0:
+    elif len(missing.features[0].geometry.coordinates) > 0 and len(wrong.features[0].geometry.coordinates) > 0:
         missing.features[0].properties['difference_type'] = 'missing'
         wrong.features[0].properties['difference_type'] = 'wrong'
 
@@ -41,9 +41,9 @@ def post_process():
         if os.path.isfile(MISSING_LOCATION + route):
             copyfile(MISSING_LOCATION + route, OUTPUT_LOCATION + route)
         elif os.path.isfile(DIFF_MISSING_LOCATION + route) and os.path.isfile(DIFF_WRONG_LOCATION + route) \
-                and merge_differences(DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION, OUTPUT_LOCATION + route):
+                and merge_differences(DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION + route, OUTPUT_LOCATION + route):
             pass
         elif os.path.isfile(TAGS_LOCATION + route):
             copyfile(TAGS_LOCATION + route, OUTPUT_LOCATION + route)
         else:
-            raise Exception("No output file could be generated")
+            raise Exception("No output file could be generated for route: " + route)
