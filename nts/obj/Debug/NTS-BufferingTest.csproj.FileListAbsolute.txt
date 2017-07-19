@@ -10,7 +10,11 @@ C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.IO.GeoJSON.dll
 C:\work\osco17\rideaway-data\nts\bin\Debug\Newtonsoft.Json.dll
 C:\work\osco17\rideaway-data\nts\bin\Debug\GeoAPI.xml
 C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.xml
-C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.IO.GeoJSON.xml
 C:\work\osco17\rideaway-data\nts\bin\Debug\Newtonsoft.Json.xml
 C:\work\osco17\rideaway-data\nts\obj\Debug\NTS-BufferingTest.exe
 C:\work\osco17\rideaway-data\nts\obj\Debug\NTS-BufferingTest.pdb
+C:\work\osco17\rideaway-data\nts\obj\Debug\NTS-BufferingTest.csprojResolveAssemblyReference.cache
+C:\work\osco17\rideaway-data\nts\bin\Debug\gfr-11b.geojson
+C:\work\osco17\rideaway-data\nts\bin\Debug\tags-11b.geojson
+C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.IO.GeoJSON.pdb
+C:\work\osco17\rideaway-data\nts\obj\Debug\NTS-BufferingTest.csproj.NTS-BufferingTest.exe.config
