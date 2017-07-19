@@ -12,3 +12,7 @@ def index(request):
     template = loader.get_template('brumob/index.html')
     context={}
     return HttpResponse(template.render(context,request))
+def download(request):
+    template = loader.get_template('brumob/download.html')
+    context={}
+    return HttpResponse(template.render(context,request))

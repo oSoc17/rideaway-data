@@ -1,7 +1,6 @@
 ﻿using NetTopologySuite.Features;
 using Newtonsoft.Json;
 using System.IO;
-using System;
 
 namespace NTS_BufferingTest
 {
@@ -25,7 +24,7 @@ namespace NTS_BufferingTest
 
                 bufferedFeatures.Add(bufferedFeature);
             }
-            /*
+
             var intersections = new FeatureCollection();
             foreach(var feature in bufferedFeatures.Features)
             {
@@ -35,35 +34,32 @@ namespace NTS_BufferingTest
                     intersections.Add(new Feature(intersection, new AttributesTable()));
                 }
             }
-            */
+
             var differences = new FeatureCollection();
             foreach (var feature in bufferedFeatures.Features)
             {
                 foreach (var feature2 in features2.Features)
                 {
-                    var difference = feature2.Geometry.Difference(feature.Geometry);
+                    var difference = feature.Geometry.Intersection(feature2.Geometry);
                     differences.Add(new Feature(difference, new AttributesTable()));
-
-                    
                 }
             }
-            // Console.WriteLine(differences.Features.Count.ToString());
-            // File.Delete("buffered.geojson");
-            // using (var outputFile = new StreamWriter(File.OpenWrite("buffered.geojson")))
-            // {
-            //    serialize.Serialize(outputFile, bufferedFeatures);
-            // }
-            // File.Delete(args[2]);
-            // using (var outputFile = new StreamWriter(File.OpenWrite(args[2])))
-            // {
-            //    serialize.Serialize(outputFile, intersections);
-            // }
+
+            File.Delete("buffered.geojson");
+            using (var outputFile = new StreamWriter(File.OpenWrite("buffered.geojson")))
+            {
+                serialize.Serialize(outputFile, bufferedFeatures);
+            }
             File.Delete(args[2]);
+            using (var outputFile = new StreamWriter(File.OpenWrite(args[2])))
+            {
+                serialize.Serialize(outputFile, intersections);
+            }
+            File.Delete(args[3]);
             using (var outputFile = new StreamWriter(File.OpenWrite(args[3])))
             {
                 serialize.Serialize(outputFile, differences);
             }
-
         }
     }
 }
