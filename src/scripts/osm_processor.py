@@ -1,8 +1,6 @@
 import osmium as o
 import geojson
-
-OSM_LOCATION = "../data/map.osm"
-OUTPUT_LOCATION = "../data/"
+from constants import *
 
 
 class Member:
@@ -68,9 +66,10 @@ class CycleRouteHandler(o.SimpleHandler):
         self.needed_relations[r.id] = set()
         self.relations[r.id] = Relation(r)
 
-        if 'type' in tags and tags['type'] == 'route' \
-                and 'route' in tags and tags['route'] == 'bicycle' \
-                and 'network' in tags and tags['network'] == 'lcn' \
+        if 'type' in tags and tags['type'] == TYPE_TAG \
+                and 'route' in tags and tags['route'] == ROUTE_TAG \
+                and 'network' in tags and tags['network'] == NETWORK_TAG \
+                and 'operator' in tags and tags['operator'] == OPERATOR_TAG \
                 and 'ref' in tags and tags['ref'] in self.routes:
             relation = Relation(r)
 
@@ -157,11 +156,11 @@ def dump_geojson(route, relation):
     ])
     features.append(geojson.Feature(geometry=multi_line_string, properties=relation.tags))
 
-    with open(OUTPUT_LOCATION + route + ".geojson", "w") as fp:
+    with open(OSM_ROUTES_LOCATION + route + ".geojson", "w") as fp:
         fp.write(geojson.dumps(geojson.FeatureCollection(features)))
 
 
-if __name__ == '__main__':
+def process_osm():
     relations = extract_routes()
     for route in relations:
         dump_geojson(route, relations[route])
