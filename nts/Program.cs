@@ -26,22 +26,22 @@ namespace NTS_BufferingTest
                 bufferedFeatures.Add(bufferedFeature);
             }
 
-            var intersections = new FeatureCollection();
-            foreach(var feature in bufferedFeatures.Features)
-            {
-                foreach(var feature2 in features2.Features)
-                {
-                    var intersection = feature.Geometry.Intersection(feature2.Geometry);
-                    intersections.Add(new Feature(intersection, new AttributesTable()));
-                }
-            }
+            //var intersections = new FeatureCollection();
+            //foreach(var feature in bufferedFeatures.Features)
+            //{
+            //    foreach(var feature2 in features2.Features)
+            //    {
+            //        var intersection = feature.Geometry.Intersection(feature2.Geometry);
+            //        intersections.Add(new Feature(intersection, new AttributesTable()));
+            //    }
+            //}
 
             var differences = new FeatureCollection();
             foreach (var feature in bufferedFeatures.Features)
             {
                 foreach (var feature2 in features2.Features)
                 {
-                    var difference = feature2.Geometry.Intersection(feature.Geometry);
+                    var difference = feature2.Geometry.Difference(feature.Geometry);
                     differences.Add(new Feature(difference, new AttributesTable()));
                 }
             }
@@ -52,12 +52,12 @@ namespace NTS_BufferingTest
             {
                 serialize.Serialize(outputFile, bufferedFeatures);
             }
+            //File.Delete(args[2]);
+            //using (var outputFile = new StreamWriter(File.OpenWrite(args[2])))
+            //{
+            //    serialize.Serialize(outputFile, intersections);
+            //}
             File.Delete(args[2]);
-            using (var outputFile = new StreamWriter(File.OpenWrite(args[2])))
-            {
-                serialize.Serialize(outputFile, intersections);
-            }
-            File.Delete(args[3]);
             using (var outputFile = new StreamWriter(File.OpenWrite(args[3])))
             {
                 serialize.Serialize(outputFile, differences);

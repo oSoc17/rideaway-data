@@ -18,3 +18,5 @@ C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.IO.GeoJSON.pdb
 C:\work\osco17\rideaway-data\nts\obj\Debug\NTS-BufferingTest.csproj.NTS-BufferingTest.exe.config
 C:\work\osco17\rideaway-data\nts\bin\Debug\GeoAPI.dll
 C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.dll
+C:\work\osco17\rideaway-data\nts\bin\Debug\gfr-2.geojson
+C:\work\osco17\rideaway-data\nts\bin\Debug\tags-2.geojson
