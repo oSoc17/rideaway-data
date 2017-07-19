@@ -4,5 +4,7 @@ from . import views
 
 urlpatterns = [
      url(r'^$',views.index,name='index'),
-     url(r'^download/$',views.download,name='downloads'),
+     url(r'^downloads/$',views.downloads,name='downloads'),
+     url(r'^downloads/(?P<route>.*)/$',views.downloaditem,name='downloads'),
+
 ]
