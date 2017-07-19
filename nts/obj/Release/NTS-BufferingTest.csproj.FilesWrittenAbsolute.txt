@@ -1,0 +1,15 @@
+/home/rideaway/rideaway-data/nts/obj/Release/.NETFramework,Version=v4.5.2.AssemblyAttribute.cs
+/home/dieter/PycharmProjects/rideaway-data/nts/obj/Release/.NETFramework,Version=v4.5.2.AssemblyAttribute.cs
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/source1.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/source2.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/source3.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/NTS-BufferingTest.exe.config
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/NTS-BufferingTest.pdb
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/NTS-BufferingTest.exe
+/home/dieter/PycharmProjects/rideaway-data/nts/obj/Release/NTS-BufferingTest.exe
+/home/dieter/PycharmProjects/rideaway-data/nts/obj/Release/NTS-BufferingTest.pdb
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/GeoAPI.dll
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/NetTopologySuite.dll
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/NetTopologySuite.IO.GeoJSON.dll
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/Newtonsoft.Json.dll
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/PowerCollections.dll
