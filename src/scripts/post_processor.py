@@ -3,7 +3,11 @@ from shutil import copyfile
 from constants import *
 
 
-def merge_differences(missing_file, wrong_file, output):
+def merge_differences(route, missing_file, wrong_file, output):
+    with open(TAGS_LOCATION + route) as fp:
+        tags = geojson.loads(fp.read())
+        properties = tags.features[0].properties
+
     with open(missing_file) as fp:
         missing = geojson.loads(fp.read())
 
@@ -12,6 +16,7 @@ def merge_differences(missing_file, wrong_file, output):
 
     if len(missing.features[0].geometry.coordinates) > 0 and len(wrong.features[0].geometry.coordinates) == 0:
         missing.features[0].properties['difference_type'] = 'missing'
+        missing.features[0].properties.update(properties)
 
         with open(output, 'w') as fp:
             fp.write(geojson.dumps(missing))
@@ -19,6 +24,7 @@ def merge_differences(missing_file, wrong_file, output):
         return True
     elif len(wrong.features[0].geometry.coordinates) > 0 and len(missing.features[0].geometry.coordinates) == 0:
         wrong.features[0].properties['difference_type'] = 'wrong'
+        wrong.features[0].properties.update(properties)
 
         with open(output, 'w') as fp:
             fp.write(geojson.dumps(wrong))
@@ -26,7 +32,9 @@ def merge_differences(missing_file, wrong_file, output):
         return True
     elif len(missing.features[0].geometry.coordinates) > 0 and len(wrong.features[0].geometry.coordinates) > 0:
         missing.features[0].properties['difference_type'] = 'missing'
+        missing.features[0].properties.update(properties)
         wrong.features[0].properties['difference_type'] = 'wrong'
+        wrong.features[0].properties.update(properties)
 
         with open(output, 'w') as fp:
             fp.write(geojson.dumps(geojson.FeatureCollection([missing.features[0], wrong.features[0]])))
@@ -41,7 +49,7 @@ def post_process():
         if os.path.isfile(MISSING_LOCATION + route):
             copyfile(MISSING_LOCATION + route, OUTPUT_LOCATION + route)
         elif os.path.isfile(DIFF_MISSING_LOCATION + route) and os.path.isfile(DIFF_WRONG_LOCATION + route) \
-                and merge_differences(DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION + route, OUTPUT_LOCATION + route):
+                and merge_differences(route, DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION + route, OUTPUT_LOCATION + route):
             pass
         elif os.path.isfile(TAGS_LOCATION + route):
             copyfile(TAGS_LOCATION + route, OUTPUT_LOCATION + route)
