@@ -1,0 +1,16 @@
+C:\work\osco17\rideaway-data\nts\bin\Debug\source1.geojson
+C:\work\osco17\rideaway-data\nts\bin\Debug\source2.geojson
+C:\work\osco17\rideaway-data\nts\bin\Debug\source3.geojson
+C:\work\osco17\rideaway-data\nts\bin\Debug\NTS-BufferingTest.exe.config
+C:\work\osco17\rideaway-data\nts\bin\Debug\NTS-BufferingTest.exe
+C:\work\osco17\rideaway-data\nts\bin\Debug\NTS-BufferingTest.pdb
+C:\work\osco17\rideaway-data\nts\bin\Debug\GeoAPI.dll
+C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.dll
+C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.IO.GeoJSON.dll
+C:\work\osco17\rideaway-data\nts\bin\Debug\Newtonsoft.Json.dll
+C:\work\osco17\rideaway-data\nts\bin\Debug\GeoAPI.xml
+C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.xml
+C:\work\osco17\rideaway-data\nts\bin\Debug\NetTopologySuite.IO.GeoJSON.xml
+C:\work\osco17\rideaway-data\nts\bin\Debug\Newtonsoft.Json.xml
+C:\work\osco17\rideaway-data\nts\obj\Debug\NTS-BufferingTest.exe
+C:\work\osco17\rideaway-data\nts\obj\Debug\NTS-BufferingTest.pdb

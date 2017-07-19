@@ -9,7 +9,7 @@ namespace NTS_BufferingTest
     {
         static void Main(string[] args)
         {
-            NetTopologySuite.IO.GeoJsonSerializer serialize = new NetTopologySuite.IO.GeoJsonSerializer();
+            var serialize = new NetTopologySuite.IO.GeoJsonSerializer();
             var inputFile1 = File.OpenText(args[0]);
             var inputFile2 = File.OpenText(args[1]);
             var features1 = serialize.Deserialize<FeatureCollection>(new JsonTextReader(inputFile1));
