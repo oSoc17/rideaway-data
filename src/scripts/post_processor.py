@@ -46,4 +46,4 @@ def post_process():
         elif os.path.isfile(TAGS_LOCATION + route):
             copyfile(TAGS_LOCATION + route, OUTPUT_LOCATION + route)
         else:
-            raise Exception("No output file could be generated")
+            raise Exception("No output file could be generated for route: " + route)
