@@ -15,6 +15,9 @@ DIFF_MISSING_LOCATION = "../data/diff/missing/"
 DIFF_WRONG_LOCATION = "../data/diff/wrong/"
 OUTPUT_LOCATION = "../data/output/"
 
+SITE_OUTPUT = "../brumob/templates/brumob/data/output/"
+SITE_GFR = "../brumob/templates/brumob/data/routes/"
+
 DATA_FOLDERS = [OSM_ROUTES_LOCATION, GFR_ROUTES_LOCATION, TAGS_LOCATION, MISSING_LOCATION, DIFF_MISSING_LOCATION,
                 DIFF_WRONG_LOCATION, OUTPUT_LOCATION]
 

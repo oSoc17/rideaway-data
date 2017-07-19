@@ -1,5 +1,5 @@
-import os, geojson
-from shutil import copyfile
+import os, geojson, errno
+from shutil import copyfile, rmtree
 from constants import *
 
 
@@ -44,14 +44,45 @@ def merge_differences(route, missing_file, wrong_file, output):
         return False
 
 
+def copy_to_site():
+    if os.path.exists(SITE_GFR):
+        rmtree(SITE_GFR)
+
+    try:
+        os.makedirs(SITE_GFR)
+    except OSError as e:
+        # We don't care if it already exists although it shouldn't exist
+        if e.errno != errno.EEXIST:
+            raise
+
+    for route in os.listdir(GFR_ROUTES_LOCATION):
+        copyfile(GFR_ROUTES_LOCATION + route, SITE_GFR + route)
+
+    if os.path.exists(SITE_OUTPUT):
+        rmtree(SITE_OUTPUT)
+
+    try:
+        os.makedirs(SITE_OUTPUT)
+    except OSError as e:
+        # We don't care if it already exists although it shouldn't exist
+        if e.errno != errno.EEXIST:
+            raise
+
+    for route in os.listdir(OUTPUT_LOCATION):
+        copyfile(OUTPUT_LOCATION + route, SITE_OUTPUT + route)
+
+
 def post_process():
     for route in os.listdir(GFR_ROUTES_LOCATION):
         if os.path.isfile(MISSING_LOCATION + route):
             copyfile(MISSING_LOCATION + route, OUTPUT_LOCATION + route)
         elif os.path.isfile(DIFF_MISSING_LOCATION + route) and os.path.isfile(DIFF_WRONG_LOCATION + route) \
-                and merge_differences(route, DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION + route, OUTPUT_LOCATION + route):
+                and merge_differences(route, DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION + route,
+                                      OUTPUT_LOCATION + route):
             pass
         elif os.path.isfile(TAGS_LOCATION + route):
             copyfile(TAGS_LOCATION + route, OUTPUT_LOCATION + route)
         else:
             raise Exception("No output file could be generated for route: " + route)
+
+    copy_to_site()
