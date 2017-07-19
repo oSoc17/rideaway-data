@@ -36,7 +36,7 @@ if __name__ == "__main__":
     fileHandler.setFormatter(logFormatter)
     rootLogger.addHandler(fileHandler)
 
-    consoleHandler = logging.StreamHandler(sys.stdout)
+    consoleHandler = logging.StreamHandler()
     consoleHandler.setFormatter(logFormatter)
     rootLogger.addHandler(consoleHandler)
 
