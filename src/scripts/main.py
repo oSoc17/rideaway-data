@@ -1,7 +1,7 @@
 from shutil import rmtree
 import os, errno, sys
 
-import scraper, gfr_preprocessor, osm_processor, metadata, post_processor
+import scraper, gfr_preprocessor, osm_processor, metadata, diff_checker, post_processor
 from constants import *
 
 
@@ -42,4 +42,6 @@ if __name__ == "__main__":
     gfr_preprocessor.preprocess()
     osm_processor.process_osm()
     metadata.check_metadata()
+    diff_checker.check()
+
     post_processor.post_process()

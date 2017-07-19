@@ -45,3 +45,5 @@ TYPE_TAG = "route"
 ROUTE_TAG = "bicycle"
 NETWORK_TAG = "lcn"
 OPERATOR_TAG = "Brussels Mobility"
+
+EXECUTABLE = "../../nts/bin/Release/NTS-BufferingTest.exe"
