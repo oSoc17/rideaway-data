@@ -35,7 +35,7 @@ def downloadRouteItem(request,route):
     BASE = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(BASE, "templates/brumob/data/routes/"+str(route)+".geojson"), 'rb') as fh:
         response = HttpResponse(fh, content_type="application/json") 
-        response["Content-disposition"] = "attachment; filename=route_"+str(route)+".geojson"
+        response["Content-disposition"] = "attachment; filename="+str(route)+".geojson"
         return response
 
 def downloadDifferenceItem(request,route):
