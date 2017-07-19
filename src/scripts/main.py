@@ -9,7 +9,7 @@ def clean(clean_osm=True):
     if clean_osm and os.path.exists(DATA_FOLDER):
         rmtree(DATA_FOLDER)
     else:
-        logging.info("Skipping OSM data.")
+        logging.info("\tSkipping OSM data.")
 
         if os.path.isfile(GFR_LOCATION):
             os.remove(GFR_LOCATION)
