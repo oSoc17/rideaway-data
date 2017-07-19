@@ -58,7 +58,7 @@ namespace NTS_BufferingTest
             //    serialize.Serialize(outputFile, intersections);
             //}
             File.Delete(args[2]);
-            using (var outputFile = new StreamWriter(File.OpenWrite(args[3])))
+            using (var outputFile = new StreamWriter(File.OpenWrite(args[2])))
             {
                 serialize.Serialize(outputFile, differences);
             }

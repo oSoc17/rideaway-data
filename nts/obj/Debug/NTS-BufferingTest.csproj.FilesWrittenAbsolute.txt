@@ -26,3 +26,7 @@
 /home/dieter/PycharmProjects/rideaway-data/nts/bin/Debug/NetTopologySuite.IO.GeoJSON.dll
 /home/dieter/PycharmProjects/rideaway-data/nts/bin/Debug/Newtonsoft.Json.dll
 /home/dieter/PycharmProjects/rideaway-data/nts/bin/Debug/PowerCollections.dll
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Debug/gfr-11b.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Debug/tags-11b.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Debug/gfr-2.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Debug/tags-2.geojson

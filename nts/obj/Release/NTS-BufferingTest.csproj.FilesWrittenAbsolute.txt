@@ -13,3 +13,7 @@
 /home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/NetTopologySuite.IO.GeoJSON.dll
 /home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/Newtonsoft.Json.dll
 /home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/PowerCollections.dll
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/gfr-11b.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/tags-11b.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/gfr-2.geojson
+/home/dieter/PycharmProjects/rideaway-data/nts/bin/Release/tags-2.geojson
