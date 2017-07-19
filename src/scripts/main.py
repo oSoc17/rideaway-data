@@ -6,13 +6,15 @@ from constants import *
 
 
 def clean(clean_osm=True):
-    if clean_osm:
+    if clean_osm and os.path.exists(DATA_FOLDER):
         rmtree(DATA_FOLDER)
     else:
-        os.remove(GFR_LOCATION)
+        if os.path.isfile(GFR_LOCATION):
+            os.remove(GFR_LOCATION)
 
         for folder in DATA_FOLDERS:
-            rmtree(folder)
+            if os.path.exists(folder):
+                rmtree(folder)
 
     for folder in DATA_FOLDERS:
         try:
