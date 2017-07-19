@@ -1,6 +1,7 @@
 ﻿using NetTopologySuite.Features;
 using Newtonsoft.Json;
 using System.IO;
+using System;
 
 namespace NTS_BufferingTest
 {
@@ -40,11 +41,12 @@ namespace NTS_BufferingTest
             {
                 foreach (var feature2 in features2.Features)
                 {
-                    var difference = feature.Geometry.Intersection(feature2.Geometry);
+                    var difference = feature2.Geometry.Intersection(feature.Geometry);
                     differences.Add(new Feature(difference, new AttributesTable()));
                 }
             }
 
+            Console.WriteLine(differences.Features.Count.ToString());
             File.Delete("buffered.geojson");
             using (var outputFile = new StreamWriter(File.OpenWrite("buffered.geojson")))
             {
