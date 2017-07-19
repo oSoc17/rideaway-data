@@ -1,21 +1,49 @@
-import os
+import os, geojson
 from shutil import copyfile
+from constants import *
 
-GFR_LOCATION = "../data/gfr/"
-OSM_LOCATION = "../data/osm/"
-MISSING_LOCATION = "../data/missing/"
-TAGS_LOCATION = "../data/tags/"
-DIFF_MISSING_LOCATION = "../data/diff/missing/"
-DIFF_WRONG_LOCATION = "../data/diff/wrong/"
-OUTPUT_LOCATION = "../data/output/"
 
-for route in os.listdir(GFR_LOCATION):
-    if os.path.isfile(MISSING_LOCATION + route):
-        copyfile(MISSING_LOCATION + route, OUTPUT_LOCATION + route)
-    elif os.path.isfile(DIFF_MISSING_LOCATION + route) or os.path.isfile(DIFF_WRONG_LOCATION + route):
-        if os.path.isfile(DIFF_MISSING_LOCATION + route):
-            copyfile(DIFF_MISSING_LOCATION + route, OUTPUT_LOCATION + route)
-        elif os.path.isfile(DIFF_WRONG_LOCATION + route):
-            copyfile(DIFF_WRONG_LOCATION + route, OUTPUT_LOCATION + route)
+def merge_differences(missing_file, wrong_file, output):
+    with open(missing_file) as fp:
+        missing = geojson.loads(fp.read())
+
+    with open(wrong_file) as fp:
+        wrong = geojson.loads(fp.read())
+
+    if len(missing.features.geometry.coordinates) > 0 and len(wrong.features.geometry.coordinates) == 0:
+        missing.features[0].properties['difference_type'] = 'missing'
+
+        with open(output, 'w') as fp:
+            fp.write(geojson.dumps(missing))
+
+        return True
+    elif len(wrong.features.geometry.coordinates) > 0 and len(missing.features.geometry.coordinates) == 0:
+        wrong.features[0].properties['difference_type'] = 'wrong'
+
+        with open(output, 'w') as fp:
+            fp.write(geojson.dumps(wrong))
+
+        return True
+    elif len(missing.features.geometry.coordinates) > 0 and len(wrong.features.geometry.coordinates) > 0:
+        missing.features[0].properties['difference_type'] = 'missing'
+        wrong.features[0].properties['difference_type'] = 'wrong'
+
+        with open(output, 'w') as fp:
+            fp.write(geojson.dumps(geojson.FeatureCollection([missing.features[0], wrong.features[0]])))
+
+        return True
     else:
-        copyfile(TAGS_LOCATION + route, OUTPUT_LOCATION + route)
+        return False
+
+
+def post_process():
+    for route in os.listdir(GFR_ROUTES_LOCATION):
+        if os.path.isfile(MISSING_LOCATION + route):
+            copyfile(MISSING_LOCATION + route, OUTPUT_LOCATION + route)
+        elif os.path.isfile(DIFF_MISSING_LOCATION + route) and os.path.isfile(DIFF_WRONG_LOCATION + route) \
+                and merge_differences(DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION, OUTPUT_LOCATION + route):
+            pass
+        elif os.path.isfile(TAGS_LOCATION + route):
+            copyfile(TAGS_LOCATION + route, OUTPUT_LOCATION + route)
+        else:
+            raise Exception("No output file could be generated")

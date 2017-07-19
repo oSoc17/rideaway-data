@@ -1,30 +1,5 @@
-import geojson
-import pyproj
-
-GFR_LOCATION = "../../data/gfr.json"
-OUTPUT_LOCATION = "../../data/gfr/"
-
-colours = {
-    '1': '#89C13D',
-    '2': '#77AAD2',
-    '3': '#ED1C24',
-    '4': '#C23E96',
-    '5': '#009549',
-    '6': '#009549',
-    '7': '#932F34',
-    '8': '#89C13D',
-    '9': '#C23E96',
-    '10': '#ED1C24',
-    '11': '#77AAD2',
-    '12': '#009549',
-    'PP': '#932F34',
-    'MM': '#2E3192',
-    'SZ': '#00A9E9',
-    'CK': '#00A9E9',
-    'A': '#F6A31A',
-    'B': '#F6A31A',
-    'C': '#F6A31A'
-}
+import geojson, pyproj
+from constants import *
 
 
 def to_ref(icr, part):
@@ -55,13 +30,13 @@ def extract_routes():
 
 def convert_tags(ref, properties):
     return {
-        "name": "Itin\u00e9raires Cyclables R\u00e9gionaux - Gewestelijke Fietsroutes",
-        "type": "route",
-        "route": "bicycle",
-        "network": "rcn",
+        "name": NAME_TAG,
+        "type": TYPE_TAG,
+        "route": ROUTE_TAG,
+        "network": NETWORK_TAG,
         "ref": ref,
-        "operator": "Bruxelles Mobilit\u00e9 - Brussel Mobiliteit",
-        "colour": colours[properties['icr']]
+        "operator": OPERATOR_TAG,
+        "colour": COLOURS[properties['icr']]
     }
 
 
@@ -81,7 +56,7 @@ def project_coordinates(multi_line_string):
     return converted
 
 
-if __name__ == "__main__":
+def preprocess():
     routes = extract_routes()
 
     for ref, feature in routes.items():
@@ -91,6 +66,6 @@ if __name__ == "__main__":
         feature.geometry.coordinates = project_coordinates(feature.geometry.coordinates)
 
     for ref, feature in routes.items():
-        with open(OUTPUT_LOCATION + ref + ".geojson", "w") as fp:
+        with open(GFR_ROUTES_LOCATION + ref + ".geojson", "w") as fp:
             feature_collection = geojson.FeatureCollection([feature])
             fp.write(geojson.dumps(feature_collection).decode('unicode-escape'))
