@@ -1,6 +1,7 @@
 ﻿using NetTopologySuite.Features;
 using Newtonsoft.Json;
 using System.IO;
+using System;
 
 namespace NTS_BufferingTest
 {
@@ -9,8 +10,8 @@ namespace NTS_BufferingTest
         static void Main(string[] args)
         {
             NetTopologySuite.IO.GeoJsonSerializer serialize = new NetTopologySuite.IO.GeoJsonSerializer();
-            var inputFile1 = File.OpenText("osm.geojson");
-            var inputFile2 = File.OpenText("gfr.geojson");
+            var inputFile1 = File.OpenText(args[0]);
+            var inputFile2 = File.OpenText(args[1]);
             var features1 = serialize.Deserialize<FeatureCollection>(new JsonTextReader(inputFile1));
             var features2 = serialize.Deserialize<FeatureCollection>(new JsonTextReader(inputFile2));
 
@@ -24,7 +25,7 @@ namespace NTS_BufferingTest
 
                 bufferedFeatures.Add(bufferedFeature);
             }
-
+            /*
             var intersections = new FeatureCollection();
             foreach(var feature in bufferedFeatures.Features)
             {
@@ -34,32 +35,35 @@ namespace NTS_BufferingTest
                     intersections.Add(new Feature(intersection, new AttributesTable()));
                 }
             }
-
+            */
             var differences = new FeatureCollection();
             foreach (var feature in bufferedFeatures.Features)
             {
                 foreach (var feature2 in features2.Features)
                 {
-                    var difference = feature.Geometry.Intersection(feature2.Geometry);
+                    var difference = feature2.Geometry.Difference(feature.Geometry);
                     differences.Add(new Feature(difference, new AttributesTable()));
+
+                    
                 }
             }
-
-            File.Delete("buffered.geojson");
-            using (var outputFile = new StreamWriter(File.OpenWrite("buffered.geojson")))
-            {
-                serialize.Serialize(outputFile, bufferedFeatures);
-            }
-            File.Delete("intersections.geojson");
-            using (var outputFile = new StreamWriter(File.OpenWrite("intersections.geojson")))
-            {
-                serialize.Serialize(outputFile, intersections);
-            }
-            File.Delete("differences.geojson");
-            using (var outputFile = new StreamWriter(File.OpenWrite("differences.geojson")))
+            // Console.WriteLine(differences.Features.Count.ToString());
+            // File.Delete("buffered.geojson");
+            // using (var outputFile = new StreamWriter(File.OpenWrite("buffered.geojson")))
+            // {
+            //    serialize.Serialize(outputFile, bufferedFeatures);
+            // }
+            // File.Delete(args[2]);
+            // using (var outputFile = new StreamWriter(File.OpenWrite(args[2])))
+            // {
+            //    serialize.Serialize(outputFile, intersections);
+            // }
+            File.Delete(args[2]);
+            using (var outputFile = new StreamWriter(File.OpenWrite(args[3])))
             {
                 serialize.Serialize(outputFile, differences);
             }
+
         }
     }
 }
