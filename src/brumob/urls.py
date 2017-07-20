@@ -7,6 +7,6 @@ urlpatterns = [
      url(r'^downloads/$',views.downloads,name='downloads'),
      url(r'^data/route/(?P<route>.*)/$',views.downloadRouteItem,name='downloads'),
      url(r'^data/output/(?P<route>.*)/$',views.downloadDifferenceItem,name='downloads'),
-     url(r'^data/network.geojson/$',views.downloadNetwork,name='downloads')
+     url(r'^data/network.geojson$',views.downloadNetwork,name='downloads')
 
 ]
