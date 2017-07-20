@@ -16,9 +16,9 @@ DIFF_WRONG_LOCATION = "../data/diff/wrong/"
 OUTPUT_LOCATION = "../data/output/"
 NETWORK_OUTPUT = "../data/network.geojson"
 
-SITE_OUTPUT = "../brumob/templates/brumob/data/output/"
-SITE_GFR = "../brumob/templates/brumob/data/routes/"
-SITE_NETWORK = "../brumob/templates/brumob/data/network.geojson"
+SITE_OUTPUT = "../brumob/static/brumob/data/output/"
+SITE_GFR = "../brumob/static/brumob/data/routes/"
+SITE_NETWORK = "../brumob/static/brumob/data/network.geojson"
 
 DATA_FOLDERS = [OSM_ROUTES_LOCATION, GFR_ROUTES_LOCATION, TAGS_LOCATION, MISSING_LOCATION, DIFF_MISSING_LOCATION,
                 DIFF_WRONG_LOCATION, OUTPUT_LOCATION]
