@@ -80,11 +80,12 @@
                     <option value="osmbe-nl">OpenStreetMap Belgium (nl)</option>
                     <option value="osmbe-de">OpenStreetMap Belgium (de)</option>
                 </select>
-                <div id="info" class="overlay">
-                    <strong>open Summer of code 2017</strong>
-                </div>
-                <div id="layers" class="overlay">
-                    <input type="checkbox" name="layer" value="diff" class="layer">Diff<br>
+                <select id="layers" autocomplete="off">
+                    <option value="all" selected="selected">All</option>
+                </select>
+                <div id="layer-type" class="overlay">
+                    <input type="checkbox" value="route" class="type-checkbox" id="bm">Brussels Mobility route<br>
+                    <input type="checkbox" value="output" class="type-checkbox" id="out" checked>Comparison output<br>
                 </div>
             </div>
             <div id="popup" class="ol-popup">
@@ -101,28 +102,55 @@
                 proj4.defs("EPSG:31370", "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs");
 
                 var layers = [];
-                var diffLayer;
+                var outputs = [];
                 var routes = ["1", "1a", "1b", "2", "2a", "2b", "3", "3a", "3b", "4", "4a", "4b", "5", "5a", "5b", "6", "6a", "6b", "7", "8", "9", "9a", "9b", "10", "10a", "10b", "11", "11a", "11b", "12", "12a", "12b", "SZ", "SZa", "SZb", "CK", "MM", "MMa", "MMb", "PP", "A", "B", "C"];
 
                 $.each(routes, function (key, value) {
-                    $("#layers").append('<input type="checkbox" name="layer" value="' + key + '" class="layer"> ' + value + '<br>');
+                    $("#layers").append('<option value="' + key + '">' + value + '</option>');
                 });
 
-                $(".layer").change(function () {
-                    var index = $(this).attr("value");
-
-                    if (index === "diff") {
-                        if ($(this).is(':checked')) {
-                            diffLayer.setVisible(true);
-                        } else {
-                            diffLayer.setVisible(false);
+                document.getElementById("layers").onchange = function () {
+                    if (this.value === "all") {
+                        for (var i = 0; i < outputs.length; i++) {
+                            layers[i].setVisible(false);
+                            outputs[i].setVisible(true);
                         }
                     } else {
-                        index = parseInt(index);
-                        if ($(this).is(':checked')) {
-                            layers[index].setVisible(true);
-                        } else {
-                            layers[index].setVisible(false);
+                        for (var i = 0; i < outputs.length; i++) {
+                            layers[i].setVisible(false);
+
+                            if (i === parseInt(this.value)) {
+                                outputs[i].setVisible(true);
+                            } else {
+                                outputs[i].setVisible(false);
+                            }
+                        }
+                    }
+
+                    $("#bm").prop("checked", false);
+                    $("#out").prop("checked", true);
+                };
+
+                $(".type-checkbox").change(function () {
+                    var kind = $(this).attr("value");
+                    var layer = $("#layers").val();
+
+                    if (layer === "all") {
+                        if (kind === "route") {
+                            for (var i = 0; i < outputs.length; i++) {
+                                layers[i].setVisible($(this).is(":checked"));
+                            }
+                        } else if (kind === "output") {
+                            for (var i = 0; i < outputs.length; i++) {
+                                outputs[i].setVisible($(this).is(":checked"));
+                            }
+                        }
+                    } else {
+                        var index = parseInt(layer);
+                        if (kind === "route") {
+                            layers[index].setVisible($(this).is(":checked"))
+                        } else if (kind === "output") {
+                            outputs[index].setVisible($(this).is(":checked"))
                         }
                     }
                 });
@@ -225,8 +253,6 @@
                 };
 
                 var overlayContent = function (properties) {
-                    console.log(properties);
-
                     var info = "";
                     info += "<strong>Route " + properties.ref + "</strong>";
 
@@ -344,26 +370,16 @@
                     shouldUpdate = false;
                 });
 
-                var loadData = function (file, index) {
+                var loadLayers = function (file, index) {
                     var vectorSource, vectorLayer;
                     $.getJSON(file, function (json) {
-                        if (typeof index !== 'undefined') {
-                            vectorSource = new ol.source.Vector({
-                                features: (new ol.format.GeoJSON()).readFeatures(json, {
-                                    dataProjection: "EPSG:4326",
-                                    featureProjection: "EPSG:3857"
-                                })
+                        vectorSource = new ol.source.Vector({
+                            features: (new ol.format.GeoJSON()).readFeatures(json, {
+                                dataProjection: "EPSG:4326",
+                                featureProjection: "EPSG:3857"
+                            })
 
-                            });
-                        } else {
-                            vectorSource = new ol.source.Vector({
-                                features: (new ol.format.GeoJSON()).readFeatures(json, {
-                                    dataProjection: "EPSG:31370",
-                                    featureProjection: "EPSG:3857"
-                                })
-
-                            });
-                        }
+                        });
                         vectorLayer = new ol.layer.Vector({
                             source: vectorSource,
                             style: function (feature) {
@@ -387,11 +403,7 @@
                         vectorLayer.setVisible(false);
                         //map.getView().fit(vectorSource.getExtent());
 
-                        if (typeof index !== 'undefined') {
-                            layers[index] = vectorLayer;
-                        } else {
-                            diffLayer = vectorLayer;
-                        }
+                        layers[index] = vectorLayer;
                     });
                 };
 
@@ -441,14 +453,14 @@
                         map.addLayer(vectorLayer);
                         vectorLayer.setVisible(true);
                         //map.getView().fit(vectorSource.getExtent());
+
+                        outputs[index] = vectorLayer;
                     });
                 };
 
-                loadData("{% static 'brumob/data/difference.geojson' %}");
-
                 $.each(routes, function (key, value) {
 
-                    loadData("{% static 'brumob/data/routes' %}/" + value + ".geojson", key);
+                    loadLayers("{% static 'brumob/data/routes' %}/" + value + ".geojson", key);
                 });
 
                 $.each(routes, function (key, value) {
