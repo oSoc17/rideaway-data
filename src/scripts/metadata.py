@@ -30,7 +30,8 @@ def check_metadata():
                 errors = compare_tags(gfr, osm)
 
                 if errors != "":
-                    osm.features[0].properties['errors'] = errors
+                    osm.features[0].properties['error_type'] = 'tagging'
+                    osm.features[0].properties['tagging_errors'] = errors
 
                 with open(TAGS_LOCATION + route_file, 'w') as fp:
                     fp.write(geojson.dumps(osm))

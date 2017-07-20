@@ -44,6 +44,17 @@ def merge_differences(route, missing_file, wrong_file, output):
         return False
 
 
+def add_property(path, key, value):
+    with open(path) as fp:
+        features = geojson.loads(fp.read())
+
+    for feature in features.features:
+        feature.properties[key] = value
+
+    with open(path, 'w') as fp:
+        fp.write(geojson.dumps(features))
+
+
 def copy_to_site():
     if os.path.exists(SITE_GFR):
         rmtree(SITE_GFR)
@@ -76,10 +87,11 @@ def post_process():
     for route in os.listdir(GFR_ROUTES_LOCATION):
         if os.path.isfile(MISSING_LOCATION + route):
             copyfile(MISSING_LOCATION + route, OUTPUT_LOCATION + route)
+            add_property(OUTPUT_LOCATION + route, 'error_type', 'missing')
         elif os.path.isfile(DIFF_MISSING_LOCATION + route) and os.path.isfile(DIFF_WRONG_LOCATION + route) \
                 and merge_differences(route, DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION + route,
                                       OUTPUT_LOCATION + route):
-            pass
+            add_property(OUTPUT_LOCATION + route, 'error_type', 'difference')
         elif os.path.isfile(TAGS_LOCATION + route):
             copyfile(TAGS_LOCATION + route, OUTPUT_LOCATION + route)
         else:
