@@ -21,30 +21,50 @@
 
 
         <div class="col-sm-2">
-            lorum iposum
+            <h1>Welcome!</h1>
 
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Routes
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    {% for route in route_list %}
+            <p>To the cycle networks tool made by the students of <a href="http://2017.summerofcode.be">open Summer of
+                code 2017</a>.</p>
 
-                        <li><a href=data/route/{{ route }}>{{ route }}</a></li>
-                    {% endfor %}
-                </ul>
+            <p>There are 3 types of possible outputs:</p>
+            <ul>
+                <li style="color: #13cd00">Correct</li>
+                <li style="color: #ffa000">Geometric difference or tagging issues</li>
+                <li style="color: #f40500">Completely missing</li>
+            </ul>
+
+            <p>Watch out for <strong>false positives</strong> and missing routes might be present but with the wrong
+                <em>operator</em>, <em>network</em> or <em>ref</em> tag.</p>
+
+            <p>The routes provided by Brussels Mobility and the output of our tool is available to download below:</p>
+
+            <div class="row">
+                <div class="col-sm-6 dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Routes
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu scrollable-menu">
+                        {% for route in route_list %}
+
+                            <li><a href=data/route/{{ route }}>{{ route }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="col-sm-6 dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Output
+                        <span class="caret"></span></button>
+                    <ul class="dropdown-menu scrollable-menu">
+                        {% for difference in difference_list %}
+
+                            <li><a href=data/output/{{ difference }}>{{ difference }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
 
-            <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Output
-                    <span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    {% for difference in difference_list %}
+            <br>
 
-                        <li><a href=data/output/{{ difference }}>{{ difference }}</a></li>
-                    {% endfor %}
-                </ul>
-            </div>
-
+            <p>The source code is available <a href="https://github.com/oSoc17/rideaway-data">here</a>.</p>
 
         </div>
 
