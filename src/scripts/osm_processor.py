@@ -60,8 +60,10 @@ class CycleRouteHandler(o.SimpleHandler):
         self.routes = routes
         self.relations = {}
         self.needed_relations = {}
+        self.empty = True
 
     def relation(self, r):
+        self.empty = False
         tags = r.tags
         self.needed_relations[r.id] = set()
         self.relations[r.id] = Relation(r)
@@ -114,6 +116,9 @@ def extract_routes():
 
     cycle_handler = CycleRouteHandler(routes)
     cycle_handler.apply_file(OSM_LOCATION)
+
+    if cycle_handler.empty:
+        raise Exception("The OSM data seems to be empty. Cannot continue.")
 
     for r_id in cycle_handler.needed_relations.keys():
         route = cycle_handler.relations[r_id]
