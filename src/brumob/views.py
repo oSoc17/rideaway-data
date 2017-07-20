@@ -43,6 +43,7 @@ def downloadRouteItem(request,route):
     with open(os.path.join(BASE, "templates/brumob/data/routes/"+str(route)+".geojson"), 'rb') as fh:
         response = HttpResponse(fh, content_type="application/json") 
         # response["Content-disposition"] = "attachment; filename="+str(route)+".geojson"
+        response["Access-Control-Allow-Origin"] = "*"
         return response
 
 def downloadDifferenceItem(request,route):
@@ -53,6 +54,7 @@ def downloadDifferenceItem(request,route):
     with open(os.path.join(BASE, "templates/brumob/data/output/"+str(route)+".geojson"), 'rb') as fh:
         response = HttpResponse(fh, content_type="application/json") 
         # response["Content-disposition"] = "attachment; filename="+str(route)+".geojson"
+        response["Access-Control-Allow-Origin"] = "*"
         return response
 
 def downloadNetwork(request):
