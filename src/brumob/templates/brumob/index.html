@@ -1,220 +1,278 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>oSoc 17 - RideAway 1</title>
-    <link rel="stylesheet" href="https://openlayers.org/en/v3.20.1/css/ol.css" type="text/css">
-    <!--<link rel="stylesheet" href="style.css" type="text/css"> -->
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'brumob/style.css' %}" />
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <title>oSoc 17 - RideAway 1</title>
+        <link rel="stylesheet" href="https://openlayers.org/en/v3.20.1/css/ol.css" type="text/css">
+        <!--<link rel="stylesheet" href="style.css" type="text/css"> -->
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'brumob/style.css' %}" />
 
-  </head>
-  <body>
-    <div id="map" class="map">
-      <select id="baselayers" autocomplete="off">
-        <option value="opencycle" selected="selected">OpenCycleMap</option>
-        <option value="osmbe">OpenStreetMap Belgium</option>
-        <option value="osmbe-fr">OpenStreetMap Belgium (fr)</option>
-        <option value="osmbe-nl">OpenStreetMap Belgium (nl)</option>
-        <option value="osmbe-de">OpenStreetMap Belgium (de)</option>
-      </select>
-      <div id="info" class="overlay">
-        <strong>open Summer of code 2017</strong>
+      </head>
+      <body>
+
+        <div class="container-fluid">
+
+          <div class="row">
+
+
+            <div class="col-sm-2">
+               text <br>
+              text <br>
+             text <br>
+             text <br>
+              <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Routes
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu">
+                    {% for route in route_list %}
+
+                    <li><a href=downloads/route/{{route}}>{{route}}</a></li>
+                    {% endfor %} 
+                  </ul>
+                </div>
+
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdowns
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                      {% for difference in difference_list %}
+
+                      <li><a href=downloads/difference/{{difference}}>{{difference}}</a></li>
+                      {% endfor %} 
+                    </ul>
+                  </div>
+                  
+
+                </div>    
+
+
+
+          <!-- map -->
+          <div class="col-sm-10" style="background-color:lavender;">
+
+            <div id="map" class="map">
+              <select id="baselayers" autocomplete="off">
+                <option value="opencycle" selected="selected">OpenCycleMap</option>
+                <option value="osmbe">OpenStreetMap Belgium</option>
+                <option value="osmbe-fr">OpenStreetMap Belgium (fr)</option>
+                <option value="osmbe-nl">OpenStreetMap Belgium (nl)</option>
+                <option value="osmbe-de">OpenStreetMap Belgium (de)</option>
+              </select>
+              <div id="info" class="overlay">
+                <strong>open Summer of code 2017</strong>
+              </div>
+              <div id="layers" class="overlay">
+                <input type="checkbox" name="layer" value="diff" class="layer">Diff<br>
+              </div>
+            </div>
+            <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+            <script src="https://openlayers.org/en/v3.20.1/build/ol.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.3/proj4.js" integrity="sha256-2ywP8gZSxQqabTEhcw+Xc3zpb/n6aAc3D0sneTtRNHw=" crossorigin="anonymous"></script>
+
+
+            <script>
+              proj4.defs("EPSG:31370","+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs");
+
+              var layers = [];
+              var diffLayer;
+              var routes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "a", "b", "c", "ck", "mm", "pp", "sz"];
+
+              $.each(routes, function(key, value) {
+                $("#layers").append('<input type="checkbox" name="layer" value="' + key + '" class="layer"> ' + value + '<br>');
+              });
+
+              $(".layer").change(function() {
+                var index = $(this).attr("value");
+
+                if (index === "diff") {
+                  if ($(this).is(':checked')) {
+                    diffLayer.setVisible(true);
+                  } else {
+                    diffLayer.setVisible(false);
+                  }
+                } else {
+                  index = parseInt(index);
+                  if ($(this).is(':checked')) {
+                    layers[index].setVisible(true);
+                  } else {
+                    layers[index].setVisible(false);
+                  }
+                }
+              });
+
+              var baselayers = {
+                "opencycle": new ol.layer.Tile({
+                  source: new ol.source.XYZ({
+                    url: "https://{a-c}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=05cd428b293d4da1a7d2db69d11bc83e",
+                    attributions: [ ol.source.OSM.ATTRIBUTION, "Maps &copy; <a href=\"http://www.thunderforest.com/\">Thunderforest</a>" ]
+                  })
+                }),
+                "osmbe": new ol.layer.Tile({
+                  source: new ol.source.OSM({
+                    url: "https://tile.osm.be/osmbe/{z}/{x}/{y}.png",
+                    attributions: [ ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>" ]
+                  })
+                }),
+                "osmbe-fr": new ol.layer.Tile({
+                  source: new ol.source.OSM({
+                    url: "https://tile.osm.be/osmbe-fr/{z}/{x}/{y}.png",
+                    attributions: [ ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>" ]
+                  })
+                }),
+                "osmbe-nl": new ol.layer.Tile({
+                  source: new ol.source.OSM({
+                    url: "https://tile.osm.be/osmbe-nl/{z}/{x}/{y}.png",
+                    attributions: [ ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>" ]
+                  })
+                }),
+                "osmbe-de": new ol.layer.Tile({
+                  source: new ol.source.OSM({
+                    url: "https://tile.osm.be/osmbe-de/{z}/{x}/{y}.png",
+                    attributions: [ ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>" ]
+                  })
+                })
+              };
+
+              var attribution = new ol.control.Attribution({
+                collapsible: false
+              });
+              var map = new ol.Map({
+                layers: [
+                baselayers[$("#baselayers").val()]/*,
+                new ol.layer.Tile({
+                  source: new ol.source.TileDebug({
+                    projection: "EPSG:3857",
+                    tileGrid: (new ol.source.OSM()).getTileGrid()
+                  })
+                })*/
+                ],
+                controls: ol.control.defaults({attribution: false}).extend([attribution]),
+                target: "map",
+                view: new ol.View({
+                  center: ol.proj.transform([4.36657, 50.84072], "EPSG:4326", "EPSG:3857"),
+                  zoom: 12
+                })
+              });
+              if (window.location.hash !== "") {
+              // try to restore center, zoom-level and rotation from the URL
+              var hash = window.location.hash.replace("#map=", "");
+              var parts = hash.split("/");
+              if (parts.length === 3) {
+                zoom = parseInt(parts[0], 10);
+                center = [
+                parseFloat(parts[2]),
+                parseFloat(parts[1])
+                ];
+                map.getView().setCenter(ol.proj.fromLonLat(center));
+                map.getView().setZoom(zoom);
+              }
+            }/* else {
+              map.getView().setCenter(ol.proj.transform([4.36657, 50.84072], "EPSG:4326", "EPSG:3857"));
+              map.getView().setZoom(12);
+            }*/
+
+            document.getElementById("baselayers").onchange = function() {
+              map.getLayers().setAt(0, baselayers[this.value]);
+            };
+
+            var shouldUpdate = true;
+            var view = map.getView();
+            var updatePermalink = function() {
+              if (!shouldUpdate) {
+                // do not update the URL when the view was changed in the "popstate" handler
+                shouldUpdate = true;
+                return;
+              }
+
+              var center = view.getCenter(), ll = ol.proj.toLonLat(center);
+              var hash = "#map=" +
+              view.getZoom() + "/" +
+              Math.round(ll[1] * 100000) / 100000 + "/" +
+              Math.round(ll[0] * 100000) / 100000;
+              var state = {
+                zoom: view.getZoom(),
+                center: view.getCenter(),
+                rotation: view.getRotation()
+              };
+              window.history.pushState(state, "map", hash);
+            };
+
+            map.on("moveend", updatePermalink);
+
+            // restore the view state when navigating through the history, see
+            // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate
+            window.addEventListener("popstate", function(event) {
+              if (event.state === null) {
+                return;
+              }
+              map.getView().setCenter(ol.proj.fromLonLat(event.state.center));
+              map.getView().setZoom(event.state.zoom);
+              shouldUpdate = false;
+            });
+
+            var loadData = function(file, index) {
+              var vectorSource, vectorLayer;
+              $.getJSON(file, function (json) {
+                vectorSource = new ol.source.Vector({
+                  features: (new ol.format.GeoJSON()).readFeatures(json, {
+                    dataProjection: "EPSG:31370",
+                    featureProjection: "EPSG:3857"
+                  })
+                });
+                vectorLayer = new ol.layer.Vector({
+                  source: vectorSource,
+                  style: function (feature) {
+                    var properties = feature.getProperties();
+                    var color = ol.color.asArray(properties.colour || "#000000");
+
+                    color[3] = 0.8;
+
+                    var stroke = new ol.style.Stroke({
+                      color: color,
+                      width: 10
+                    });
+                    return [
+                    new ol.style.Style({
+                      stroke: stroke
+                    })
+                    ];
+                  }
+                });
+                map.addLayer(vectorLayer);
+                vectorLayer.setVisible(false);
+            //map.getView().fit(vectorSource.getExtent());
+            
+            if (typeof index !== 'undefined') {
+              layers[index] = vectorLayer;
+            } else {
+              diffLayer = vectorLayer;
+            }
+          });
+            }
+            loadData("{% static 'brumob/data/difference.geojson' %}");
+
+            $.each(routes, function(key, value) {
+
+              loadData("{% static 'brumob/data/routes' %}/route_" + value + ".geojson", key);
+            });
+            
+          </script>
+
+
+        </div>
+
+
       </div>
-	  <div id="layers" class="overlay">
-		<input type="checkbox" name="layer" value="diff" class="layer">Diff<br>
-	  </div>
+
+
+
     </div>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://openlayers.org/en/v3.20.1/build/ol.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.3/proj4.js" integrity="sha256-2ywP8gZSxQqabTEhcw+Xc3zpb/n6aAc3D0sneTtRNHw=" crossorigin="anonymous"></script>
-    
+  </div>
 
-    <script>
-      proj4.defs("EPSG:31370","+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs");
-
-	  var layers = [];
-	  var diffLayer;
-	  var routes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "a", "b", "c", "ck", "mm", "pp", "sz"];
-	  
-	  $.each(routes, function(key, value) {
-		$("#layers").append('<input type="checkbox" name="layer" value="' + key + '" class="layer"> ' + value + '<br>');
-	  });
-	  
-	  $(".layer").change(function() {
-		var index = $(this).attr("value");
-	  
-		if (index === "diff") {
-			if ($(this).is(':checked')) {
-				diffLayer.setVisible(true);
-			} else {
-				diffLayer.setVisible(false);
-			}
-		} else {
-			index = parseInt(index);
-			if ($(this).is(':checked')) {
-				layers[index].setVisible(true);
-			} else {
-				layers[index].setVisible(false);
-			}
-		}
-	  });
-	  
-      var baselayers = {
-        "opencycle": new ol.layer.Tile({
-          source: new ol.source.XYZ({
-            url: "https://{a-c}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=05cd428b293d4da1a7d2db69d11bc83e",
-            attributions: [ ol.source.OSM.ATTRIBUTION, "Maps &copy; <a href=\"http://www.thunderforest.com/\">Thunderforest</a>" ]
-          })
-        }),
-        "osmbe": new ol.layer.Tile({
-          source: new ol.source.OSM({
-            url: "https://tile.osm.be/osmbe/{z}/{x}/{y}.png",
-            attributions: [ ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>" ]
-          })
-        }),
-        "osmbe-fr": new ol.layer.Tile({
-          source: new ol.source.OSM({
-            url: "https://tile.osm.be/osmbe-fr/{z}/{x}/{y}.png",
-            attributions: [ ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>" ]
-          })
-        }),
-        "osmbe-nl": new ol.layer.Tile({
-          source: new ol.source.OSM({
-            url: "https://tile.osm.be/osmbe-nl/{z}/{x}/{y}.png",
-            attributions: [ ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>" ]
-          })
-        }),
-        "osmbe-de": new ol.layer.Tile({
-          source: new ol.source.OSM({
-            url: "https://tile.osm.be/osmbe-de/{z}/{x}/{y}.png",
-            attributions: [ ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>" ]
-          })
-        })
-      };
-
-      var attribution = new ol.control.Attribution({
-        collapsible: false
-      });
-      var map = new ol.Map({
-        layers: [
-          baselayers[$("#baselayers").val()]/*,
-          new ol.layer.Tile({
-            source: new ol.source.TileDebug({
-              projection: "EPSG:3857",
-              tileGrid: (new ol.source.OSM()).getTileGrid()
-            })
-          })*/
-        ],
-        controls: ol.control.defaults({attribution: false}).extend([attribution]),
-        target: "map",
-        view: new ol.View({
-          center: ol.proj.transform([4.36657, 50.84072], "EPSG:4326", "EPSG:3857"),
-          zoom: 12
-        })
-      });
-      if (window.location.hash !== "") {
-        // try to restore center, zoom-level and rotation from the URL
-        var hash = window.location.hash.replace("#map=", "");
-        var parts = hash.split("/");
-        if (parts.length === 3) {
-          zoom = parseInt(parts[0], 10);
-          center = [
-            parseFloat(parts[2]),
-            parseFloat(parts[1])
-          ];
-          map.getView().setCenter(ol.proj.fromLonLat(center));
-          map.getView().setZoom(zoom);
-        }
-      }/* else {
-        map.getView().setCenter(ol.proj.transform([4.36657, 50.84072], "EPSG:4326", "EPSG:3857"));
-        map.getView().setZoom(12);
-      }*/
-
-      document.getElementById("baselayers").onchange = function() {
-        map.getLayers().setAt(0, baselayers[this.value]);
-      };
-
-      var shouldUpdate = true;
-      var view = map.getView();
-      var updatePermalink = function() {
-        if (!shouldUpdate) {
-          // do not update the URL when the view was changed in the "popstate" handler
-          shouldUpdate = true;
-          return;
-        }
-
-        var center = view.getCenter(), ll = ol.proj.toLonLat(center);
-        var hash = "#map=" +
-            view.getZoom() + "/" +
-            Math.round(ll[1] * 100000) / 100000 + "/" +
-            Math.round(ll[0] * 100000) / 100000;
-        var state = {
-          zoom: view.getZoom(),
-          center: view.getCenter(),
-          rotation: view.getRotation()
-        };
-        window.history.pushState(state, "map", hash);
-      };
-
-      map.on("moveend", updatePermalink);
-
-      // restore the view state when navigating through the history, see
-      // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate
-      window.addEventListener("popstate", function(event) {
-        if (event.state === null) {
-          return;
-        }
-        map.getView().setCenter(ol.proj.fromLonLat(event.state.center));
-        map.getView().setZoom(event.state.zoom);
-        shouldUpdate = false;
-      });
-	  
-	  var loadData = function(file, index) {
-		  var vectorSource, vectorLayer;
-		  $.getJSON(file, function (json) {
-			vectorSource = new ol.source.Vector({
-			  features: (new ol.format.GeoJSON()).readFeatures(json, {
-				dataProjection: "EPSG:31370",
-				featureProjection: "EPSG:3857"
-			  })
-			});
-			vectorLayer = new ol.layer.Vector({
-			  source: vectorSource,
-			  style: function (feature) {
-				var properties = feature.getProperties();
-				var color = ol.color.asArray(properties.colour || "#000000");
-
-				color[3] = 0.8;
-
-				var stroke = new ol.style.Stroke({
-				  color: color,
-				  width: 10
-				});
-				return [
-				  new ol.style.Style({
-					stroke: stroke
-				  })
-				];
-			  }
-			});
-			map.addLayer(vectorLayer);
-			vectorLayer.setVisible(false);
-			//map.getView().fit(vectorSource.getExtent());
-			
-			if (typeof index !== 'undefined') {
-				layers[index] = vectorLayer;
-			} else {
-				diffLayer = vectorLayer;
-			}
-		  });
-	  }
-	  loadData("{% static 'brumob/data/difference.geojson' %}");
-	  
-	  $.each(routes, function(key, value) {
-
-		loadData("{% static 'brumob/data/routes' %}/route_" + value + ".geojson", key);
-	  });
-      
-  </script>
-  </body>
+</body>
 </html>
