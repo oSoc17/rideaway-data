@@ -63,4 +63,5 @@ def downloadNetwork(request):
     with open(os.path.join(BASE, "templates/brumob/data/network.geojson"), 'rb') as fh:
         response = HttpResponse(fh, content_type="application/json")
         # response["Content-disposition"] = "attachment; filename=network.geojson"
+        response["Access-Control-Allow-Origin"] = "*"
         return response
