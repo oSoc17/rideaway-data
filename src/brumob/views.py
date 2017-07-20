@@ -42,7 +42,7 @@ def downloadRouteItem(request,route):
     BASE = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(BASE, "templates/brumob/data/routes/"+str(route)+".geojson"), 'rb') as fh:
         response = HttpResponse(fh, content_type="application/json") 
-        response["Content-disposition"] = "attachment; filename="+str(route)+".geojson"
+        # response["Content-disposition"] = "attachment; filename="+str(route)+".geojson"
         return response
 
 def downloadDifferenceItem(request,route):
@@ -52,7 +52,7 @@ def downloadDifferenceItem(request,route):
     BASE = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(BASE, "templates/brumob/data/output/"+str(route)+".geojson"), 'rb') as fh:
         response = HttpResponse(fh, content_type="application/json") 
-        response["Content-disposition"] = "attachment; filename="+str(route)+".geojson"
+        # response["Content-disposition"] = "attachment; filename="+str(route)+".geojson"
         return response
 
 def downloadNetwork(request):
@@ -62,5 +62,5 @@ def downloadNetwork(request):
     BASE = os.path.dirname(os.path.abspath(__file__))
     with open(os.path.join(BASE, "templates/brumob/data/network.geojson"), 'rb') as fh:
         response = HttpResponse(fh, content_type="application/json")
-        response["Content-disposition"] = "attachment; filename=network.geojson"
+        # response["Content-disposition"] = "attachment; filename=network.geojson"
         return response
