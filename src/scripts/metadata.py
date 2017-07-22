@@ -12,7 +12,7 @@ def compare_tags(gfr, osm):
         if key not in osm_tags:
             errors += "Missing tag: " + key + "=" + value + ";"
         elif osm_tags[key] != value:
-            errors += "Wrong tag: " + key + "=" + osm_tags[key] + ", value should be:" + value + ";"
+            errors += "Wrong tag: " + key + "=" + osm_tags[key] + ", value should be: " + value + ";"
 
     return errors
 

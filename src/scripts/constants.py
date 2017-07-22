@@ -45,7 +45,9 @@ COLOURS = {
     'C': '#F6A31A'
 }
 
-NAME_TAG = "Itin\u00e9raires Cyclables R\u00e9gionaux - Gewestelijke Fietsroutes"
+NAME_TAG = "{} Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
+NAME_TAG_NL = "{} Gewestelijke Fietsroute"
+NAME_TAG_FR = "{} Itin\u00e9raire Cyclable R\u00e9gional"
 TYPE_TAG = "route"
 ROUTE_TAG = "bicycle"
 NETWORK_TAG = "lcn"

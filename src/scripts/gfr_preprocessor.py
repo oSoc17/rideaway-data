@@ -30,7 +30,9 @@ def extract_routes():
 
 def convert_tags(ref, properties):
     return {
-        "name": NAME_TAG,
+        "name": NAME_TAG.format(ref),
+        "name:nl": NAME_TAG_NL.format(ref),
+        "name:fr": NAME_TAG_FR.format(ref),
         "type": TYPE_TAG,
         "route": ROUTE_TAG,
         "network": NETWORK_TAG,
