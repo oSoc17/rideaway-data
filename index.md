@@ -1,4 +1,5 @@
 <img align="center" src="./images/bikeaway%20data%20logo.png" width="400">
+
 # The OSM Brussels Cycling Route Validation Tool
 
 ## Introducing the Brussels bike data team
