@@ -1,9 +1,9 @@
 # rideaway-data
 Brussels Mobility 1 - Data validation and integration into OpenStreetMap
 
-Brussels Mobility has planned a bicycle network with routes they believe are the best for cycling around in Brussels. To make this data available to the public, it should be published on the open platform OpenStreetMap so it is available for use by cycling applications. The OpenStreetMap community does this mapping process manually to ensure a high level of quality and detail.
+Brussels have has developed region wide cycling network. Known as the ICR (Itinéraires Cyclables Régionaux) in French or the GFR (Gewestelijke Fietsroutes) in Dutch, the network aims for fluid and safe journeys spanning all 19 communes of the region. The cycling infrastructure is represented by is open and online map data. Individual routes has information about their corresponding route colour and name. 
 
-This tool supports the community in this mapping process of the cycling network of Brussels, by identifying missing or incomplete routes and routes with wrong metadata.
+This is a useful reference for OSM mappers, however if one was to compare the completeness and correctness of OSM, a manual comparison will be too tedious. To ease the process of OSM editing in relation to a reference map of the cycling network, a webtool was developed that compares the Brussels route data with that of OSM. The result provides a map that continously updates itself compared to OSM and shows a map of potential missing or incomplete routes and metadata on tags. 
 
 ## Installation
 * Install Python version 2
