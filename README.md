@@ -5,7 +5,7 @@ Brussels Mobility has planned a bicycle network with routes they believe are the
 
 This tool supports the community in this mapping process of the cycling network of Brussels, by identifying missing or incomplete routes and routes with wrong metadata.
 
-# Installation
+## Installation
 * Install Python version 2
 * Install the following dependencies with `pip`:
   - django:  `pip install django`
