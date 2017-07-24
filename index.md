@@ -1,5 +1,5 @@
 <p align="center">
-<src="./images/bikeaway%20data%20logo.png" width="400">
+<img src="./images/bikeaway%20data%20logo.png" width="400">
 </p>
 
 # The OSM Brussels Cycling Route Validation Tool
