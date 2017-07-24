@@ -39,9 +39,7 @@ The image below provides an example of all the cycling routes and routes that ar
 
 ## A comparsion Brussels routes and gaps in OSM
 
-<a href="http://cyclenetworks.osm.be/">
 <img src="./images/osmbrusselsdatacomparsion.gif">
-</a>
 
 ## Using the OSM-Brussels data comparison tool
 
