@@ -1,5 +1,5 @@
 # The OSM Brussels Cycling Route Validation Tool
-<img src="./images/bikeaway%20data%20logo.png" width="200">
+<img src="./images/bikeaway%20data%20logo.png" width="400">
 
 ## Introducing the Brussels bike data team
 During the month of July 2017 three students, guided by expert coaches, worked on an OpenStreetMap (OSM) focused project. Our work was done in the context of the 2017 open Summer of code, which is an initiative of Open Knowledge Belgium. The oSoc challenages teams of students to solve real-world problems through application development. At the 7th edition of oSoc a total of 40 students are working on 10 cutting-edge projects build on open source code.
