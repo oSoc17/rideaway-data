@@ -5,7 +5,7 @@
 During the month of July 2017 three students, guided by expert coaches, worked on an OpenStreetMap (OSM) focused project. Our work was done in the context of the 2017 open Summer of code, which is an initiative of Open Knowledge Belgium. The oSoc challenages teams of students to solve real-world problems through application development. At the 7th edition of oSoc a total of 40 students are working on 10 cutting-edge projects build on open source code.
 
 ## Our end goal: supporting Brussels bike data completeness and correctness on OSM 
-The result of is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. The tool, avaliable from this link: [cyclenetworks.osm.be](http://cyclenetworks.osm.be/), has two functionalities:
+The result of is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. The tool, avaliable from this via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/), has two functionalities:
 - Comparing Brussels’ government reference cycling network open data with OSM
 - Visually presenting areas in OSM that doesn’t match to the Brussels data on an interactive and dynamic website
 
@@ -31,7 +31,7 @@ We solved this problem by creating a continuously refreshing platform that autom
 
 The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.  
 
-## A comparison between the Brussels routes and gaps in OSM 
+## A comparison between the Brussels routes and gaps in OSM from [cyclenetworks.osm.be](http://cyclenetworks.osm.be/)
 <img src="./images/osmbrusselsdatacomparsion.gif">
 
 ## Using the OSM-Brussels data comparison tool 
@@ -40,6 +40,7 @@ Our web tool is intended for advanced OSM editors who are highly verse with edit
 In summary, the tool that we are developing aims to assist and encourage the verification of the OSM cycling routes in Brussels. Because we are an open source project, the code can be reused for other situations all over the world when one geodataset needs to be used as a reference, to compare OSM geodata for completeness and correctness. The open source approach also extend to our collaborating team mates who are working on an mobile web app that uses the route coding and colouring scheme in their routing interface. 
 
 ## Some useful links
+* The OSM validation web tool via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/)
 *   <span class="c2">[open Summer of code](http://2017.summerofcode.be/)</span><span> (an initiative of</span> <span class="c2">[Open Knowledge Belgium](https://www.openknowledge.be/)</span><span>)</span>
 *   <span>Event that was organised within this theme:</span> <span class="c2">[Open Bike Data & Mapping with OpenStreetMap](https://www.eventbrite.com/e/open-bike-data-mapping-with-openstreetmap-registration-34806438996)</span>
 *   <span>The</span> <span class="c2">[Brussels government's mobility department](http://mobility.brussels/)</span>
