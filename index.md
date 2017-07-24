@@ -1,6 +1,6 @@
 # The OSM Brussels Cycling Route Validation Tool
 
-![GitHub Logo](/images/bikeaway%20data%20logo.png =200x)
+![GitHub Logo](/images/bikeaway%20data%20logo.png)=200x
 
 *italic*
 Introducing the Brussels bike data team
