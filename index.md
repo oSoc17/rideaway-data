@@ -2,14 +2,12 @@
 <img src="./images/bikeaway%20data%20logo.png" width="200">
 
 ## Introducing the Brussels bike data team
-During the month of July 2017 three students, guided by expert coaches, worked on an OpenStreetMap (OSM) focused project. The result of is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. 
+During the month of July 2017 three students, guided by expert coaches, worked on an OpenStreetMap (OSM) focused project. Our work was done in the context of the 2017 open Summer of code, which is an initiative of Open Knowledge Belgium. The oSoc challenages teams of students to solve real-world problems through application development. At the 7th edition of oSoc a total of 40 students are working on 10 cutting-edge projects build on open source code.
 
 ## Our end goal: supporting Brussels bike data completeness and correctness on OSM 
-
+The result of is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. 
 - Comparing Brussels’ government reference cycling network open data with OSM
 - Visually presenting areas in OSM that doesn’t match to the Brussels data on an interactive and dynamic website
-
-The open Summer of code, an initiative of Open Knowledge Belgium, is a one-month programme which gives technology, design, and communications students the chance to transform open innovation projects into real-world applications. At the 7th edition of oSoc a total of 40 students are working on 10 cutting-edge projects build on open source code.
 
 ## The Brussels regional bike network
 Brussels have has developed region wide cycling network. Known as the ICR (Itinéraires Cyclables Régionaux) in French or the GFR (Gewestelijke Fietsroutes) in Dutch, the network aims for fluid and safe journeys spanning all 19 communes of the region.To encourage more cyclists on more efficient and safer routes, one approach is to ensure that traveller information is robust enough to guide cyclists to these routes. 
