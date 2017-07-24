@@ -11,7 +11,7 @@ namespace NTS_BufferingTest
         {
             /*
             3 inputs are required, 2 files to compare and one output
-            It compares it geometric overlaap between the first 2 inputs and uses the third for output
+            It compares it geometric overlap between the first 2 inputs and uses the third for output
             A buffered version of the first input is compared to the second input
             The output is the geometric difference between the inputs 
             */
