@@ -36,8 +36,8 @@ The image below provides an example of all the cycling routes and routes that ar
 <img src="/images/osm%20brussels%20data%20comparsion.gif?raw=true">
 
 ## Using the OSM-Brussels data comparison tool 
-Our web tool is intended for advanced OSM editors who are highly verse with editing route relations with JOSM. Therefore any work should be done through collaboration through experts within community should be done. Learn more about getting started with our validation tool via: 
+Our web tool is intended for advanced OSM editors who are highly verse with editing route relations with JOSM. Therefore any work should be done through collaboration through experts within community should be done. You can make contact with community via:
 
-    cyclenetworks.osm.be/
+- mailto:community@osm.be
 
 In summary, the tool that we are developing aims to assist and encourage the verification of the OSM cycling routes in Brussels. Because we are an open source project, the code can be reused for other situations all over the world when one geodataset needs to be used as a reference to compare OSM geodata for completeness and correctness. The open source approach also extend to our collaborating team mates who are working on an mobile web app that uses the route coding and colouring scheme in their routing interface. 
