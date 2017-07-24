@@ -33,7 +33,7 @@ We solved this problem by creating a continuously refreshing platform that autom
 
 The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.  
  
- <image goes here>
+<img src="/images/osm%20brussels%20data%20comparsion.gif?raw=true">
 
 ## Using the OSM-Brussels data comparison tool 
 Our web tool is intended for advanced OSM editors who are highly verse with editing route relations with JOSM. Therefore any work should be done through collaboration through experts within community should be done. Learn more about getting started with our validation tool via: 
