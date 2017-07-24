@@ -41,7 +41,7 @@ In summary, the tool that we are developing aims to assist and encourage the ver
 *   <span>Freely online map</span> <span class="c2">[data from the Brussels government](http://data-mobility.brussels/mobigis/nl/)</span>
 *   <span class="c2">[Info on the Java OpenStreetMap Editor (JOSM)](https://josm.openstreetmap.de/)</span>
 *   <span>OSM wiki on</span> <span class="c2">[comparison and quality control](http://wiki.openstreetmap.org/wiki/Comparing_OSM_with_other_datasets)</span><span class="c0"> </span>
-*   <span>OSM wiki on map</span> <span class="c2">[conflation](http://wiki.openstreetmap.org/wiki/Conflation&sa=D)</span>
+*   <span>OSM wiki on map</span> <span class="c2">[conflation](http://wiki.openstreetmap.org/wiki/Conflation)</span>
 *   <span class="c2">[Mapping conventions, including for cycling routes](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Conventions/Cycle_Routes)</span><span class="c0"> for Belgium</span>
 *   <span>OSM wiki on the</span> <span class="c2">[Brussels Capital Region](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Cycle_Routes%23Itin.C3.A9raires_Cyclables_R.C3.A9gionaux_-_Gewestelijke_Fietsroute)</span>
 *   <span class="c2">[The testing version of the Brussels cycling routing webapp](https://osoc17.github.io/rideaway-frontend/)</span><span class="c0"> </span>
