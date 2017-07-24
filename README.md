@@ -5,13 +5,14 @@ Brussels Mobility has planned a bicycle network with routes they believe are the
 
 This tool supports the community in this mapping process of the cycling network of Brussels, by identifying missing or incomplete routes and routes with wrong metadata.
 
-## Installation
+# Installation
 * Install Python version 2
 * Install the following dependencies with `pip`:
-  - django
-  - geojson
-  - pyproj
+  - django:  `pip install django`
+  - geojson: `pip install geojson`
+  - pyproj: `pip install pyproj`
 * Install the PyOsmium library from [here](https://github.com/osmcode/pyosmium)
+* run the install script (only works on ubuntu)
 
 The webtool can be started by running the Django development server or by setting up a web server like Apache or NGINX.
 
