@@ -5,7 +5,7 @@
 During the month of July 2017 three students, guided by expert coaches, worked on an OpenStreetMap (OSM) focused project. Our work was done in the context of the 2017 open Summer of code, which is an initiative of Open Knowledge Belgium. The oSoc challenages teams of students to solve real-world problems through application development. At the 7th edition of oSoc a total of 40 students are working on 10 cutting-edge projects build on open source code.
 
 ## Our end goal: supporting Brussels bike data completeness and correctness on OSM 
-The result of is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. 
+The result of is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. The tool, avaliable from this link: [cyclenetworks.osm.be](http://cyclenetworks.osm.be/), has two functionalities:
 - Comparing Brussels’ government reference cycling network open data with OSM
 - Visually presenting areas in OSM that doesn’t match to the Brussels data on an interactive and dynamic website
 
