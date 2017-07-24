@@ -7,6 +7,7 @@ During the month of July 2017 three students, guided by expert coaches, worked o
 The result of is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. The tool, avaliable from this via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/), has two functionalities:
 - Comparing Brussels’ government reference cycling network open data with OSM
 - Visually presenting areas in OSM that doesn’t match to the Brussels data on an interactive and dynamic website
+
 ## The Brussels regional bike network
 Brussels have has developed region wide cycling network. Known as the ICR (Itinéraires Cyclables Régionaux) in French or the GFR (Gewestelijke Fietsroutes) in Dutch, the network aims for fluid and safe journeys spanning all 19 communes of the region.To encourage more cyclists on more efficient and safer routes, one approach is to ensure that traveller information is robust enough to guide cyclists to these routes. 
 ## The need for a dedicated cycling smartphone app for Brussels
@@ -20,6 +21,7 @@ The regional cycling infrastructure is represented by is open and online map dat
 We solved this problem by creating a continuously refreshing platform that automatically identifies potential issues on OSM, in relation to the cycling route map data from the Brussels government. The aim of the online platform is for OSM map editors to simply compare reference geodata to guide their editing in OSM manually. The technical underpinning of the verification allows two main approaches on analysis of data per individual route:
 - Identifying geometric conflicts of issues of general overlap when the OSM data does not match the Brussels data, and vice-versa;
 - Identifying possible misplaced attribute data known as tags in the OSM data, including route code and colour, network name, and the operator of the route.
+
 The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.  
 ## A comparsion Brussels routes and gaps in OSM
 <a href="http://cyclenetworks.osm.be/">
