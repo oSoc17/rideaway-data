@@ -1,9 +1,18 @@
-import geojson, os
 from shutil import copyfile
+import geojson
+import os
+
 from constants import *
 
 
 def compare_tags(gfr, osm):
+    """
+    Compares the properties between two data sets taking the properties of the first argument as reference data.
+
+    :param gfr: Reference GeoJSON data.
+    :param osm: GeoJSON data to compare metadata from.
+    :return: Semicolon delimited string containing all the metadata errors.
+    """
     gfr_tags = gfr.features[0].properties
     osm_tags = osm.features[0].properties
     errors = ""
@@ -18,6 +27,10 @@ def compare_tags(gfr, osm):
 
 
 def check_metadata():
+    """
+    Compares the metadata of each route separately of the routes available in the corresponding data folders. A new file
+    is written containing the OSM geometry with extra tags describing the metadata issues.
+    """
     for route_file in os.listdir(GFR_ROUTES_LOCATION):
         if os.path.isfile(OSM_ROUTES_LOCATION + route_file):
             with open(GFR_ROUTES_LOCATION + route_file) as fp:
@@ -38,4 +51,5 @@ def check_metadata():
             else:
                 copyfile(GFR_ROUTES_LOCATION + route_file, MISSING_LOCATION + route_file)
         else:
+            # If the OSM data didn't contain this route, we copy the reference data to the missing data folder.
             copyfile(GFR_ROUTES_LOCATION + route_file, MISSING_LOCATION + route_file)

@@ -1,7 +1,9 @@
+# Source data
 GFR_SOURCE = "http://data-mobility.brussels/geoserver/bm_bike/wfs?service=wfs&request=GetFeature&typeName=bm_bike:icr&outputFormat=application/json"
 OSM_SOURCE = "http://overpass-api.de/api/map?bbox="
 BBOX = [4.24124261076, 50.7631624449, 4.47975783302, 50.9133209049]
 
+# Data locations
 DATA_FOLDER = "../data/"
 
 GFR_LOCATION = "../data/gfr.geojson"
@@ -16,6 +18,7 @@ DIFF_WRONG_LOCATION = "../data/diff/wrong/"
 OUTPUT_LOCATION = "../data/output/"
 NETWORK_OUTPUT = "../data/network.geojson"
 
+# Data locations for Django site
 SITE_OUTPUT = "../brumob/static/brumob/data/output/"
 SITE_GFR = "../brumob/static/brumob/data/routes/"
 SITE_NETWORK = "../brumob/static/brumob/data/network.geojson"
@@ -23,6 +26,7 @@ SITE_NETWORK = "../brumob/static/brumob/data/network.geojson"
 DATA_FOLDERS = [OSM_ROUTES_LOCATION, GFR_ROUTES_LOCATION, TAGS_LOCATION, MISSING_LOCATION, DIFF_MISSING_LOCATION,
                 DIFF_WRONG_LOCATION, OUTPUT_LOCATION]
 
+# Correct colours for the routes
 COLOURS = {
     '1': '#89C13D',
     '2': '#77AAD2',
@@ -45,6 +49,7 @@ COLOURS = {
     'C': '#F6A31A'
 }
 
+# Correct metadata tags
 NAME_TAG = "{} Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
 NAME_TAG_NL = "{} Gewestelijke Fietsroute"
 NAME_TAG_FR = "{} Itin\u00e9raire Cyclable R\u00e9gional"
@@ -53,4 +58,5 @@ ROUTE_TAG = "bicycle"
 NETWORK_TAG = "lcn"
 OPERATOR_TAG = "Brussels Mobility"
 
+# Location of the NTS Difference Checker executable
 EXECUTABLE = "../../nts/bin/Release/NTS-BufferingTest.exe"

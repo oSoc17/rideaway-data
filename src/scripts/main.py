@@ -1,11 +1,21 @@
 from shutil import rmtree
-import os, errno, sys, logging
+import os
+import errno
+import sys
+import logging
 
 import scraper, gfr_preprocessor, osm_processor, metadata, diff_checker, post_processor
 from constants import *
 
 
 def clean(clean_osm=True):
+    """
+    Cleans the data folders where the script will place the GeoJSON data files.
+
+    :param clean_osm: Should the OSM data be cleaned as well. This file can be huge so it's not always preferred.
+                      Defaults to True.
+    """
+
     if clean_osm and os.path.exists(DATA_FOLDER):
         rmtree(DATA_FOLDER)
     else:
@@ -22,12 +32,13 @@ def clean(clean_osm=True):
         try:
             os.makedirs(folder)
         except OSError as e:
-            # We don't care if it already exists although it shouldn't exist
+            # We don't care if it already exists although it shouldn't exist.
             if e.errno != errno.EEXIST:
                 raise
 
 
 if __name__ == "__main__":
+    # Set up a logger to debug the program
     logFormatter = logging.Formatter("%(asctime)s [%(threadName)-12.12s] [%(levelname)-5.5s]  %(message)s")
     rootLogger = logging.getLogger()
     rootLogger.setLevel(logging.DEBUG)
@@ -42,6 +53,9 @@ if __name__ == "__main__":
 
     logging.info("Script starting...")
 
+    # Check the passed parameters of the script.
+    # If True, or nothing, is passed, the OSM data is cleaned,
+    # if False is passed then the OSM data will be reused.
     if len(sys.argv) == 2:
         arg = sys.argv[1].lower()
 

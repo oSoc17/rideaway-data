@@ -1,9 +1,21 @@
-import os, geojson, errno
 from shutil import copyfile, rmtree
+import os
+import geojson
+import errno
+
 from constants import *
 
 
 def merge_differences(route, missing_file, wrong_file, output):
+    """
+    Merge the missing and wrong differences into one file.
+
+    :param route: Route GeoJSON file.
+    :param missing_file: File containing missing geometries.
+    :param wrong_file: File containing wrong geometries.
+    :param output: Output file location.
+    :return: True if there was a difference or False otherwise.
+    """
     with open(TAGS_LOCATION + route) as fp:
         tags = geojson.loads(fp.read())
         properties = tags.features[0].properties
@@ -15,6 +27,8 @@ def merge_differences(route, missing_file, wrong_file, output):
         wrong = geojson.loads(fp.read())
 
     if len(missing.features[0].geometry.coordinates) > 0 and len(wrong.features[0].geometry.coordinates) == 0:
+        # Only missing geometries are present, so output that.
+
         missing.features[0].properties['difference_type'] = 'missing'
         missing.features[0].properties.update(properties)
 
@@ -23,6 +37,7 @@ def merge_differences(route, missing_file, wrong_file, output):
 
         return True
     elif len(wrong.features[0].geometry.coordinates) > 0 and len(missing.features[0].geometry.coordinates) == 0:
+        # Only wrong geometries are present, so output that.
         wrong.features[0].properties['difference_type'] = 'wrong'
         wrong.features[0].properties.update(properties)
 
@@ -31,6 +46,8 @@ def merge_differences(route, missing_file, wrong_file, output):
 
         return True
     elif len(missing.features[0].geometry.coordinates) > 0 and len(wrong.features[0].geometry.coordinates) > 0:
+        # Both differences are present, so combine the features into one GeoJSON file.
+
         missing.features[0].properties['difference_type'] = 'missing'
         missing.features[0].properties.update(properties)
         wrong.features[0].properties['difference_type'] = 'wrong'
@@ -45,6 +62,13 @@ def merge_differences(route, missing_file, wrong_file, output):
 
 
 def add_property(path, key, value):
+    """
+    Add a property to every feature in a GeoJSON file.
+
+    :param path: Path to the GeoJSON file.
+    :param key: Key of the property to add.
+    :param value: Value of the property to add.
+    """
     with open(path) as fp:
         features = geojson.loads(fp.read())
 
@@ -56,13 +80,16 @@ def add_property(path, key, value):
 
 
 def copy_to_site():
+    """
+    Copy the necessary files to the Django static folder location.
+    """
     if os.path.exists(SITE_GFR):
         rmtree(SITE_GFR)
 
     try:
         os.makedirs(SITE_GFR)
     except OSError as e:
-        # We don't care if it already exists although it shouldn't exist
+        # We don't care if it already exists although it shouldn't exist.
         if e.errno != errno.EEXIST:
             raise
 
@@ -75,7 +102,7 @@ def copy_to_site():
     try:
         os.makedirs(SITE_OUTPUT)
     except OSError as e:
-        # We don't care if it already exists although it shouldn't exist
+        # We don't care if it already exists although it shouldn't exist.
         if e.errno != errno.EEXIST:
             raise
 
@@ -86,6 +113,9 @@ def copy_to_site():
 
 
 def combine_in_network():
+    """
+    Combine all the routes from OSM into one GeoJSON file.
+    """
     features = []
 
     for route in os.listdir(OSM_ROUTES_LOCATION):
@@ -99,15 +129,26 @@ def combine_in_network():
 
 
 def post_process():
+    """
+    * Post process the outputted data files and publish one output file to the output folder
+    * Publish a GeoJSON file containing the whole OSM cycling network
+    * Copy the reference data, output files and OSM cycling network to the Django site
+    """
     for route in os.listdir(GFR_ROUTES_LOCATION):
         if os.path.isfile(MISSING_LOCATION + route):
+            # If the route is missing, output the reference data with correct OSM tags.
+
             copyfile(MISSING_LOCATION + route, OUTPUT_LOCATION + route)
             add_property(OUTPUT_LOCATION + route, 'error_type', 'missing')
         elif os.path.isfile(DIFF_MISSING_LOCATION + route) and os.path.isfile(DIFF_WRONG_LOCATION + route) \
                 and merge_differences(route, DIFF_MISSING_LOCATION + route, DIFF_WRONG_LOCATION + route,
                                       OUTPUT_LOCATION + route):
+            # If there's a geometrical difference, combine the two difference files and output it.
+
             add_property(OUTPUT_LOCATION + route, 'error_type', 'difference')
         elif os.path.isfile(TAGS_LOCATION + route):
+            # When there's no geometrical difference, output the OSM data possibly containing missing tags.
+
             copyfile(TAGS_LOCATION + route, OUTPUT_LOCATION + route)
         else:
             raise Exception("No output file could be generated for route: " + route)
