@@ -21,11 +21,10 @@ The development of the app demonstrates the power of high quality open data and 
 For the app to work having an open map data source geodata of the routes is first necessary. This is where our work becomes relevant, since the map data from OSM needs to be complete and accurate in relation to the physical network’s signage.
 
 ## Using Brussels’ map data as a reference
-On top of the regional cycling infrastructure there is open and online data of routes. Individual routes has information about their corresponding route colour and name. This is a useful reference, however if the OSM community wanted to compare their data with the Brussels reference map, this will not be too easy for them. 
+The regional cycling infrastructure is represented by is open and online map data. Individual routes has information about their corresponding route colour and name. This is a useful reference, however if the OSM community wanted to compare the completeness and correctness of OSM, a manual comparison will be too tedious. 
 
 ## Our solution in some detail
 We solved this problem by creating a continuously refreshing platform that automatically identifies potential issues on OSM, in relation to the cycling route map data from the Brussels government. The aim of the online platform is for OSM map editors to simply compare reference geodata to guide their editing in OSM manually. The technical underpinning of the verification allows two main approaches on analysis of data per individual route:
-
 - Identifying geometric conflicts of issues of general overlap when the OSM data does not match the Brussels data, and vice-versa;
 - Identifying possible misplaced attribute data known as tags in the OSM data, including route code and colour, network name, and the operator of the route.
 
