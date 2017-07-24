@@ -12,12 +12,15 @@ This tool supports the community in this mapping process of the cycling network 
   - geojson: `pip install geojson`
   - pyproj: `pip install pyproj`
 * Install the PyOsmium library from [here](https://github.com/osmcode/pyosmium)
-* run the install script (only works on ubuntu)
+* Run the `install.sh` script or install following software manually:
+  - flatpak: `apt install flatpak`
+  - mono-devel: `apt install mono-devel`
+  - monodevelop: `flatpak install --user --from https://download.mono-project.com/repo/monodevelop.flatpakref`
 
-The webtool can be started by running the Django development server or by setting up a web server like Apache or NGINX.
+The webtool can be started by running the Django development server or by setting up a web server like Apache or NGINX. To run the script periodically, a cron job should be set-up to run `main.py` (e.g. every 15 minutes).
 
 ## Server
-The server can currently be visited at http://cyclenetworks.osm.be/
+The server can currently be visited at https://cyclenetworks.osm.be/
 
 ## Credits
 Website based on https://github.com/jbelien/oSoc-2017-Brussels-Mobility - Jonathan Beliën
