@@ -109,6 +109,19 @@ def copy_to_site():
     for route in os.listdir(OUTPUT_LOCATION):
         copyfile(OUTPUT_LOCATION + route, SITE_OUTPUT + route)
 
+    if os.path.exists(SITE_OSM):
+        rmtree(SITE_OSM)
+
+    try:
+        os.makedirs(SITE_OSM)
+    except OSError as e:
+        # We don't care if it already exists although it shouldn't exist.
+        if e.errno != errno.EEXIST:
+            raise
+
+    for route in os.listdir(RELATIONS_LOCATION):
+        copyfile(RELATIONS_LOCATION + route, SITE_OSM + route)
+
     copyfile(NETWORK_OUTPUT, SITE_NETWORK)
 
 

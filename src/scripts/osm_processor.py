@@ -119,6 +119,9 @@ class CycleRouteHandler(o.SimpleHandler):
                 and 'ref' in tags and tags['ref'] in self.routes:
             relation = Relation(r)
 
+            writer = o.SimpleWriter(RELATIONS_LOCATION + tags['ref'] + ".osm")
+            writer.add_relation(r)
+
             for member in r.members:
                 # Loop over the members to find the ways or child relations we need.
 

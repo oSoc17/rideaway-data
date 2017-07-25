@@ -16,15 +16,17 @@ MISSING_LOCATION = "../data/missing/"
 DIFF_MISSING_LOCATION = "../data/diff/missing/"
 DIFF_WRONG_LOCATION = "../data/diff/wrong/"
 OUTPUT_LOCATION = "../data/output/"
+RELATIONS_LOCATION = "../data/relations/"
 NETWORK_OUTPUT = "../data/network.geojson"
 
 # Data locations for Django site
 SITE_OUTPUT = "../brumob/static/brumob/data/output/"
 SITE_GFR = "../brumob/static/brumob/data/routes/"
 SITE_NETWORK = "../brumob/static/brumob/data/network.geojson"
+SITE_OSM = "../brumob/static/brumob/data/osm/"
 
 DATA_FOLDERS = [OSM_ROUTES_LOCATION, GFR_ROUTES_LOCATION, TAGS_LOCATION, MISSING_LOCATION, DIFF_MISSING_LOCATION,
-                DIFF_WRONG_LOCATION, OUTPUT_LOCATION]
+                DIFF_WRONG_LOCATION, OUTPUT_LOCATION, RELATIONS_LOCATION]
 
 # Correct colours for the routes
 COLOURS = {
