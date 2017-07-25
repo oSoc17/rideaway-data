@@ -37,7 +37,7 @@ The webtool continuously refreshes itself and automatically identifies potential
 
 The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.  
 
-## A comparsion of Brussels routes and then gaps in OSM compared to the Brussels reference data
+## A comparsion of cycling routes and then gaps in OSM compared to the reference data
 
 <img src="./images/osmbrusselsdatacomparsion.gif">
 
