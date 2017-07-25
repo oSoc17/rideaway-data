@@ -1,7 +1,9 @@
 from shutil import copyfile, rmtree
+import datetime
 import os
 import geojson
 import errno
+import pickle
 
 from constants import *
 
@@ -168,3 +170,7 @@ def post_process():
 
     combine_in_network()
     copy_to_site()
+
+    # Export a last updated timestamp
+    with open('last_updated', 'w') as fp:
+        fp.write(pickle.dumps(datetime.datetime.now()))

@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from django.template import loader
 import os.path
 import json
+import pickle
 
 # Create your views here.
 
@@ -15,9 +16,17 @@ def index(request):
                   "6b", "7", "8", "9", "9a", "9b", "10", "10a", "10b", "11", "11a", "11b", "12", "12a", "12b", "SZ",
                   "SZa", "SZb", "CK", "MM", "MMa", "MMb", "PP", "A", "B", "C"]
 
+    try:
+        base = os.path.dirname(os.path.abspath(__file__))
+        with open(os.path.join(base, "../scripts/last_updated")) as fp:
+            timestamp = pickle.loads(fp.read())
+    except IOError:
+        timestamp = None
+
     context = {
         'route_list': route_list,
-        'routes': json.dumps(route_list)
+        'routes': json.dumps(route_list),
+        'last_updated': timestamp
     }
 
     return HttpResponse(template.render(context, request))
