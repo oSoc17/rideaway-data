@@ -12,7 +12,9 @@ During the month of July 2017 three students, guided by expert coaches, worked o
 
 Brussels have has developed region wide cycling network. Known as the ICR (Itinéraires Cyclables Régionaux) in French or the GFR (Gewestelijke Fietsroutes) in Dutch, the network aims for fluid and safe journeys spanning all 19 communes of the region.To encourage more cyclists on more efficient and safer routes, one approach is to ensure that traveller information is robust enough to guide cyclists to these routes. 
 
-<img src="./images/brusselsregioncyclingroutes.png">
+<p align="center">
+<img src="./images/brusselsregioncyclingroutes.png" width="400">
+</p>
 
 ## A dedicated cycling app for the Brussels cycling network
 
