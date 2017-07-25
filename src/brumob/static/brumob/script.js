@@ -3,11 +3,6 @@ proj4.defs("EPSG:31370", "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +
 var layers = [];
 var outputs = [];
 
-// Add the routes as layers.
-$.each(routes, function (key, value) {
-    $("#layers").append('<option value="' + key + '">' + value + '</option>');
-});
-
 // Make correct layer visible when changing route select.
 $("#layers").change(function () {
     var i;
@@ -31,9 +26,7 @@ $("#layers").change(function () {
 
     $("#bm").prop("checked", false);
     $("#out").prop("checked", true);
-    overlay.setPosition(undefined);
-    closer.blur();
-    select.getFeatures().clear();
+    deselectFeature();
 });
 
 // Make correct layer visible when changing type checkbox.
@@ -55,15 +48,13 @@ $(".type-checkbox").change(function () {
     } else {
         var index = parseInt(layer);
         if (kind === "route") {
-            layers[index].setVisible($(this).is(":checked"))
+            layers[index].setVisible($(this).is(":checked"));
         } else if (kind === "output") {
-            outputs[index].setVisible($(this).is(":checked"))
+            outputs[index].setVisible($(this).is(":checked"));
         }
     }
 
-    overlay.setPosition(undefined);
-    closer.blur();
-    select.getFeatures().clear();
+    deselectFeature();
 });
 
 /**
@@ -89,9 +80,7 @@ var overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
  * @return {boolean} Don't follow the href.
  */
 closer.onclick = function () {
-    overlay.setPosition(undefined);
-    closer.blur();
-    select.getFeatures().clear();
+    deselectFeature();
     return false;
 };
 
@@ -164,11 +153,15 @@ var keysSorted = function (obj) {
     return keys.sort();
 };
 
-var downloadRoute = function (routenumber)
-{
+/**
+ * Download the given route relation in JOSM.
+ *
+ * @param id ID of the route relation.
+ */
+var downloadRoute = function (id) {
     var xmlHttp = new XMLHttpRequest();
 
-    var url = "http://localhost:8111/import?url=http://api.openstreetmap.org/api/0.6/relation/" + routenumber+"/full";
+    var url = "http://localhost:8111/import?url=http://api.openstreetmap.org/api/0.6/relation/" + id + "/full";
     xmlHttp.open("GET", url, true); // true for asynchronous 
     xmlHttp.send(null);
 };
@@ -211,9 +204,9 @@ var overlayContent = function (properties) {
             info += "<p><strong>" + property + "</strong>: " + properties[property] + "</p>";
         }
     }
-    
-    if ("@id" in properties){
-    info+="<button onclick='downloadRoute("+ properties["@id"].split('/')[1] + ")'>Open route in JOSM</button></p>"
+
+    if ("@id" in properties) {
+        info += "<button onclick='downloadRoute(" + properties["@id"].split('/')[1] + ")'>Open route in JOSM</button></p>";
     }
 
     if (properties.hasOwnProperty("tagging_errors")) {
@@ -224,32 +217,28 @@ var overlayContent = function (properties) {
             info += "<p class='warning'>" + issues[i] + "</p>";
         }
     }
-    
-
-
 
     return info;
-
 };
 
-
-var openBoundingBoxInJosm = function (routenumber)
-{
-   var boundaries=ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), map.getView().getProjection(), "EPSG:4326")
+/**
+ * Download the OSM data from the currently visible map in JOSM.
+ */
+var openBoundingBoxInJOSM = function () {
+    var boundaries = ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), map.getView().getProjection(), "EPSG:4326");
     var left_bound = boundaries[0];
     var bottom_bound = boundaries[1];
     var right_bound = boundaries[2];
     var top_bound = boundaries[3];
 
-    if(Math.abs(left_bound-right_bound)<0.025 &&  Math.abs(top_bound-bottom_bound)<0.025){
+    if (Math.abs(left_bound - right_bound) < 0.025 && Math.abs(top_bound - bottom_bound) < 0.025) {
         var xmlHttp = new XMLHttpRequest();
         var url = "http://127.0.0.1:8111/load_and_zoom?left=" + left_bound + "&right=" + right_bound + "&top=" + top_bound + "&bottom=" + bottom_bound;
         xmlHttp.open("GET", url, true); // true for asynchronous 
         xmlHttp.send(null);
-    } else{
-        alert("Area too large, zoom in some more");   
+    } else {
+        alert("Area too large, zoom in some more.");
     }
-
 };
 
 var select = new ol.interaction.Select({
@@ -268,6 +257,12 @@ select.on('select', function (e) {
         closer.blur();
     }
 });
+
+var deselectFeature = function () {
+    overlay.setPosition(undefined);
+    closer.blur();
+    select.getFeatures().clear();
+};
 
 if (window.location.hash !== "") {
     // Try to restore center, zoom-level and rotation from the URL.
@@ -325,48 +320,6 @@ window.addEventListener("popstate", function (event) {
 });
 
 /**
- * Loads a route layer from the given file location and places it in the layers array at given index.
- *
- * @param file File location of the GeoJSON.
- * @param index Index of the layer.
- */
-var loadLayers = function (file, index) {
-    var vectorSource, vectorLayer;
-    $.getJSON(file, function (json) {
-        vectorSource = new ol.source.Vector({
-            features: (new ol.format.GeoJSON()).readFeatures(json, {
-                dataProjection: "EPSG:4326",
-                featureProjection: "EPSG:3857"
-            })
-
-        });
-        vectorLayer = new ol.layer.Vector({
-            source: vectorSource,
-            style: function (feature) {
-                var properties = feature.getProperties();
-                var color = ol.color.asArray(properties.colour || "#000000");
-
-                color[3] = 0.8;
-
-                var stroke = new ol.style.Stroke({
-                    color: color,
-                    width: 10
-                });
-                return [
-                    new ol.style.Style({
-                        stroke: stroke
-                    })
-                ];
-            }
-        });
-        map.addLayer(vectorLayer);
-        vectorLayer.setVisible(false);
-
-        layers[index] = vectorLayer;
-    });
-};
-
-/**
  * Gets the colour based on the kind of errors in the feature.
  *
  * @param properties Properties of the feature.
@@ -401,12 +354,21 @@ var getLineDash = function (properties) {
 };
 
 /**
- * Loads a output layer from the given file location and places it in the outputs array at given index.
+ * Loads a layer from the given file location and stores it for later use.
  *
  * @param file File location of the GeoJSON.
  * @param index Index of the layer.
  */
-var loadOutput = function (file, index) {
+/**
+ * Loads a layer from the given file location and stores it for later use.
+ *
+ * @param file File location of the GeoJSON.
+ * @param array Array to store layer in.
+ * @param index Index of the layer.
+ * @param visible Should the layer be visible by default.
+ * @param useColour Should the colour property be used or should the colour be calculated based on the errors.
+ */
+var loadLayer = function (file, array, index, visible, useColour) {
     var vectorSource, vectorLayer;
     $.getJSON(file, function (json) {
         vectorSource = new ol.source.Vector({
@@ -419,8 +381,14 @@ var loadOutput = function (file, index) {
         vectorLayer = new ol.layer.Vector({
             source: vectorSource,
             style: function (feature) {
+                var color;
                 var properties = feature.getProperties();
-                var color = getColor(properties);
+
+                if (useColour) {
+                    color = properties.colour;
+                } else {
+                    color = getColor(properties);
+                }
 
                 color[3] = 0.8;
 
@@ -437,18 +405,14 @@ var loadOutput = function (file, index) {
             }
         });
         map.addLayer(vectorLayer);
-        vectorLayer.setVisible(true);
+        vectorLayer.setVisible(visible);
 
-        outputs[index] = vectorLayer;
+        array[index] = vectorLayer;
     });
 };
 
-// Load the routes
+// Load the routes and outputs
 $.each(routes, function (key, value) {
-    loadLayers(routes_src + value + ".geojson", key);
-});
-
-// Load the outputs
-$.each(routes, function (key, value) {
-    loadOutput(output_src + value + ".geojson", key);
+    loadLayer(routes_src + value + ".geojson", layers, key, false, true);
+    loadLayer(output_src + value + ".geojson", outputs, key, true, false);
 });

@@ -68,7 +68,7 @@
             </div>
 
             <br>
-            <button onclick=openBoundingBoxInJosm()>Open view in JOSM</button>
+            <button onclick=openBoundingBoxInJOSM()>Open view in JOSM</button>
             <br>
 
             <p>The source code is available <a href="https://github.com/oSoc17/rideaway-data">here</a>.</p>
@@ -91,11 +91,16 @@
 
                 <select id="layers" autocomplete="off">
                     <option value="all" selected="selected">All</option>
+                    {% for route in route_list %}
+                        <option value="{{ forloop.counter0 }}">{{ route }}</option>
+                    {% endfor %}
                 </select>
 
                 <div id="layer-type" class="overlay">
-                    <input type="checkbox" value="route" class="type-checkbox" id="bm" autocomplete="off">Brussels Mobility route<br>
-                    <input type="checkbox" value="output" class="type-checkbox" id="out" autocomplete="off" checked>Comparison output<br>
+                    <input type="checkbox" value="route" class="type-checkbox" id="bm" autocomplete="off">Brussels
+                    Mobility route<br>
+                    <input type="checkbox" value="output" class="type-checkbox" id="out" autocomplete="off" checked>Comparison
+                    output<br>
                 </div>
             </div>
 
