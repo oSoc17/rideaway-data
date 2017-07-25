@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from django.utils import timezone
 import os.path
 import json
 import pickle
@@ -20,7 +19,7 @@ def index(request):
     try:
         base = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(base, "../scripts/last_updated")) as fp:
-            timestamp = timezone.make_aware(pickle.loads(fp.read()), timezone.get_current_timezone())
+            timestamp = pickle.loads(fp.read())
     except IOError:
         timestamp = None
 
