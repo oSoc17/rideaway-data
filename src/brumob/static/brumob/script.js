@@ -350,6 +350,20 @@ var getColor = function (properties) {
 };
 
 /**
+ * Gets the line dash based on the kind of errors in the feature.
+ *
+ * @param properties Properties of the feature.
+ * @returns {*} Array of numbers representing dashed property.
+ */
+var getLineDash = function (properties) {
+    if ('error_type' in properties && properties.error_type === "difference" && properties.difference_type === "wrong") {
+        return [25, 25];
+    } else {
+        return undefined;
+    }
+};
+
+/**
  * Loads a output layer from the given file location and places it in the outputs array at given index.
  *
  * @param file File location of the GeoJSON.
@@ -375,7 +389,8 @@ var loadOutput = function (file, index) {
 
                 var stroke = new ol.style.Stroke({
                     color: color,
-                    width: 10
+                    width: 10,
+                    lineDash: getLineDash(properties)
                 });
                 return [
                     new ol.style.Style({
