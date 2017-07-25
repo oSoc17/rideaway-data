@@ -18,14 +18,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '$ip7*4waxh^9-@qlxq2@ohinisas1(9sipq!i)5gbb2fw$rxb3'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['cyclenetworks.osm.be', '95.85.5.56', '127.0.0.1', 'localhost']
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -114,3 +106,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static/")
+
+from settings_local import *

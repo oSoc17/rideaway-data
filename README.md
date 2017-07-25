@@ -17,6 +17,8 @@ This is a useful reference for OSM mappers, however if one was to compare the co
   - mono-devel: `apt install mono-devel`
   - monodevelop: `flatpak install --user --from https://download.mono-project.com/repo/monodevelop.flatpakref`
 
+Make a settings_local.py file containing (sensitive) information to run the Django server. The settings_local.template file can be used as an example.
+
 The webtool can be started by running the Django development server or by setting up a web server like Apache or NGINX. To run the script periodically, a cron job should be set-up to run `main.py` (e.g. every 15 minutes).
 
 ## Server
