@@ -241,10 +241,16 @@ var openBoundingBoxInJosm = function (routenumber)
     var right_bound = boundaries[2];
     var top_bound = boundaries[3];
 
-    var xmlHttp = new XMLHttpRequest();
-    var url = "http://127.0.0.1:8111/load_and_zoom?left=" + left_bound + "&right=" + right_bound + "&top=" + top_bound + "&bottom=" + bottom_bound;
-    xmlHttp.open("GET", url, true); // true for asynchronous 
-    xmlHttp.send(null);
+    if(Math.abs(left_bound-right_bound)<0.025 &&  Math.abs(top_bound-bottom_bound)<0.025){
+        var xmlHttp = new XMLHttpRequest();
+        var url = "http://127.0.0.1:8111/load_and_zoom?left=" + left_bound + "&right=" + right_bound + "&top=" + top_bound + "&bottom=" + bottom_bound;
+        xmlHttp.open("GET", url, true); // true for asynchronous 
+        xmlHttp.send(null);
+    } else{
+        alert("Area too large, zoom in some more");   
+    }
+
+    
 
 
 
