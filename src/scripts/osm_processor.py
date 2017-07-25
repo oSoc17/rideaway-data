@@ -234,7 +234,9 @@ def dump_geojson(route, relation):
         ]
         for way in relation.ways
     ])
-    features.append(geojson.Feature(geometry=multi_line_string, properties=relation.tags))
+    properties = relation.tags if relation.tags is not None else dict()
+    properties['@id'] = 'relation/' + str(relation.id)
+    features.append(geojson.Feature(geometry=multi_line_string, properties=properties))
 
     with open(OSM_ROUTES_LOCATION + route + ".geojson", "w") as fp:
         fp.write(geojson.dumps(geojson.FeatureCollection(features)))
