@@ -164,6 +164,15 @@ var keysSorted = function (obj) {
     return keys.sort();
 };
 
+var Downloadroute = function (routenumber)
+{
+    var xmlHttp = new XMLHttpRequest();
+
+    var url = "http://localhost:8111/import?url=http://api.openstreetmap.org/api/0.6/relation/" + routenumber+"/full";
+    xmlHttp.open("GET", url, true); // true for asynchronous 
+    xmlHttp.send(null);
+};
+
 /**
  * Generate the content for the overlay based on the feature's properties.
  *
@@ -202,6 +211,8 @@ var overlayContent = function (properties) {
             info += "<p><strong>" + property + "</strong>: " + properties[property] + "</p>";
         }
     }
+    
+    info+="<button onclick='Downloadroute("+ properties["@id"].split('/')[1] + ")'>Open route in JOSM</button></p>"
 
     if (properties.hasOwnProperty("tagging_errors")) {
         info += "<hr>";
@@ -211,9 +222,12 @@ var overlayContent = function (properties) {
             info += "<p class='warning'>" + issues[i] + "</p>";
         }
     }
+    
 
     return info;
 };
+
+
 
 var select = new ol.interaction.Select({
     condition: ol.events.condition.click
