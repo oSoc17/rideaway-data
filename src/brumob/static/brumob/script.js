@@ -205,9 +205,14 @@ var overlayContent = function (properties) {
         }
     }
 
+    info += "<hr>";
+    info += "<div class='btn-group'>";
     if ("@id" in properties) {
-        info += "<button onclick='downloadRoute(" + properties["@id"].split('/')[1] + ")'>Open route in JOSM</button></p>";
+        info += "<button class='btn btn-default' onclick='downloadRoute(" + properties["@id"].split('/')[1] + ")'>Open in JOSM</button>";
     }
+    info += "<a class='btn btn-default' href='data/route/" + properties.ref + ".geojson' role='button'>Route GeoJSON</a>";
+    info += "<a class='btn btn-default' href='data/output/" + properties.ref + ".geojson' role='button'>Output GeoJSON</a>";
+    info += "</div>";
 
     if (properties.hasOwnProperty("tagging_errors")) {
         info += "<hr>";

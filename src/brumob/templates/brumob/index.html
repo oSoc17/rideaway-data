@@ -65,11 +65,14 @@
                         {% endfor %}
                     </ul>
                 </div>
+
             </div>
 
-            <br>
-            <button onclick=openBoundingBoxInJOSM()>Open view in JOSM</button>
-            <br>
+            <div style="margin: 10px 0">
+                <button type="button" class="btn btn-primary btn-block" onclick=openBoundingBoxInJOSM()>
+                    Open View in JOSM
+                </button>
+            </div>
 
             <p>The source code is available <a href="https://github.com/oSoc17/rideaway-data">here</a>.</p>
 
@@ -97,10 +100,18 @@
                 </select>
 
                 <div id="layer-type" class="overlay">
-                    <input type="checkbox" value="route" class="type-checkbox" id="bm" autocomplete="off">Brussels
-                    Mobility route<br>
-                    <input type="checkbox" value="output" class="type-checkbox" id="out" autocomplete="off" checked>Comparison
-                    output<br>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="route" class="type-checkbox" id="bm" autocomplete="off">Brussels
+                            Mobility route
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="output" class="type-checkbox" id="out" autocomplete="off"
+                                   checked>Comparison output
+                        </label>
+                    </div>
                 </div>
             </div>
 
