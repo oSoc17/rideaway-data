@@ -164,7 +164,7 @@ var keysSorted = function (obj) {
     return keys.sort();
 };
 
-var Downloadroute = function (routenumber)
+var downloadRoute = function (routenumber)
 {
     var xmlHttp = new XMLHttpRequest();
 
@@ -213,7 +213,7 @@ var overlayContent = function (properties) {
     }
     
     if ("@id" in properties){
-    info+="<button onclick='Downloadroute("+ properties["@id"].split('/')[1] + ")'>Open route in JOSM</button></p>"
+    info+="<button onclick='downloadRoute("+ properties["@id"].split('/')[1] + ")'>Open route in JOSM</button></p>"
     }
 
     if (properties.hasOwnProperty("tagging_errors")) {
@@ -225,11 +225,6 @@ var overlayContent = function (properties) {
         }
     }
     
-    var boundaries=ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), map.getView().getProjection(), "EPSG:4326")
-    var left_bound = boundaries[0];
-    var bottom_bound = boundaries[0];
-    var right_bound = boundaries[0];
-    var top_bound = boundaries[0];
 
 
 
@@ -238,6 +233,22 @@ var overlayContent = function (properties) {
 };
 
 
+var openBoundingBoxInJosm = function (routenumber)
+{
+   var boundaries=ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), map.getView().getProjection(), "EPSG:4326")
+    var left_bound = boundaries[0];
+    var bottom_bound = boundaries[1];
+    var right_bound = boundaries[2];
+    var top_bound = boundaries[3];
+
+    var xmlHttp = new XMLHttpRequest();
+    var url = "http://127.0.0.1:8111/zoom?left=" + left_bound + "&right=" + right_bound + "&top=" + top_bound + "&bottom=" + bottom_bound;
+    xmlHttp.open("GET", url, true); // true for asynchronous 
+    xmlHttp.send(null);
+
+
+
+};
 
 var select = new ol.interaction.Select({
     condition: ol.events.condition.click
