@@ -250,10 +250,6 @@ var openBoundingBoxInJosm = function (routenumber)
         alert("Area too large, zoom in some more");   
     }
 
-    
-
-
-
 };
 
 var select = new ol.interaction.Select({
