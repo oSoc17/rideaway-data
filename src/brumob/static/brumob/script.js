@@ -212,7 +212,9 @@ var overlayContent = function (properties) {
         }
     }
     
+    if ("@id" in properties){
     info+="<button onclick='Downloadroute("+ properties["@id"].split('/')[1] + ")'>Open route in JOSM</button></p>"
+    }
 
     if (properties.hasOwnProperty("tagging_errors")) {
         info += "<hr>";
@@ -223,8 +225,16 @@ var overlayContent = function (properties) {
         }
     }
     
+    var boundaries=ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), map.getView().getProjection(), "EPSG:4326")
+    var left_bound = boundaries[0];
+    var bottom_bound = boundaries[0];
+    var right_bound = boundaries[0];
+    var top_bound = boundaries[0];
+
+
 
     return info;
+
 };
 
 
