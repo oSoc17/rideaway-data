@@ -55,3 +55,11 @@ def download_network(request):
         response = HttpResponse(fh, content_type="application/vnd.geo+json")
         response["Access-Control-Allow-Origin"] = "*"
         return response
+
+def download_osm(request, route):
+    base = os.path.dirname(os.path.abspath(__file__))
+    with open(os.path.join(base, "static/brumob/data/osm/" + str(route)+".osm"), 'rb') as fh:
+        response = HttpResponse(fh, content_type="application/osm")
+        response["Access-Control-Allow-Origin"] = "*"
+        response["Content-disposition"] = 'attachment; filename=' + str(route)+".osm"
+        return response
