@@ -17,7 +17,6 @@ Brussels have has developed region wide cycling network. Known as the ICR (Itin�
 </p>
 
 ## A dedicated cycling app for the Brussels cycling network
-
 Nowadays most people use their phone to route themselves while their driving or using public transport. These apps usually incorporate the signage that travellers will see in their surrounding environment. The #oSoc Bike for Brussels team are pursuing this same strategy. This means that cyclists can better situate themselves in relation to signage.
 
 The development of the app demonstrates the power of high quality open data and would inspire the creation of other advanced apps for the public to support them through everyday activities. This work highlights the importance of supporting open map data creators to support open source applications. 
@@ -25,6 +24,9 @@ The development of the app demonstrates the power of high quality open data and 
 ## OSM as the source of map data for the app
 
 For the app to work having an open map data source geodata of the routes is first necessary. This is where our work becomes relevant, since the map data from OSM needs to be complete and accurate in relation to the physical network’s signage.
+
+OSM is a community driven open map data collection. Mapping is done through local expert knowledge and continually create and validate the map. Their data is open, meaning content can be freely used, modified, and shared. Often, mappers use official reference maps on a particular theme to guide their work. 
+
 
 ## Using Brussels’ map data as a reference
 
