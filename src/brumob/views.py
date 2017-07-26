@@ -8,6 +8,7 @@ import os.path
 import json
 import pickle
 
+
 # Create your views here.
 
 def index(request):
@@ -30,6 +31,12 @@ def index(request):
     }
 
     return HttpResponse(template.render(context, request))
+
+
+def about(request):
+    template = loader.get_template('brumob/about.html')
+
+    return HttpResponse(template.render({}, request))
 
 
 def download_route(request, route):
