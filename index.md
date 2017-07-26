@@ -60,7 +60,7 @@ The tool that we developed aims to assist and encourage the verification of the 
 - [Ben Abelshausen (coach and primary contact)](mailto:community@osm.be)
 - [Jonathan Beliën (coach)](https://twitter.com/jbelien)
 - [Damian Robinson (communication)](https://linkedin.com/in/damiangrobinson)
-- [Dieter Debast (developer)](mailto:dieterdebast@outlook.com)
+- [Dieter Debast (developer)](https://linkedin.com/in/ddieter)
 - [Moustapha Ramachi (developer)](mailto:moustapha.ramachi@gmail.com)
 
 ## Some useful links
