@@ -12,13 +12,10 @@ Brussels have has developed region wide cycling network. Known as the ICR (ItinÃ
 <img src="./images/brusselsregioncyclingroutes.png" width="500">
 </p>
 
-## The Bike for Brussels navigation app
-The Brussels cycling network aims to encourage citizens and visitors alike to bike around efficiently and safely on a system designed especially for longer distance cross-regional journeys.The benefits of such a modal-shift, to cycling, are bountiful and there is a drive to have 20% of transport being undertaken by the bike by the year 2020. These wider goals are part of the Bike for Brussels social media awareness campaign. Â 
-
-### A dedicated cycling app for the Brussels cycling network
+## A dedicated cycling app for the Brussels cycling network
 Nowadays most people use their phone to route themselves while their driving or using public transport. These apps usually incorporate the signage that travellers will see in their surrounding environment. The #oSoc Bike for Brussels team is pursuing this same strategy. This means that cyclists can better situate themselves in relation to signage.
 
-The development of the app demonstrates the power of high-quality open data and would inspire the creation of other advanced apps for the public to support them through everyday activities. This work highlights the importance of supporting open map data creators to support open source applications. 
+The development of the app demonstrates the power of high-quality open data and would inspire the creation of other advanced apps for the public to support them through everyday activities. This work highlights the importance of supporting open map data creators to support third party applications. 
 
 ## OSM as the source of map data for the cycling app
 OSM is a collaborative project to create a free editable map of the world. Mapping is done through local expert knowledge and continually create and validate the map. In Belgium, the local community is very active and this has allowed cycling paths all over the country, especially in urban areas like Brussels, to be mapped with a high level of completeness and correctness. 
