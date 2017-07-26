@@ -41,12 +41,12 @@ The webtool continuously refreshes itself and automatically identifies potential
 
 The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.  
 
-## An example of potential gaps in OSM compared to the reference data
+### An example of potential gaps in OSM compared to Brussels' data
 <p align="center">
 <img src="./images/osmbrusselsdatacomparsion.gif" width="700">
 </p>
 
-## Using the OSM Brussels data validation tool
+### Using the OSM Brussels data validation tool
 Our web tool is intended for advanced OSM editors who are highly verse with editing route relations with JOSM. An introduction of the can be viewed from this [link](https://cyclenetworks.osm.be/brumob/about/). However, it is highly recommended that mapping work on the Brussels regional network should be done in collaboration with the OSM Belgium community by making contact with them via: community@osm.be
 
 In summary, the tool that we are developing aims to assist and encourage the verification of the OSM cycling routes in Brussels. Because we are an open source project, the code can be reused for other situations all over the world when one geodataset needs to be used as a reference, to compare OSM geodata for completeness and correctness. The open source approach also extend to our collaborating team mates who are working on an mobile web app that uses the route coding and colouring scheme in their routing interface. 
