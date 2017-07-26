@@ -15,8 +15,10 @@ Brussels have has developed region wide cycling network. Known as the ICR (Itin�
 <p align="center">
 <img src="./images/brusselsregioncyclingroutes.png" width="600">
 </p>
+## Bike for Brussels 
+The Brussels cycling network aims to encourage citizens and visitors alike to bike around efficiently and safely on a system designed especially for longer distance cross-regional journeys.The benefits of such a modal-shift, to cycling, are bountiful and there is a drive to have 20% of transport being undertaken by the bike by the year 2020. These wider goals are part of the [Bike for Brussels (http://bike.brussels/) social media awareness campaign.  
 
-## A dedicated cycling app for the Brussels cycling network
+### A dedicated cycling app for the Brussels cycling network
 Nowadays most people use their phone to route themselves while their driving or using public transport. These apps usually incorporate the signage that travellers will see in their surrounding environment. The #oSoc Bike for Brussels team are pursuing this same strategy. This means that cyclists can better situate themselves in relation to signage.
 
 The development of the app demonstrates the power of high quality open data and would inspire the creation of other advanced apps for the public to support them through everyday activities. This work highlights the importance of supporting open map data creators to support open source applications. 
@@ -30,7 +32,12 @@ OSM is a community driven open map data collection. Mapping is done through loca
 
 ## Using Brussels’ map data as a reference
 
-The regional cycling infrastructure is represented by is open and online map data. Individual routes has information about their corresponding route colour and name. This is a useful reference, however if the OSM community wanted to compare the completeness and correctness of OSM, a manual comparison will be too tedious. 
+The regional cycling infrastructure is represented by is open and online map data. Individual routes has information about their corresponding route colour and name. This is a useful reference, however if the OSM community wanted to compare the completeness and correctness of OSM, a manual comparison will be too tedious. We solved this problem by providing a platform, to the OSM community, that automatically identifies potential issues on OSM, in relation to the cycling route map data from the Brussels government. 
+
+The data is presented as an [online map] (http://data-mobility.brussels/mobigis/) when one navigates the menu and selects fiets/velo, then GFR/ICR. The map of the regional bike routes can be shown in addition to links to download the data in the data formats of CSV, Shapefile (SHP), KML, WMS, and WFS, with [metadata](http://data-mobility.brussels/metadata/nl/icr/).
+
+The data provided contains the geometry of the network. The geometric is broken up into segments and therefore individual routes are not defined as a continuous route. This network is made up of unique routes that are identified by routes a short string that is alphanumeric and colours that are defined by HTML codes. Individual route names may have sub parts that are defined by a letter beginning with the alphabetic ascending sequence.
+
 
 ## Our solution: a webtool for Brussels bike data completeness and correctness on OSM 
 
