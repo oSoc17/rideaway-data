@@ -1,0 +1,90 @@
+{
+  "crs": null,
+  "type": "FeatureCollection",
+  "bbox": null,
+  "features": [
+    {
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              4.3648589368533575,
+              50.84101977929033
+            ],
+            [
+              4.364899217962466,
+              50.8408987921475
+            ]
+          ],
+          [
+            [
+              4.364899217962466,
+              50.8408987921475
+            ],
+            [
+              4.364869340933549,
+              50.84076802968358
+            ]
+          ],
+          [
+            [
+              4.364869340933549,
+              50.84076802968358
+            ],
+            [
+              4.3650157794707996,
+              50.84077734493216
+            ]
+          ],
+          [
+            [
+              4.3650157794707996,
+              50.84077734493216
+            ],
+            [
+              4.36534601950079,
+              50.84068898599976
+            ]
+          ],
+          [
+            [
+              4.36534601950079,
+              50.84068898599976
+            ],
+            [
+              4.3655577377084755,
+              50.840652245123515
+            ]
+          ],
+          [
+            [
+              4.3655577377084755,
+              50.840652245123515
+            ],
+            [
+              4.3655726072007655,
+              50.84063334401515
+            ]
+          ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/237036",
+        "error_type": "difference",
+        "name:nl": "5 Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#009549",
+        "difference_type": "missing",
+        "name:fr": "5 Itinéraire Cyclable Régional",
+        "operator": "Brussels Mobility",
+        "ref": "5",
+        "route": "bicycle",
+        "name": "5 Itinéraire Cyclable Régional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}
