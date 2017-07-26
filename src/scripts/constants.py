@@ -18,6 +18,10 @@ DIFF_WRONG_LOCATION = "../data/diff/wrong/"
 OUTPUT_LOCATION = "../data/output/"
 NETWORK_OUTPUT = "../data/network.geojson"
 
+# False positives locations
+GFR_FALSE_POSITIVES = "../../false-positives/bm/"
+OSM_FALSE_POSITIVES = "../../false-positives/osm/"
+
 # Data locations for Django site
 SITE_OUTPUT = "../brumob/static/brumob/data/output/"
 SITE_GFR = "../brumob/static/brumob/data/routes/"

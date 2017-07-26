@@ -4,7 +4,7 @@ import errno
 import sys
 import logging
 
-import scraper, gfr_preprocessor, osm_processor, metadata, diff_checker, post_processor
+import scraper, gfr_preprocessor, osm_processor, metadata, diff_checker, post_processor, false_positives
 from constants import *
 
 
@@ -80,6 +80,9 @@ if __name__ == "__main__":
 
         logging.info("Processing OSM data...")
         osm_processor.process_osm()
+
+        logging.info("Processing false positives...")
+        false_positives.manage_false_positives()
 
         logging.info("Checking metadata...")
         metadata.check_metadata()
