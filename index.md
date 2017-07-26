@@ -60,6 +60,7 @@ In summary, the tool that we are developing aims to assist and encourage the ver
 * The OSM cycling data validation web tool for Brussels via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/)
 * [An introduction to the validation tool](https://cyclenetworks.osm.be/brumob/about/)
 * [open Summer of code](http://2017.summerofcode.be/) (an initiative of [Open Knowledge Belgium](https://www.openknowledge.be/))
+* [OpenStreetMap Belgian Community](http://osm.be/)
 * Event that was organised within this theme: [Open Bike Data & Mapping with OpenStreetMap](https://www.eventbrite.com/e/open-bike-data-mapping-with-openstreetmap-registration-34806438996)
 * The [Brussels government's mobility department](http://mobility.brussels/)
 * Info about the [ICR (Itinéraires Cyclables Régionaux)](http://www.bruxellesmobilite.irisnet.be/articles/velo/itineraires-cyclables) in French
