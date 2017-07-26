@@ -1,0 +1,67 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "@id": "relation/7418111",
+        "error_type": "difference",
+        "name:nl": "C Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#F6A31A",
+        "difference_type": "wrong",
+        "name:fr": "C Itin\u00e9raire Cyclable R\u00e9gional",
+        "operator": "Brussels Mobility",
+        "ref": "C",
+        "route": "bicycle",
+        "name": "C Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.383137226104736,
+            50.88159666740308
+          ],
+          [
+            4.38380241394043,
+            50.88193173621863
+          ],
+          [
+            4.384827017784118,
+            50.88250033233107
+          ],
+          [
+            4.383866786956787,
+            50.883180607848345
+          ],
+          [
+            4.38353955745697,
+            50.88338028882594
+          ],
+          [
+            4.382429122924805,
+            50.88285570137768
+          ],
+          [
+            4.382262825965881,
+            50.88257479083196
+          ],
+          [
+            4.382337927818298,
+            50.882381875379856
+          ],
+          [
+            4.3824076652526855,
+            50.882256649132536
+          ],
+          [
+            4.383072853088379,
+            50.881576360124704
+          ]
+        ]
+      }
+    }
+  ]
+}
