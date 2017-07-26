@@ -43,7 +43,7 @@ The image below provides an example of all the cycling routes and routes that ar
 
 ## An example of potential gaps in OSM compared to the reference data
 <p align="center">
-<img src="./images/osmbrusselsdatacomparsion.gif" width="600">
+<img src="./images/osmbrusselsdatacomparsion.gif" width="700">
 </p>
 
 ## Using the OSM Brussels data validation tool
