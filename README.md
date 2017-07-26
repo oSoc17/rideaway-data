@@ -5,6 +5,7 @@ Brussels have has developed region wide cycling network. Known as the ICR (Itin√
 
 This is a useful reference for OSM mappers, however if one was to compare the completeness and correctness of OSM, a manual comparison will be too tedious. To ease the process of OSM editing in relation to a reference map of the cycling network, a webtool was developed that compares the Brussels route data with that of OSM. The result provides a map that continously updates itself compared to OSM and shows a map of potential missing or incomplete routes and metadata on tags. 
 
+There's also a github page with more information: https://osoc17.github.io/rideaway-data/
 ## Installation
 * Install Python version 2
 * Install the following dependencies with `pip`:
