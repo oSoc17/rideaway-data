@@ -70,13 +70,12 @@ The tool that we developed aims to assist and encourage the verification of the 
 * [OpenStreetMap Belgian Community](http://osm.be/)
 * Event that was organised within this theme: [Open Bike Data & Mapping with OpenStreetMap](https://www.eventbrite.com/e/open-bike-data-mapping-with-openstreetmap-registration-34806438996)
 * Our client, the [Brussels government's mobility department](http://mobility.brussels/)
-* Info about the [ICR (Itinéraires Cyclables Régionaux)](http://www.bruxellesmobilite.irisnet.be/articles/velo/itineraires-cyclables) in French
-* Info about the [GFR (Gewestelijke Fietsroutes)](http://www.mobielbrussel.irisnet.be/articles/fiets/fietsroutes) in Dutch
+* Info about the Brussels regional cycling route network in [Dutch (GFR)](http://www.mobielbrussel.irisnet.be/articles/fiets/fietsroutes) and [French (ICR)](http://www.bruxellesmobilite.irisnet.be/articles/velo/itineraires-cyclables)
 * Technical guidlines for the ICR-GFR signage in [Dutch](http://www.mobielbrussel.irisnet.be/partners/professionelen/technische-publicaties) and [French](http://www.bruxellesmobilite.irisnet.be/partners/professionnels/publications-techniques)
-* The [Bike for Brussels](http://bike.brussels/) social media awareness campaign
-* Freely online map [data from the Brussels government](http://data-mobility.brussels/mobigis/nl/)
+* The [Bike for Brussels](http://bike.brussels/) social media cycling awareness campaign
+* [Freely online open map data from the Brussels government](http://data-mobility.brussels/mobigis/nl/)
 * [Info on the Java OpenStreetMap Editor (JOSM)](https://josm.openstreetmap.de/)
 * OSM wiki on [comparison and quality control](http://wiki.openstreetmap.org/wiki/Comparing_OSM_with_other_datasets)
-* OSM wiki on map [conflation](http://wiki.openstreetmap.org/wiki/Conflation)
-* [Mapping conventions, including for cycling routes](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Conventions/Cycle_Routes) for Belgian regions, including [Brussels](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Cycle_Routes%23Itin.C3.A9raires_Cyclables_R.C3.A9gionaux_-_Gewestelijke_Fietsroute)
+* OSM wiki on [map conflation](http://wiki.openstreetmap.org/wiki/Conflation)
+* [Mapping conventions, including for cycling routes for Belgian regions](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Conventions/Cycle_Routes), including [Brussels](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Cycle_Routes%23Itin.C3.A9raires_Cyclables_R.C3.A9gionaux_-_Gewestelijke_Fietsroute)
 * [The testing version of the Brussels cycling routing webapp](https://osoc17.github.io/rideaway-frontend/)
