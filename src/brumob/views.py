@@ -33,8 +33,8 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 
-def about(request):
-    template = loader.get_template('brumob/about.html')
+def tutorial(request):
+    template = loader.get_template('brumob/tutorial.html')
 
     return HttpResponse(template.render({}, request))
 

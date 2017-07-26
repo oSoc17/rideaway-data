@@ -192,7 +192,11 @@ var overlayContent = function (properties) {
             info += "<p class='warning'>This route has tag issues!</p>";
         }
     } else {
-        info += "<p>No issues with this route.</p>";
+        if ("@id" in properties) {
+            info += "<p>No issues with this route.</p>";
+        } else {
+            info += "<p>Reference data.</p>";
+        }
     }
 
     info += "<hr>";
