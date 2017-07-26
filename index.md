@@ -49,7 +49,11 @@ The image below provides an example of all the cycling routes and routes that ar
 Our web tool is intended for advanced OSM editors who are highly versed with editing route relations with JOSM. An introduction of the can be viewed from this [link](https://cyclenetworks.osm.be/brumob/about/). However, it is highly recommended that mapping work on the Brussels regional network should be done in collaboration with the OSM Belgium community by making contact with them via community@osm.be
 
 ## The progress so far and the future of the tool
-Tremendous progress has already been achieved by members of the Belgian community to update bike route data in Brussels. From this time-lapse image <a href="https://github.com/oSoc17/rideaway-data/blob/gh-pages/images/osmbrusselsbikedataprogress.gif">(click here to view)</a>, most issues have already been resolved. This tool can be used by the community to monitor any changes. Also, since this is an open source project, our code can be easily be repurposed for use in other places. 
+Tremendous progress has already been achieved by a few members of the Belgian community who tested our tool. Obvious from the time-lapse image below, most issues have already been resolved. This tool can be used by the community to monitor any changes. Also, since this is an open source project, our code can be easily be repurposed for use in other places. 
+
+<p align="center">
+<img src="./images/osmbrusselsbikedataprogress.gif" width="500">
+</p>
 
 ## In conclusion
 The tool that we developed aims to assist and encourage the verification of the OSM cycling routes in Brussels. Because we are an open source project, the code can be reused for other situations all over the world when one geo dataset needs to be used as a reference, to compare OSM geodata for completeness and correctness. The open source approach also extends to our collaborating team mates who are working on a mobile web app that uses the route coding and colouring scheme in their routeing interface. 
