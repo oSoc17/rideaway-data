@@ -2,9 +2,7 @@
 <img src="./images/bikeaway%20data%20logo.png" width="400">
 </p>
 
-# The OSM Brussels Cycling Route Validation Tool
-
-## Introducing the Brussels bike data team
+## Introducing the Brussels Mobility data team
 During the month of July 2017 three students, guided by expert coaches, worked on an OpenStreetMap (OSM) focused project. Our work was done in the context of the 2017 open Summer of code, which is an initiative of Open Knowledge Belgium. The oSoc challenges teams of students to solve real-world problems through application development. At the 7th edition of oSoc, a total of 40 students worked on 10 cutting-edge projects build on open source code.
 
 ## The Brussels regional bike network
@@ -22,21 +20,21 @@ Nowadays most people use their phone to route themselves while their driving or 
 
 The development of the app demonstrates the power of high quality open data and would inspire the creation of other advanced apps for the public to support them through everyday activities. This work highlights the importance of supporting open map data creators to support open source applications. 
 
-## OSM as the source of map data for the app
+## OSM as the source of map data for the cycling app
 OSM is a collaborative project to create a free editable map of the world. Mapping is done through local expert knowledge and continually create and validate the map. In Belgium, the local community is very active and this has allowed cycling paths all over the country, especially in urban areas like Brussels, to be mapped with a high level of completeness and correctness. 
 
 This is where our work becomes relevant since the map data from OSM needs to be complete and accurate for a navigation app for the city to be reliable. We developed an approach available to assist the OSM community to verify that map data is a good quality. Even though mappers usually carry out their work based on personal knowledge, OSM contributors often rely official reference maps on a particular theme to guide their work. When they are issues then they can edit the map to correct for it. Our solution is to ease the map comparison and correction process, known as conflation, through a simple web interface.
 
-## Using Brussels’ map data as a reference
+## Using Brussels’ map data as a reference for OSM
 The regional cycling infrastructure is represented by is open and online map data. Individual routes has information about their corresponding route colour and name. This is a useful reference, however if the OSM community wanted to compare the completeness and correctness of OSM, a manual comparison will be too tedious. We solved this problem by providing a platform, to the OSM community, that automatically identifies potential issues on OSM, in relation to the cycling route map data from the Brussels government. 
 
-## Our solution: a webtool for Brussels bike data completeness and correctness on OSM 
+## Our solution: a webtool for bike data completeness and correctness 
 The result of our work is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. The tool, avaliable from this via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/),
 
-The webtool continuously refreshes itself and automatically identifies potential issues on OSM. Map editors can then use the website to guide their editing. The technical underpinning of the verification allows two main approaches on analysis of data per individual route:
+The webtool continuously refreshes itself and automatically identifies potential issues on OSM. Map editors can then use the website to guide their editing. The technical underpinning of the verification allows two main approaches on analysis of data per individual route by identifying:
 
-- Identifying geometric conflicts of issues of general overlap when the OSM data does not match the Brussels data, and vice-versa;
-- Identifying possible misplaced attribute data known as tags in the OSM data, including route code and colour, network name, and the operator of the route.
+- Geometric conflicts of issues of general overlap when the OSM data does not match the Brussels data, and vice-versa
+- Possible misplaced attribute data known as tags in the OSM data, including route code and colour, network name, and the operator of the route
 
 The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.  
 
