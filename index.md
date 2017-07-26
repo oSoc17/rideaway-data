@@ -63,6 +63,7 @@ In summary, the tool that we are developing aims to assist and encourage the ver
 * The [Brussels government's mobility department](http://mobility.brussels/)
 * Info about the [ICR (Itinéraires Cyclables Régionaux)](http://www.bruxellesmobilite.irisnet.be/articles/velo/itineraires-cyclables) in French
 * Info about the [GFR (Gewestelijke Fietsroutes)](http://www.mobielbrussel.irisnet.be/articles/fiets/fietsroutes) in Dutch
+* Technical guidlines for the ICR-GFR signage in [Dutch](http://www.mobielbrussel.irisnet.be/partners/professionelen/technische-publicaties) and [French](http://www.bruxellesmobilite.irisnet.be/partners/professionnels/publications-techniques)
 * The [Bike for Brussels](http://bike.brussels/) social media awareness campaign
 * Freely online map [data from the Brussels government](http://data-mobility.brussels/mobigis/nl/)
 * [Info on the Java OpenStreetMap Editor (JOSM)](https://josm.openstreetmap.de/)
@@ -71,5 +72,3 @@ In summary, the tool that we are developing aims to assist and encourage the ver
 * [Mapping conventions, including for cycling routes](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Conventions/Cycle_Routes) for Belgium
 * OSM wiki on the [Brussels Capital Region](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Cycle_Routes%23Itin.C3.A9raires_Cyclables_R.C3.A9gionaux_-_Gewestelijke_Fietsroute)
 * [The testing version of the Brussels cycling routing webapp](https://osoc17.github.io/rideaway-frontend/)
-
-
