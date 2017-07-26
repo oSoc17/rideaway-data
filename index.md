@@ -60,7 +60,8 @@ The tool that we developed aims to assist and encourage the verification of the 
 
 
 ## Project team members and contact
-- [Ben Abelshausen (team coach and primary contact)](mailto:community@osm.be)
+- [Ben Abelshausen (coach and primary contact)](mailto:community@osm.be)
+- [Jonathan Beliën (coach)](https://twitter.com/jbelien)
 - [Damian Robinson (communication)](https://linkedin.com/in/damiangrobinson)
 - [Dieter Debast (developer)](mailto:dieterdebast@outlook.com)
 - [Moustapha Ramachi (developer)](mailto:moustapha.ramachi@gmail.com)
