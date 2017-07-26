@@ -16,7 +16,7 @@ Brussels have has developed region wide cycling network. Known as the ICR (Itin�
 <img src="./images/brusselsregioncyclingroutes.png" width="600">
 </p>
 ## The Bike for Brussels navigation app
-The Brussels cycling network aims to encourage citizens and visitors alike to bike around efficiently and safely on a system designed especially for longer distance cross-regional journeys.The benefits of such a modal-shift, to cycling, are bountiful and there is a drive to have 20% of transport being undertaken by the bike by the year 2020. These wider goals are part of the [Bike for Brussels]  (http://bike.brussels/) social media awareness campaign.  
+The Brussels cycling network aims to encourage citizens and visitors alike to bike around efficiently and safely on a system designed especially for longer distance cross-regional journeys.The benefits of such a modal-shift, to cycling, are bountiful and there is a drive to have 20% of transport being undertaken by the bike by the year 2020. These wider goals are part of the Bike for Brussels social media awareness campaign.  
 
 ### A dedicated cycling app for the Brussels cycling network
 Nowadays most people use their phone to route themselves while their driving or using public transport. These apps usually incorporate the signage that travellers will see in their surrounding environment. The #oSoc Bike for Brussels team are pursuing this same strategy. This means that cyclists can better situate themselves in relation to signage.
@@ -49,7 +49,7 @@ The image below provides an example of all the cycling routes and routes that ar
 
 <img src="./images/osmbrusselsdatacomparsion.gif">
 
-## Using the OSM-Brussels data comparison tool
+## Using the OSM Brussels data validation tool
 
 Our web tool is intended for advanced OSM editors who are highly verse with editing route relations with JOSM. An introduction of the can be viewed from this [link](https://cyclenetworks.osm.be/brumob/about/). However, it is highly recommended that mapping work on the Brussels regional network should be done in collaboration with the OSM Belgium community by making contact with them via: community@osm.be
 
