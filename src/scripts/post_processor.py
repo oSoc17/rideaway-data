@@ -111,24 +111,6 @@ def copy_to_site():
     for route in os.listdir(OUTPUT_LOCATION):
         copyfile(OUTPUT_LOCATION + route, SITE_OUTPUT + route)
 
-    copyfile(NETWORK_OUTPUT, SITE_NETWORK)
-
-
-def combine_in_network():
-    """
-    Combine all the routes from OSM into one GeoJSON file.
-    """
-    features = []
-
-    for route in os.listdir(OSM_ROUTES_LOCATION):
-        with open(OSM_ROUTES_LOCATION + route) as fp:
-            feature = geojson.loads(fp.read()).features[0]
-            if len(feature.geometry.coordinates) > 0:
-                features.append(feature)
-
-    with open(NETWORK_OUTPUT, 'w') as fp:
-        fp.write(geojson.dumps(geojson.FeatureCollection(features)))
-
 
 def post_process():
     """
@@ -155,7 +137,6 @@ def post_process():
         else:
             raise Exception("No output file could be generated for route: " + route)
 
-    combine_in_network()
     copy_to_site()
 
     # Export a last updated timestamp
