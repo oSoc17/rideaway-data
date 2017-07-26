@@ -1,0 +1,96 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              4.383551527813278,
+              50.84212757387701
+            ],
+            [
+              4.3836271,
+              50.8420855
+            ],
+            [
+              4.3837629,
+              50.8420447
+            ],
+            [
+              4.3839394,
+              50.8420316
+            ]
+          ],
+          [
+            [
+              4.3839895,
+              50.8427189
+            ],
+            [
+              4.3839004,
+              50.8427134
+            ],
+            [
+              4.38376564557182,
+              50.84269748701974
+            ]
+          ],
+          [
+            [
+              4.38434673121543,
+              50.84258629129771
+            ],
+            [
+              4.3843243,
+              50.8426036
+            ],
+            [
+              4.3842438,
+              50.8426487
+            ],
+            [
+              4.3841507,
+              50.8426829
+            ],
+            [
+              4.3839895,
+              50.8427189
+            ]
+          ],
+          [
+            [
+              4.3839394,
+              50.8420316
+            ],
+            [
+              4.3839448,
+              50.8420312
+            ],
+            [
+              4.384020281139744,
+              50.842037873362415
+            ]
+          ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/15069",
+        "error_type": "difference",
+        "name:nl": "2 Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#77AAD2",
+        "difference_type": "wrong",
+        "name:fr": "2 Itinéraire Cyclable Régional",
+        "operator": "Brussels Mobility",
+        "ref": "2",
+        "route": "bicycle",
+        "name": "2 Itinéraire Cyclable Régional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}
