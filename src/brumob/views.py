@@ -6,7 +6,6 @@ from django.http import HttpResponse
 from django.template import loader
 import os.path
 import json
-import pickle
 
 
 # Create your views here.
@@ -20,7 +19,7 @@ def index(request):
     try:
         base = os.path.dirname(os.path.abspath(__file__))
         with open(os.path.join(base, "../scripts/last_updated")) as fp:
-            timestamp = pickle.loads(fp.read())
+            timestamp = int(fp.read())
     except IOError:
         timestamp = None
 

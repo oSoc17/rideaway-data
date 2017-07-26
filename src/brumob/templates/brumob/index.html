@@ -24,7 +24,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="/brumob/">Tool</a></li>
                 <li><a href="/brumob/tutorial">Tutorial</a></li>
-                <li><a href="https://osoc17.github.io/rideaway-data/">About</a></li>
+                <li><a href="https://osoc17.github.io/rideaway-data/" target="_blank">About</a></li>
             </ul>
         </div>
     </nav>
@@ -93,7 +93,7 @@
 
             <p>The source code is available <a href="https://github.com/oSoc17/rideaway-data">here</a>.</p>
 
-            <p>Last updated at: {{ last_updated | default_if_none:'Information unavailable' }} UTC</p>
+            <p>Last updated at: <span id="timestamp"></span></p>
 
         </div>
 
@@ -154,6 +154,11 @@
     const routes = {{ routes | safe }};
     const routes_src = "{% static 'brumob/data/routes' %}/";
     const output_src = "{% static 'brumob/data/output' %}/";
+    {% if last_updated is None %}
+        $("#timestamp").text("Information Unavailable");
+    {% else %}
+        $("#timestamp").text(new Date({{ last_updated }}));
+    {% endif %}
 </script>
 <script src="{% static 'brumob/script.js' %}"></script>
 

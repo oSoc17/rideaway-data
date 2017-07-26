@@ -6,26 +6,26 @@ var outputs = [];
 // Make correct layer visible when changing route select.
 $("#layers").change(function () {
     var i;
+    var bm_checked = $("#bm").prop("checked");
+    var out_checked = $("#out").prop("checked");
 
     if (this.value === "all") {
         for (i = 0; i < outputs.length; i++) {
-            layers[i].setVisible(false);
-            outputs[i].setVisible(true);
+            layers[i].setVisible(bm_checked);
+            outputs[i].setVisible(out_checked);
         }
     } else {
         for (i = 0; i < outputs.length; i++) {
-            layers[i].setVisible(false);
-
             if (i === parseInt(this.value)) {
-                outputs[i].setVisible(true);
+                layers[i].setVisible(bm_checked);
+                outputs[i].setVisible(out_checked);
             } else {
+                layers[i].setVisible(false);
                 outputs[i].setVisible(false);
             }
         }
     }
 
-    $("#bm").prop("checked", false);
-    $("#out").prop("checked", true);
     deselectFeature();
 });
 
