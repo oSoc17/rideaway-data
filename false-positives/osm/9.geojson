@@ -1,0 +1,81 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [ 4.2997258661896405, 50.835630487597854 ],
+          [ 4.299656243642089, 50.83559651229939 ],
+          [ 4.299219752935409, 50.83537806263267 ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/2133127",
+        "difference_type": "missing",
+        "name:nl": "9 Gewestelijke Fietsroutes",
+        "network": "lcn",
+        "tagging_errors": "Wrong tag: name:nl=9 Gewestelijke Fietsroutes, value should be: 9 Gewestelijke Fietsroute;",
+        "type": "route",
+        "colour": "#C23E96",
+        "error_type": "difference",
+        "name:fr": "9 Itin\u00e9raire Cyclable R\u00e9gional",
+        "operator": "Brussels Mobility",
+        "ref": "9",
+        "route": "bicycle",
+        "name": "9 Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
+      }
+    },
+    {
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [ 4.3191953, 50.8373285 ],
+            [ 4.3190894, 50.8373491 ],
+            [ 4.3190425, 50.837358 ],
+            [ 4.3189796, 50.8373652 ],
+            [ 4.3188807, 50.8373594 ],
+            [ 4.3188454, 50.8373518 ]
+          ],
+          [
+            [ 4.3194141821979954, 50.83711208158181 ],
+            [ 4.3191953, 50.8373285 ]
+          ],
+          [
+            [ 4.3187159, 50.8373211 ],
+            [ 4.3184916, 50.8371603 ],
+            [ 4.318159637544597, 50.83697189827138 ]
+          ],
+          [
+            [ 4.3188142, 50.8373436 ],
+            [ 4.3187159, 50.8373211 ]
+          ],
+          [
+            [ 4.3188454, 50.8373518 ],
+            [ 4.3188142, 50.8373436 ]
+          ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/2133127",
+        "difference_type": "wrong",
+        "name:nl": "9 Gewestelijke Fietsroutes",
+        "network": "lcn",
+        "tagging_errors": "Wrong tag: name:nl=9 Gewestelijke Fietsroutes, value should be: 9 Gewestelijke Fietsroute;",
+        "type": "route",
+        "colour": "#C23E96",
+        "error_type": "difference",
+        "name:fr": "9 Itin\u00e9raire Cyclable R\u00e9gional",
+        "operator": "Brussels Mobility",
+        "ref": "9",
+        "route": "bicycle",
+        "name": "9 Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}
