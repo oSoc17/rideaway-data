@@ -15,8 +15,8 @@ Brussels have has developed region wide cycling network. Known as the ICR (Itin�
 <p align="center">
 <img src="./images/brusselsregioncyclingroutes.png" width="600">
 </p>
-## Bike for Brussels 
-The Brussels cycling network aims to encourage citizens and visitors alike to bike around efficiently and safely on a system designed especially for longer distance cross-regional journeys.The benefits of such a modal-shift, to cycling, are bountiful and there is a drive to have 20% of transport being undertaken by the bike by the year 2020. These wider goals are part of the [Bike for Brussels] (http://bike.brussels/) social media awareness campaign.  
+## The Bike for Brussels navigation app
+The Brussels cycling network aims to encourage citizens and visitors alike to bike around efficiently and safely on a system designed especially for longer distance cross-regional journeys.The benefits of such a modal-shift, to cycling, are bountiful and there is a drive to have 20% of transport being undertaken by the bike by the year 2020. These wider goals are part of the [Bike for Brussels]  (http://bike.brussels/) social media awareness campaign.  
 
 ### A dedicated cycling app for the Brussels cycling network
 Nowadays most people use their phone to route themselves while their driving or using public transport. These apps usually incorporate the signage that travellers will see in their surrounding environment. The #oSoc Bike for Brussels team are pursuing this same strategy. This means that cyclists can better situate themselves in relation to signage.
@@ -34,11 +34,6 @@ OSM is a community driven open map data collection. Mapping is done through loca
 
 The regional cycling infrastructure is represented by is open and online map data. Individual routes has information about their corresponding route colour and name. This is a useful reference, however if the OSM community wanted to compare the completeness and correctness of OSM, a manual comparison will be too tedious. We solved this problem by providing a platform, to the OSM community, that automatically identifies potential issues on OSM, in relation to the cycling route map data from the Brussels government. 
 
-The data is presented as an [online map] (http://data-mobility.brussels/mobigis/) when one navigates the menu and selects fiets/velo, then GFR/ICR. The map of the regional bike routes can be shown in addition to links to download the data in the data formats of CSV, Shapefile (SHP), KML, WMS, and WFS, with [metadata](http://data-mobility.brussels/metadata/nl/icr/).
-
-The data provided contains the geometry of the network. The geometric is broken up into segments and therefore individual routes are not defined as a continuous route. This network is made up of unique routes that are identified by routes a short string that is alphanumeric and colours that are defined by HTML codes. Individual route names may have sub parts that are defined by a letter beginning with the alphabetic ascending sequence.
-
-
 ## Our solution: a webtool for Brussels bike data completeness and correctness on OSM 
 
 The result of our work is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. The tool, avaliable from this via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/),
@@ -50,19 +45,26 @@ The webtool continuously refreshes itself and automatically identifies potential
 
 The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.  
 
-## A comparsion of cycling routes and then gaps in OSM compared to the reference data
+## An example of potential gaps in OSM compared to the reference data
 
 <img src="./images/osmbrusselsdatacomparsion.gif">
 
 ## Using the OSM-Brussels data comparison tool
 
-Our web tool is intended for advanced OSM editors who are highly verse with editing route relations with JOSM. Therefore any work should be done through collaboration through experts within community should be done. You can make contact with them via: community@osm.be
+Our web tool is intended for advanced OSM editors who are highly verse with editing route relations with JOSM. An introduction of the can be viewed from this [link](https://cyclenetworks.osm.be/brumob/about/). However, it is highly recommended that mapping work on the Brussels regional network should be done in collaboration with the OSM Belgium community by making contact with them via: community@osm.be
 
 In summary, the tool that we are developing aims to assist and encourage the verification of the OSM cycling routes in Brussels. Because we are an open source project, the code can be reused for other situations all over the world when one geodataset needs to be used as a reference, to compare OSM geodata for completeness and correctness. The open source approach also extend to our collaborating team mates who are working on an mobile web app that uses the route coding and colouring scheme in their routing interface. 
 
+## Project team members and contact
+- [Ben Abelshausen (team coach and primary contact)](mailto:community@osm.be)
+- [Damian Robinson (communication)](https://linkedin.com/in/damiangrobinson)
+- [Dieter Debast (developer)](mailto:dieterdebast@outlook.com)
+- [Moustapha Ramachi (developer)](mailto:moustapha.ramachi@gmail.com)
+
 ## Some useful links
 
-* The OSM validation web tool via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/)
+* The OSM cycling data validation web tool for Brussels via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/)
+* [An introduction to the validation tool](https://cyclenetworks.osm.be/brumob/about/)
 * [open Summer of code](http://2017.summerofcode.be/) (an initiative of [Open Knowledge Belgium](https://www.openknowledge.be/))
 * Event that was organised within this theme: [Open Bike Data & Mapping with OpenStreetMap](https://www.eventbrite.com/e/open-bike-data-mapping-with-openstreetmap-registration-34806438996)
 * The [Brussels government's mobility department](http://mobility.brussels/)
@@ -76,3 +78,5 @@ In summary, the tool that we are developing aims to assist and encourage the ver
 * [Mapping conventions, including for cycling routes](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Conventions/Cycle_Routes) for Belgium
 * OSM wiki on the [Brussels Capital Region](http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Cycle_Routes%23Itin.C3.A9raires_Cyclables_R.C3.A9gionaux_-_Gewestelijke_Fietsroute)
 * [The testing version of the Brussels cycling routing webapp](https://osoc17.github.io/rideaway-frontend/)
+
+
