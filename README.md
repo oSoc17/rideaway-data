@@ -1,4 +1,4 @@
-# rideaway-data
+# rideawaydata
 Brussels Mobility 1 - Data validation and integration into OpenStreetMap
 
 Brussels have has developed region wide cycling network. Known as the ICR (Itinéraires Cyclables Régionaux) in French or the GFR (Gewestelijke Fietsroutes) in Dutch, the network aims for fluid and safe journeys spanning all 19 communes of the region. The cycling infrastructure is represented by is open and online map data. Individual routes has information about their corresponding route colour and name. 
