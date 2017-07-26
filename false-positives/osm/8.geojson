@@ -1,0 +1,50 @@
+{
+  "crs": null,
+  "type": "FeatureCollection",
+  "bbox": null,
+  "features": [
+    {
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            4.31597295532847,
+            50.79665435946968
+          ],
+          [
+            4.314394855229022,
+            50.79642621765909
+          ],
+          [
+            4.313767435636813,
+            50.79704448291966
+          ],
+          [
+            4.312822887421369,
+            50.79741113309731
+          ],
+          [
+            4.31149518727991,
+            50.79784775445034
+          ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/85102",
+        "error_type": "difference",
+        "name:nl": "8 Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#89C13D",
+        "difference_type": "missing",
+        "name:fr": "8 Itinéraire Cyclable Régional",
+        "operator": "Brussels Mobility",
+        "ref": "8",
+        "route": "bicycle",
+        "name": "8 Itinéraire Cyclable Régional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}
