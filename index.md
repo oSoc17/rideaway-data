@@ -48,7 +48,12 @@ The image below provides an example of all the cycling routes and routes that ar
 ### Using the OSM Brussels data validation tool
 Our web tool is intended for advanced OSM editors who are highly versed with editing route relations with JOSM. An introduction of the can be viewed from this [link](https://cyclenetworks.osm.be/brumob/about/). However, it is highly recommended that mapping work on the Brussels regional network should be done in collaboration with the OSM Belgium community by making contact with them via community@osm.be
 
-In summary, the tool that we are developing aims to assist and encourage the verification of the OSM cycling routes in Brussels. Because we are an open source project, the code can be reused for other situations all over the world when one geo dataset needs to be used as a reference, to compare OSM geodata for completeness and correctness. The open source approach also extends to our collaborating team mates who are working on a mobile web app that uses the route coding and colouring scheme in their routeing interface. 
+## The progress so far and the future of the tool
+Tremendous progress has already been achieved by members of the Belgian community to update bike route data in Brussels. From this time-lapse image <a href="https://github.com/oSoc17/rideaway-data/blob/gh-pages/images/osmbrusselsbikedataprogress.gif">(click here to view)</a>, most issues have already been resolved. This tool can be used by the community to monitor any changes. Also, since this is an open source project, our code can be easily be repurposed for use in other places. 
+
+## In conclusion
+The tool that we developed aims to assist and encourage the verification of the OSM cycling routes in Brussels. Because we are an open source project, the code can be reused for other situations all over the world when one geo dataset needs to be used as a reference, to compare OSM geodata for completeness and correctness. The open source approach also extends to our collaborating team mates who are working on a mobile web app that uses the route coding and colouring scheme in their routeing interface. 
+
 
 ## Project team members and contact
 - [Ben Abelshausen (team coach and primary contact)](mailto:community@osm.be)
