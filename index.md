@@ -20,22 +20,22 @@ The development of the app demonstrates the power of high-quality open data and 
 ## OSM as the source of map data for the cycling app
 OSM is a collaborative project to create a free editable map of the world. Mapping is done through local expert knowledge and continually create and validate the map. In Belgium, the local community is very active and this has allowed cycling paths all over the country, especially in urban areas like Brussels, to be mapped with a high level of completeness and correctness. 
 
-OSM is already used by well-known cycling navigation apps like [Strava](https://www.strava.com/) and [CityMapper](https://citymapper.com/) thus illustrates the power of OSM as a reputable source of map data. When OSM Brussels bike data improves, this also benefits other third party data users of OSM to improve the reliability of their applications.
+OSM is already used by well-known cycling navigation apps like [Strava](https://www.strava.com/) and [CityMapper](https://citymapper.com/). This demonstrates the power of OSM as a reputable source of map data. When OSM Brussels bike data improves, this also benefits other third party data users of OSM to improve the reliability of their applications.
 
 This is where our work becomes relevant since the map data from OSM needs to be complete and accurate for a navigation app for the city to be reliable. We developed an approach available to assist the OSM community to verify that map data is a good quality. Even though mappers usually carry out their work based on personal knowledge, OSM contributors often rely official reference maps on a particular theme to guide their work. When they are issues then they can edit the map to correct for it. Our solution, therefore, ensures the map comparison and correction process, known as conflation, a lot more efficient.
 
 ## Using Brussels’ map data as a reference for OSM
-The regional cycling infrastructure is represented by is open and online map data. Individual routes have information about their corresponding route colour and name. This is a useful reference, however, if the OSM community wanted to compare the completeness and correctness of OSM, a manual comparison will be too tedious. We solved this problem by providing a platform, to the OSM community, that automatically identifies potential issues on OSM, in relation to the cycling route map data from the Brussels government. 
+The regional cycling infrastructure is represented by is open and online map data. Individual routes have information about their corresponding route colour and name. This is a useful reference, however, if the OSM community wanted to compare the completeness and correctness of OSM, a manual comparison will be too tedious for a mapping community working mostly in their free time. We solved this problem by providing a platform, to the OSM community, that automatically identifies potential issues on OSM, in relation to the cycling route map data from the Brussels government. 
 
 ## A webtool for Brussels OSM bike data completeness and correctness 
-The result of our work is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. The tool, available from this via [cyclenetworks.osm.be](http://cyclenetworks.osm.be/).
+The result of our work is a web tool that supports the Belgian OSM community by assisting them to identify missing map data on the regional cycling network of Brussels. 
 
 The webtool continuously refreshes itself and automatically identifies potential issues on OSM. Map editors can then use the website to guide their editing. The technical underpinning of the verification allows two main approaches to analysis of data per individual route by identifying:
 
 - Geometric conflicts of issues of general overlap when the OSM data does not match the Brussels data, and vice-versa
 - Possible misplaced attribute data known as tags in the OSM data, including route code and colour, network name, and the operator of the route
 
-The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.  
+The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.
 
 ### An example of potential gaps in OSM compared to Brussels' data
 <p align="center">
@@ -46,7 +46,7 @@ The image below provides an example of all the cycling routes and routes that ar
 Our web tool is intended for advanced OSM editors who are highly versed with editing route relations with JOSM. An introduction of the can be viewed from this [link](https://cyclenetworks.osm.be/brumob/about/). However, it is highly recommended that mapping work on the Brussels regional network should be done in collaboration with the OSM Belgium community by making contact with them via community@osm.be
 
 ## The progress so far and the future of the tool
-Tremendous progress has already been achieved by a few members of the Belgian community who tested our tool. Obvious from the time-lapse image below, most issues have already been resolved. This tool can be used by the community to monitor any changes. Also, since this is an open source project, our code can be easily be repurposed for use in other places. 
+Tremendous progress has already been achieved by a few members of the Belgian community who tested our tool. It is obvious from the time-lapse image below that most issues have already been resolved. This tool can be used by the community to monitor any changes. Also, since this is an open source project, our code can be easily be repurposed for use in other places. 
 
 <p align="center">
 <img src="./images/osmbrusselsbikedataprogress.gif" width="500">
