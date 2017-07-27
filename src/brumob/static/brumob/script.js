@@ -233,7 +233,7 @@ var overlayContent = function (properties) {
 /**
  * Download the OSM data from the currently visible map in JOSM.
  */
-var openBoundingBoxInJOSM = function () {
+var openBoundingBoxInJOSMWithDownload = function () {
     var boundaries = ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), map.getView().getProjection(), "EPSG:4326");
     var left_bound = boundaries[0];
     var bottom_bound = boundaries[1];
@@ -243,6 +243,22 @@ var openBoundingBoxInJOSM = function () {
     if (Math.abs(left_bound - right_bound) < 0.025 && Math.abs(top_bound - bottom_bound) < 0.025) {
         var xmlHttp = new XMLHttpRequest();
         var url = "http://127.0.0.1:8111/load_and_zoom?left=" + left_bound + "&right=" + right_bound + "&top=" + top_bound + "&bottom=" + bottom_bound;
+        xmlHttp.open("GET", url, true); // true for asynchronous 
+        xmlHttp.send(null);
+    } else {
+        alert("Area too large, zoom in some more.");
+    }
+};
+var openBoundingBoxInJOSMWithoutDownload = function () {
+    var boundaries = ol.proj.transformExtent(map.getView().calculateExtent(map.getSize()), map.getView().getProjection(), "EPSG:4326");
+    var left_bound = boundaries[0];
+    var bottom_bound = boundaries[1];
+    var right_bound = boundaries[2];
+    var top_bound = boundaries[3];
+
+    if (Math.abs(left_bound - right_bound) < 0.025 && Math.abs(top_bound - bottom_bound) < 0.025) {
+        var xmlHttp = new XMLHttpRequest();
+        var url = "http://127.0.0.1:8111/zoom?left=" + left_bound + "&right=" + right_bound + "&top=" + top_bound + "&bottom=" + bottom_bound;
         xmlHttp.open("GET", url, true); // true for asynchronous 
         xmlHttp.send(null);
     } else {
