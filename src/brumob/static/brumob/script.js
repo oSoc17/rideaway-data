@@ -358,7 +358,7 @@ var getColor = function (properties) {
                 return ol.color.asArray("#FF8400");
         }
     } else {
-        return ol.color.asArray("#00FF7F");
+        return ol.color.asArray("#02F76C");
     }
 };
 
