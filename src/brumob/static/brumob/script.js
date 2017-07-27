@@ -352,13 +352,13 @@ var getColor = function (properties) {
     if ('error_type' in properties) {
         switch (properties.error_type) {
             case 'missing':
-                return ol.color.asArray("#E00000");
+                return ol.color.asArray("#ff0000");
             case 'difference':
             case 'tagging':
-                return ol.color.asArray("#FF8400");
+                return ol.color.asArray("#ff8000");
         }
     } else {
-        return ol.color.asArray("#02F76C");
+        return ol.color.asArray("#00dd37");
     }
 };
 
