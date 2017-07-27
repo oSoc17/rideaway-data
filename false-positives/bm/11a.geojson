@@ -1,0 +1,32 @@
+{
+  "crs": null,
+  "type": "FeatureCollection",
+  "bbox": null,
+  "features": [
+    {
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [ 4.2887354, 50.8733462 ],
+          [ 4.289152345815829, 50.872855770016265 ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/2103753",
+        "error_type": "difference",
+        "name:nl": "11a Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#77AAD2",
+        "difference_type": "wrong",
+        "name:fr": "11a Itin\u00e9raire Cyclable R\u00e9gional",
+        "operator": "Brussels Mobility",
+        "ref": "11a",
+        "route": "bicycle",
+        "name": "11a Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}
