@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cycle Networks Tool - Tutorial</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'brumob/style.css' %}"/>
+</head>
+<body>
+
+<header>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/brumob/">Cycle Networks Tool</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/brumob/">Tool</a></li>
+                <li class="active"><a href="/brumob/tutorial">Tutorial</a></li>
+                <li><a href="https://osoc17.github.io/rideaway-data/" target="_blank">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+<main class="container" style="margin-bottom: 100px">
+    <h1><font face="Arial"><b style="font-weight:normal;"
+                              id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0">
+        <h1 dir="ltr"
+            style="line-height:1.38;margin-top:10pt;margin-bottom:0pt;"><span
+                style="font-size: 16pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">How to use the Brussels cycling data validator for OpenStreetMap</span>
+        </h1>
+    </b></font></h1>
+    <ul>
+        <li><font face="Arial"><b style="font-weight:normal;"
+                                  id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0">
+            <p dir="ltr"
+               style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                    style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">The following points provide a brief introduction on how to use the user interface of the OSM validator webtool. <br></span>
+            </p></b></font></li>
+        <li><font face="Arial"><b style="font-weight:normal;"
+                                  id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0"><p dir="ltr"
+                                                                                                  style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">
+            <span style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">This tool is for use by expert OSM editors who are verse in mapping cycling route relations.</span>
+        </p></b></font></li>
+        <li><font face="Arial"><b style="font-weight:normal;"
+                                  id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0"><p dir="ltr"
+                                                                                                  style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;">
+            <span style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Mapping work should be done with the Java OpenStreetMap Editor (JOSM). Therefore, only very experienced OSM contributors should proceed in using this tool.&nbsp;</span>
+        </p></b></font></li>
+    </ul>
+    <font face="Arial"><b style="font-weight:normal;" id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0"><p
+            dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Accessing the OSM validator web tool</span>
+    </p></b></font><font face="Arial"><b style="font-weight:normal;"
+                                         id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0"><br>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;margin-left: 36pt;"><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: italic; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Step 1 </span><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"></span><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Visit the webpage of cyclenetworks.osm.be to access the OSM cycling data validation web tool. </span>
+    </p><br>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Using the web tool to identify the problems</span>
+    </p><br>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;margin-left: 36pt;"><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: italic; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Step 2 </span><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: italic; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"></span><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">You should see a map of Brussels, and if there are issues you would see lines appear in either red or orange which corresponds to an error for a particular route in OSM. It is advisable to focus on one route at a time. From this overview you can use the following options on the top-right hand of the window:</span>
+    </p><br>
+    <ul style="margin-top:0pt;margin-bottom:0pt;">
+        <li dir="ltr"
+            style="list-style-type: disc; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 36pt;">
+            <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                    style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Drop down menu: changing the base map to other OSM backgrounds</span>
+            </p></li>
+        <li dir="ltr"
+            style="list-style-type: disc; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 36pt;">
+            <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                    style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Drop down menu: selecting a specific cycling route</span>
+            </p></li>
+        <li dir="ltr"
+            style="list-style-type: disc; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 36pt;">
+            <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                    style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Check button: To show the entire cycling network as provided from Brussels Mobility. Individual routes from Brussels Mobility can be downloaded on the lower left hand side of the window, when first clicking on “Routes” and then clicking on a route of the drop down menu.</span>
+            </p></li>
+    </ul>
+    <br>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;text-align: center;"><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><img
+            src="https://lh5.googleusercontent.com/2PivgVSTLBQKGvHbyVKnChzclcKX2rFAyDfBa2aoxm22nR2R-bUv-ssEqGz4U0Mv55FAh1_cax6uz9jBZwDlp1jS5_jeEe_V_QTg3kkAi8gYkbSfGkt1uEaBi1O_rh84mEadP3_5"
+            style="border: none; transform: rotate(0.00rad); -webkit-transform: rotate(0.00rad);" width="578"
+            height="261"></span></p><br>
+    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;margin-left: 36pt;"><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><i>Step 3</i> </span><span
+            style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">To get ready to work on a route, there are three (3) approaches to carry about editing work. Issues can be identified based on the two types of error</span>
+    </p></b></font><font face="Arial"><b style="font-weight:normal;"
+                                         id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0">
+    <ol style="margin-top:0pt;margin-bottom:0pt;">
+        <li dir="ltr"
+            style="list-style-type: upper-alpha; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 72pt;">
+            <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                    style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">When individual cycling routes in OSM have parts either missing (geometric differences), or have tagging issues in relation to a route from Brussels Mobility, </span><span
+                    style="font-size: 11pt; color: rgb(255, 153, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">then this is shown in orange.</span>
+            </p></li>
+    </ol>
+    <br>
+    <ul style="margin-top:0pt;margin-bottom:0pt;">
+        <ul style="margin-top:0pt;margin-bottom:0pt;">
+            <li dir="ltr"
+                style="list-style-type: circle; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 72pt;">
+                <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">When an orange line is shown as a dashed line this means that it's possible that the identified segment deviates from the actual route or that it is totally misplaced.</span>
+                </p></li>
+        </ul>
+    </ul>
+</b></font>
+    <b style="font-weight:normal;" id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0"><p dir="ltr"
+                                                                                                               style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;margin-left: 144pt;">
+        <span style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><img
+                src="https://lh4.googleusercontent.com/KLWT1n6JxcieDQWha8abTnbarsKTUj6WY1kjalHy635ZI25_aBNnqv0DGbUvqMZC6J5AKNJUGK13HLUsSAmAU3Y2x7evDOAjbzeB2Esx6XKLEOqPBem3zPh6wCuL6FG8E9hJpruV"
+                style="border: none; transform: rotate(0.00rad); -webkit-transform: rotate(0.00rad);" width="357"
+                height="164"></span></p></b>
+    <font face="Arial"><b style="font-weight:normal;" id="docs-internal-guid-118ef075-7e0d-869c-afa6-cd73168269a0"><br>
+        <ol style="margin-top:0pt;margin-bottom:0pt;" start="2">
+            <li dir="ltr"
+                style="list-style-type: upper-alpha; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 72pt;">
+                <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">When a specific route in OSM is completely missing, meaning there is no cycling route or meta data in relation to the Brussels Mobility data, </span><span
+                        style="font-size: 11pt; color: rgb(255, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">then this is shown in red.</span>
+                </p></li>
+        </ol>
+        <br><br>
+        <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;margin-left: 76.5pt;"><span
+                style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: italic; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">To work on an issue proceed by:</span>
+        </p>
+        <ol style="margin-top:0pt;margin-bottom:0pt;">
+            <li dir="ltr"
+                style="list-style-type: decimal; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 72pt;">
+                <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">Clicking on a flagged segment</span><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"> (in either red or orange) and overviewing the </span><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: italic; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">information </span><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">provided, as shown in the example below.</span>
+                </p></li>
+            <li dir="ltr"
+                style="list-style-type: decimal; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 72pt;">
+                <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">Downloading of a flagged segment</span><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"> (shown in either red or orange) in a GeoJSON format or clicking on “Open route in JOSM” as shown in the example below.</span>
+                </p></li>
+        </ol>
+        <br>
+        <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;text-align: center;"><span
+                style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><img
+                src="https://lh6.googleusercontent.com/BhY943Bi_Ik8mBXOnroeUWQgy57mifvVUjB5ruxvGCQUlSWsESyBaz-Jc4Q-7ZCHImhGYIU9f0nuvYRfqjYNHDzq90KHF5c-z65vtHKhowPFkHAsxaTyWGk3BsddNqn-EWYL8kHg"
+                style="border: none; transform: rotate(0.00rad); -webkit-transform: rotate(0.00rad);" width="430"
+                height="353"></span><span
+                style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"> </span>
+        </p><br><br>
+        <ol style="margin-top:0pt;margin-bottom:0pt;" start="3">
+            <li dir="ltr"
+                style="list-style-type: decimal; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 72pt;">
+                <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">Downloading the output of issues</span><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">, per individual route in a GeoJSON format, from the drop down menu on the lower right hand side called “Output”</span>
+                </p></li>
+            <li dir="ltr"
+                style="list-style-type: decimal; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; margin-left: 72pt;">
+                <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">Opening the view in JOSM</span><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"> by clicking on “Open view in JOSM”. Note that only areas shown at a high scale would be able to be viewed. </span>
+                </p></li>
+        </ol>
+        <br>
+        <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;margin-left: 36pt;"><span
+                style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;"><i>Step 4</i> </span><span
+                style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Updating OSM in relation to the issue identified. Note that false positives are possible so trust your intuition. You can always verify street level imagery from Mapillary, for example. When you are confident enough that there is indeed an issue on OSM to deal with, then it is imperative that any updating is done through JOSM by persons with advanced knowledge of mapping and editing route relations.</span>
+        </p><br>
+        <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 700; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">Web resources for advanced OSM editing</span>
+        </p><br>
+        <ul style="margin-top:0pt;margin-bottom:0pt;">
+            <li dir="ltr"
+                style="list-style-type: disc; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;">
+                <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">General OSM information for mapping cycling routes:</span>
+                </p></li>
+            <ul style="margin-top:0pt;margin-bottom:0pt;">
+                <li dir="ltr"
+                    style="list-style-type: circle; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;">
+                    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a
+                            href="http://wiki.openstreetmap.org/wiki/Cycle_routes" style="text-decoration:none;"><span
+                            style="font-size: 11pt; color: rgb(17, 85, 204); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">http://wiki.openstreetmap.org/wiki/Cycle_routes</span></a>
+                    </p></li>
+                <li dir="ltr"
+                    style="list-style-type: circle; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;">
+                    <span style="font-size: 11pt; color: rgb(17, 85, 204); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Cycle_Routes<br></span>
+                </li>
+                <li style="box-sizing: border-box;">OSM wiki on the<span>&nbsp;</span><a
+                        href="http://wiki.openstreetmap.org/wiki/WikiProject_Belgium/Cycle_Routes%23Itin.C3.A9raires_Cyclables_R.C3.A9gionaux_-_Gewestelijke_Fietsroute"
+                        style="box-sizing: border-box; background-color: transparent; color: rgb(30, 107, 184); text-decoration: none; margin-top: 0px;">Brussels
+                    Capital Region</a></li>
+            </ul>
+        </ul>
+        <br>
+        <ul style="margin-top:0pt;margin-bottom:0pt;">
+            <li dir="ltr"
+                style="list-style-type: disc; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;">
+                <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><span
+                        style="font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline; white-space: pre-wrap;">JOSM and relation editing in JOSM</span>
+                </p></li>
+            <ul style="margin-top:0pt;margin-bottom:0pt;">
+                <li dir="ltr"
+                    style="list-style-type: circle; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;">
+                    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a
+                            href="http://wiki.openstreetmap.org/wiki/JOSM/Guide" style="text-decoration:none;"><span
+                            style="font-size: 11pt; color: rgb(17, 85, 204); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">http://wiki.openstreetmap.org/wiki/JOSM/Guide</span></a>
+                    </p></li>
+                <li dir="ltr"
+                    style="list-style-type: circle; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;">
+                    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a
+                            href="http://wiki.openstreetmap.org/wiki/JOSM/Basic_editing"
+                            style="text-decoration:none;"><span
+                            style="font-size: 11pt; color: rgb(17, 85, 204); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">http://wiki.openstreetmap.org/wiki/JOSM/Basic_editing</span></a>
+                    </p></li>
+                <li dir="ltr"
+                    style="list-style-type: circle; font-size: 11pt; color: rgb(0, 0, 0); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: none; vertical-align: baseline;">
+                    <p dir="ltr" style="line-height:1.38;margin-top:0pt;margin-bottom:0pt;"><a
+                            href="http://wiki.openstreetmap.org/wiki/JOSM/Advanced_editing"
+                            style="text-decoration:none;"><span
+                            style="font-size: 11pt; color: rgb(17, 85, 204); background-color: transparent; font-weight: 400; font-style: normal; font-variant: normal; text-decoration: underline; vertical-align: baseline; white-space: pre-wrap;">http://wiki.openstreetmap.org/wiki/JOSM/Advanced_editing</span></a>
+                    </p></li>
+            </ul>
+        </ul>
+    </b></font>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+</html>

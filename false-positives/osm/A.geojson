@@ -1,0 +1,46 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [ 4.337984930444003, 50.84728058875702 ],
+            [ 4.337742269381979, 50.84724785054347 ]
+          ],
+          [
+            [ 4.337742269381979, 50.84724785054347 ],
+            [ 4.337849052544791, 50.84685287199943 ]
+          ],
+          [
+            [ 4.384325705985009, 50.857925594935665 ],
+            [ 4.3842752599535375, 50.857981044693354 ],
+            [ 4.384210443966711, 50.85805319946262 ]
+          ],
+          [
+            [ 4.3364798044367205, 50.83932210746567 ],
+            [ 4.336439236888986, 50.83911681766192 ],
+            [ 4.336447959579209, 50.839066973807846 ]
+          ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/237027",
+        "error_type": "difference",
+        "name:nl": "A Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#F6A31A",
+        "difference_type": "missing",
+        "name:fr": "A Itin\u00e9raire Cyclable R\u00e9gional",
+        "operator": "Brussels Mobility",
+        "ref": "A",
+        "route": "bicycle",
+        "name": "A Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}

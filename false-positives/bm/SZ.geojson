@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [ 4.3793355, 50.8772447 ],
+            [ 4.3794993, 50.8772108 ],
+            [ 4.3797532, 50.8772531 ],
+            [ 4.3798371, 50.877284 ],
+            [ 4.3799915, 50.8773409 ],
+            [ 4.3801361, 50.8774144 ],
+            [ 4.380238533326967, 50.87746652357551 ]
+          ],
+          [
+            [ 4.379266945208794, 50.87726771063 ],
+            [ 4.3792726, 50.877265 ],
+            [ 4.3793355, 50.8772447 ]
+          ],
+          [
+            [ 4.38080176222903, 50.87840259076112 ],
+            [ 4.3807552, 50.878405 ],
+            [ 4.3806677, 50.8783984 ],
+            [ 4.3805686, 50.8783745 ],
+            [ 4.3801754, 50.8781548 ],
+            [ 4.379921476915541, 50.87801095623954 ]
+          ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/116611",
+        "error_type": "difference",
+        "name:nl": "SZ Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#00A9E9",
+        "difference_type": "wrong",
+        "name:fr": "SZ Itin\u00e9raire Cyclable R\u00e9gional",
+        "operator": "Brussels Mobility",
+        "ref": "SZ",
+        "route": "bicycle",
+        "name": "SZ Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}

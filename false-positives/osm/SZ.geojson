@@ -1,0 +1,36 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [ 4.3754960970689725, 50.878976764071766 ],
+            [ 4.3753307250068, 50.87897677423409 ]
+          ],
+          [
+            [ 4.3800275615841215, 50.877726259662595 ],
+            [ 4.380127586197371, 50.877746323242796 ]
+          ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/116611",
+        "error_type": "difference",
+        "name:nl": "SZ Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#00A9E9",
+        "difference_type": "missing",
+        "name:fr": "SZ Itin\u00e9raire Cyclable R\u00e9gional",
+        "operator": "Brussels Mobility",
+        "ref": "SZ",
+        "route": "bicycle",
+        "name": "SZ Itin\u00e9raire Cyclable R\u00e9gional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}

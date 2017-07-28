@@ -1,5 +1,7 @@
+from shutil import copyfile
 import osmium as o
 import geojson
+import os
 
 from constants import *
 
@@ -234,9 +236,27 @@ def dump_geojson(route, relation):
         ]
         for way in relation.ways
     ])
-    features.append(geojson.Feature(geometry=multi_line_string, properties=relation.tags))
+    properties = relation.tags if relation.tags is not None else dict()
+    properties['@id'] = 'relation/' + str(relation.id)
+    features.append(geojson.Feature(geometry=multi_line_string, properties=properties))
 
     with open(OSM_ROUTES_LOCATION + route + ".geojson", "w") as fp:
+        fp.write(geojson.dumps(geojson.FeatureCollection(features)))
+
+
+def combine_in_network():
+    """
+    Combine all the routes from OSM into one GeoJSON file.
+    """
+    features = []
+
+    for route in os.listdir(OSM_ROUTES_LOCATION):
+        with open(OSM_ROUTES_LOCATION + route) as fp:
+            feature = geojson.loads(fp.read()).features[0]
+            if len(feature.geometry.coordinates) > 0:
+                features.append(feature)
+
+    with open(NETWORK_OUTPUT, 'w') as fp:
         fp.write(geojson.dumps(geojson.FeatureCollection(features)))
 
 
@@ -247,3 +267,6 @@ def process_osm():
     relations = extract_routes()
     for route in relations:
         dump_geojson(route, relations[route])
+
+    combine_in_network()
+    copyfile(NETWORK_OUTPUT, SITE_NETWORK)

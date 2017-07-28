@@ -3,22 +3,37 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <title>Cycle Networks Tool</title>
-    <link rel="stylesheet" href="https://openlayers.org/en/v3.20.1/css/ol.css" type="text/css">
-    <!--<link rel="stylesheet" href="style.css" type="text/css"> -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://openlayers.org/en/v4.2.0/css/ol.css" type="text/css">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'brumob/style.css' %}"/>
-
 </head>
 <body>
 
-<div class="container-fluid">
+<header>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/brumob/">Cycle Networks Tool</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/brumob/">Tool</a></li>
+                <li><a href="/brumob/tutorial">Tutorial</a></li>
+                <li><a href="https://osoc17.github.io/rideaway-data/" target="_blank">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+</header>
+
+<main class="container-fluid">
 
     <div class="row">
-
 
         <div class="col-sm-2">
             <h1>Welcome!</h1>
@@ -28,9 +43,9 @@
 
             <p>There are 3 types of possible outputs:</p>
             <ul>
-                <li style="color: #13cd00">Correct</li>
-                <li style="color: #ffa000">Geometric difference or tagging issues</li>
-                <li style="color: #f40500">Completely missing</li>
+                <li style="color: #00dd37">Correct</li>
+                <li style="color: #ff8000">Geometric difference or tagging issues</li>
+                <li style="color: #ff0000">Completely missing</li>
             </ul>
 
             <p>Watch out for <strong>false positives</strong> and missing routes might be present but with the wrong
@@ -39,35 +54,51 @@
             <p>The routes provided by Brussels Mobility and the output of our tool is available to download below:</p>
 
             <div class="row">
+
                 <div class="col-sm-6 dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Routes
-                        <span class="caret"></span></button>
+                    <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+                        Routes <span class="caret"></span>
+                    </button>
+
                     <ul class="dropdown-menu scrollable-menu">
                         {% for route in route_list %}
-
-                            <li><a href=data/route/{{ route }}.geojson>{{ route }}</a></li>
+                            <li>
+                                <a href="data/route/{{ route }}.geojson">{{ route }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
 
                 <div class="col-sm-6 dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Output
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu scrollable-menu">
-                        {% for difference in difference_list %}
+                    <button class="btn btn-primary btn-block dropdown-toggle" type="button" data-toggle="dropdown">
+                        Output <span class="caret"></span>
+                    </button>
 
-                            <li><a href=data/output/{{ difference }}.geojson>{{ difference }}</a></li>
+                    <ul class="dropdown-menu scrollable-menu">
+                        {% for output in route_list %}
+                            <li>
+                                <a href="data/output/{{ output }}.geojson">{{ output }}</a>
+                            </li>
                         {% endfor %}
                     </ul>
                 </div>
+
             </div>
 
-            <br>
+            <div style="margin: 10px 0">
+                <button type="button" class="btn btn-primary btn-block" onclick=openBoundingBoxInJOSMWithDownload() style="font-size : 11px;">
+                    Open View in JOSM with data
+                </button>
+                <button type="button" class="btn btn-primary btn-block" onclick=openBoundingBoxInJOSMWithoutDownload() style="font-size : 11px;">
+                    Open View in JOSM without data
+                </button>
+            </div>
 
             <p>The source code is available <a href="https://github.com/oSoc17/rideaway-data">here</a>.</p>
 
-        </div>
+            <p>Last updated at: <span id="timestamp"></span></p>
 
+        </div>
 
         <!-- map -->
         <div class="col-sm-10" style="background-color:lavender;">
@@ -80,406 +111,59 @@
                     <option value="osmbe-nl">OpenStreetMap Belgium (nl)</option>
                     <option value="osmbe-de">OpenStreetMap Belgium (de)</option>
                 </select>
+
                 <select id="layers" autocomplete="off">
                     <option value="all" selected="selected">All</option>
+                    {% for route in route_list %}
+                        <option value="{{ forloop.counter0 }}">{{ route }}</option>
+                    {% endfor %}
                 </select>
+
                 <div id="layer-type" class="overlay">
-                    <input type="checkbox" value="route" class="type-checkbox" id="bm">Brussels Mobility route<br>
-                    <input type="checkbox" value="output" class="type-checkbox" id="out" checked>Comparison output<br>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="route" class="type-checkbox" id="bm" autocomplete="off">Brussels
+                            Mobility route
+                        </label>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" value="output" class="type-checkbox" id="out" autocomplete="off"
+                                   checked>Comparison output
+                        </label>
+                    </div>
                 </div>
             </div>
+
             <div id="popup" class="ol-popup">
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
             </div>
-            <script src="https://code.jquery.com/jquery-3.2.1.min.js"
-                    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-            <script src="https://openlayers.org/en/v3.20.1/build/ol.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.3/proj4.js"
-                    integrity="sha256-2ywP8gZSxQqabTEhcw+Xc3zpb/n6aAc3D0sneTtRNHw=" crossorigin="anonymous"></script>
 
-            <script>
-                proj4.defs("EPSG:31370", "+proj=lcc +lat_1=51.16666723333333 +lat_2=49.8333339 +lat_0=90 +lon_0=4.367486666666666 +x_0=150000.013 +y_0=5400088.438 +ellps=intl +towgs84=-106.869,52.2978,-103.724,0.3366,-0.457,1.8422,-1.2747 +units=m +no_defs");
-
-                var layers = [];
-                var outputs = [];
-                var routes = ["1", "1a", "1b", "2", "2a", "2b", "3", "3a", "3b", "4", "4a", "4b", "5", "5a", "5b", "6", "6a", "6b", "7", "8", "9", "9a", "9b", "10", "10a", "10b", "11", "11a", "11b", "12", "12a", "12b", "SZ", "SZa", "SZb", "CK", "MM", "MMa", "MMb", "PP", "A", "B", "C"];
-
-                $.each(routes, function (key, value) {
-                    $("#layers").append('<option value="' + key + '">' + value + '</option>');
-                });
-
-                document.getElementById("layers").onchange = function () {
-                    if (this.value === "all") {
-                        for (var i = 0; i < outputs.length; i++) {
-                            layers[i].setVisible(false);
-                            outputs[i].setVisible(true);
-                        }
-                    } else {
-                        for (var i = 0; i < outputs.length; i++) {
-                            layers[i].setVisible(false);
-
-                            if (i === parseInt(this.value)) {
-                                outputs[i].setVisible(true);
-                            } else {
-                                outputs[i].setVisible(false);
-                            }
-                        }
-                    }
-
-                    $("#bm").prop("checked", false);
-                    $("#out").prop("checked", true);
-                    overlay.setPosition(undefined);
-                    closer.blur();
-                    select.getFeatures().clear();
-                };
-
-                $(".type-checkbox").change(function () {
-                    var kind = $(this).attr("value");
-                    var layer = $("#layers").val();
-
-                    if (layer === "all") {
-                        if (kind === "route") {
-                            for (var i = 0; i < outputs.length; i++) {
-                                layers[i].setVisible($(this).is(":checked"));
-                            }
-                        } else if (kind === "output") {
-                            for (var i = 0; i < outputs.length; i++) {
-                                outputs[i].setVisible($(this).is(":checked"));
-                            }
-                        }
-                    } else {
-                        var index = parseInt(layer);
-                        if (kind === "route") {
-                            layers[index].setVisible($(this).is(":checked"))
-                        } else if (kind === "output") {
-                            outputs[index].setVisible($(this).is(":checked"))
-                        }
-                    }
-
-                    overlay.setPosition(undefined);
-                    closer.blur();
-                    select.getFeatures().clear();
-                });
-
-                /**
-                 * Elements that make up the popup.
-                 */
-                var container = document.getElementById('popup');
-                var content = document.getElementById('popup-content');
-                var closer = document.getElementById('popup-closer');
-
-
-                /**
-                 * Create an overlay to anchor the popup to the map.
-                 */
-                var overlay = new ol.Overlay(/** @type {olx.OverlayOptions} */ ({
-                    element: container,
-                    autoPan: true,
-                    autoPanAnimation: {
-                        duration: 250
-                    }
-                }));
-
-
-                /**
-                 * Add a click handler to hide the popup.
-                 * @return {boolean} Don't follow the href.
-                 */
-                closer.onclick = function () {
-                    overlay.setPosition(undefined);
-                    closer.blur();
-                    select.getFeatures().clear();
-                    return false;
-                };
-
-                var baselayers = {
-                    "opencycle": new ol.layer.Tile({
-                        source: new ol.source.XYZ({
-                            url: "https://{a-c}.tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=05cd428b293d4da1a7d2db69d11bc83e",
-                            attributions: [ol.source.OSM.ATTRIBUTION, "Maps &copy; <a href=\"http://www.thunderforest.com/\">Thunderforest</a>"]
-                        })
-                    }),
-                    "osmbe": new ol.layer.Tile({
-                        source: new ol.source.OSM({
-                            url: "https://tile.osm.be/osmbe/{z}/{x}/{y}.png",
-                            attributions: [ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>"]
-                        })
-                    }),
-                    "osmbe-fr": new ol.layer.Tile({
-                        source: new ol.source.OSM({
-                            url: "https://tile.osm.be/osmbe-fr/{z}/{x}/{y}.png",
-                            attributions: [ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>"]
-                        })
-                    }),
-                    "osmbe-nl": new ol.layer.Tile({
-                        source: new ol.source.OSM({
-                            url: "https://tile.osm.be/osmbe-nl/{z}/{x}/{y}.png",
-                            attributions: [ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>"]
-                        })
-                    }),
-                    "osmbe-de": new ol.layer.Tile({
-                        source: new ol.source.OSM({
-                            url: "https://tile.osm.be/osmbe-de/{z}/{x}/{y}.png",
-                            attributions: [ol.source.OSM.ATTRIBUTION, "Tiles courtesy of <a href=\"https://geo6.be/\">GEO-6</a>"]
-                        })
-                    })
-                };
-
-                var attribution = new ol.control.Attribution({
-                    collapsible: false
-                });
-                var map = new ol.Map({
-                    layers: [
-                        baselayers[$("#baselayers").val()]/*,
-                         new ol.layer.Tile({
-                         source: new ol.source.TileDebug({
-                         projection: "EPSG:3857",
-                         tileGrid: (new ol.source.OSM()).getTileGrid()
-                         })
-                         })*/
-                    ],
-                    overlays: [overlay],
-                    controls: ol.control.defaults({attribution: false}).extend([attribution]),
-                    target: "map",
-                    view: new ol.View({
-                        center: ol.proj.transform([4.36657, 50.84072], "EPSG:4326", "EPSG:3857"),
-                        zoom: 12
-                    })
-                });
-
-                var keysSorted = function (obj) {
-                    var keys = [];
-
-                    for (var key in obj) {
-                        if (obj.hasOwnProperty(key)) {
-                            keys.push(key);
-                        }
-                    }
-
-                    return keys.sort();
-                };
-
-                var overlayContent = function (properties) {
-                    var info = "";
-                    info += "<strong>Route " + properties.ref + "</strong>";
-
-                    if (properties.hasOwnProperty("error_type")) {
-                        if (properties.error_type === "missing") {
-                            info += "<p class='warning'>This route is missing!</p>"
-                        } else if (properties.error_type === "difference") {
-                            info += "<p class='warning'>This route has geometrical issues!</p>";
-                            info += "<hr>";
-
-                            if (properties.difference_type === "missing") {
-                                info += "<p class='warning'>The selected segments are missing.</p>";
-                            } else if (properties.difference_type === "wrong") {
-                                info += "<p class='warning'>The selected segments shouldn't be here.</p>";
-                            }
-                        } else if (properties.error_type === "tagging") {
-                            info += "<p class='warning'>This route has tag issues!</p>";
-                        }
-                    } else {
-                        info += "<p>No issues with this route.</p>";
-                    }
-
-                    info += "<hr>";
-
-                    var keys = keysSorted(properties);
-                    for (var i = 0; i < keys.length; i++) {
-                        var property = keys[i];
-                        if (properties.hasOwnProperty(property) && property !== "error_type" && property !== "difference_type" && property !== "tagging_errors" && property !== "geometry") {
-                            info += "<p><strong>" + property + "</strong>: " + properties[property] + "</p>";
-                        }
-                    }
-
-                    if (properties.hasOwnProperty("tagging_errors")) {
-                        info += "<hr>";
-                        var issues = properties["tagging_errors"].split(";");
-
-                        for (i = 0; i < issues.length; i++) {
-                            info += "<p class='warning'>" + issues[i] + "</p>";
-                        }
-                    }
-
-                    return info;
-                };
-
-                var select = new ol.interaction.Select({
-                    condition: ol.events.condition.click
-                });
-                map.addInteraction(select);
-                select.on('select', function (e) {
-                    if (e.selected.length > 0) {
-                        content.innerHTML = overlayContent(e.selected[0].getProperties());
-                        overlay.setPosition(e.mapBrowserEvent.coordinate);
-                    } else {
-                        overlay.setPosition(undefined);
-                        closer.blur();
-                    }
-                });
-
-
-                if (window.location.hash !== "") {
-                    // try to restore center, zoom-level and rotation from the URL
-                    var hash = window.location.hash.replace("#map=", "");
-                    var parts = hash.split("/");
-                    if (parts.length === 3) {
-                        zoom = parseInt(parts[0], 10);
-                        center = [
-                            parseFloat(parts[2]),
-                            parseFloat(parts[1])
-                        ];
-                        map.getView().setCenter(ol.proj.fromLonLat(center));
-                        map.getView().setZoom(zoom);
-                    }
-                }
-                /* else {
-                 map.getView().setCenter(ol.proj.transform([4.36657, 50.84072], "EPSG:4326", "EPSG:3857"));
-                 map.getView().setZoom(12);
-                 }*/
-
-                document.getElementById("baselayers").onchange = function () {
-                    map.getLayers().setAt(0, baselayers[this.value]);
-                };
-
-                var shouldUpdate = true;
-                var view = map.getView();
-                var updatePermalink = function () {
-                    if (!shouldUpdate) {
-                        // do not update the URL when the view was changed in the "popstate" handler
-                        shouldUpdate = true;
-                        return;
-                    }
-
-                    var center = view.getCenter(), ll = ol.proj.toLonLat(center);
-                    var hash = "#map=" +
-                        view.getZoom() + "/" +
-                        Math.round(ll[1] * 100000) / 100000 + "/" +
-                        Math.round(ll[0] * 100000) / 100000;
-                    var state = {
-                        zoom: view.getZoom(),
-                        center: view.getCenter(),
-                        rotation: view.getRotation()
-                    };
-                    window.history.pushState(state, "map", hash);
-                };
-
-                map.on("moveend", updatePermalink);
-
-                // restore the view state when navigating through the history, see
-                // https://developer.mozilla.org/en-US/docs/Web/API/WindowEventHandlers/onpopstate
-                window.addEventListener("popstate", function (event) {
-                    if (event.state === null) {
-                        return;
-                    }
-                    map.getView().setCenter(ol.proj.fromLonLat(event.state.center));
-                    map.getView().setZoom(event.state.zoom);
-                    shouldUpdate = false;
-                });
-
-                var loadLayers = function (file, index) {
-                    var vectorSource, vectorLayer;
-                    $.getJSON(file, function (json) {
-                        vectorSource = new ol.source.Vector({
-                            features: (new ol.format.GeoJSON()).readFeatures(json, {
-                                dataProjection: "EPSG:4326",
-                                featureProjection: "EPSG:3857"
-                            })
-
-                        });
-                        vectorLayer = new ol.layer.Vector({
-                            source: vectorSource,
-                            style: function (feature) {
-                                var properties = feature.getProperties();
-                                var color = ol.color.asArray(properties.colour || "#000000");
-
-                                color[3] = 0.8;
-
-                                var stroke = new ol.style.Stroke({
-                                    color: color,
-                                    width: 10
-                                });
-                                return [
-                                    new ol.style.Style({
-                                        stroke: stroke
-                                    })
-                                ];
-                            }
-                        });
-                        map.addLayer(vectorLayer);
-                        vectorLayer.setVisible(false);
-                        //map.getView().fit(vectorSource.getExtent());
-
-                        layers[index] = vectorLayer;
-                    });
-                };
-
-                var getColor = function (properties) {
-                    if ('error_type' in properties) {
-                        switch (properties.error_type) {
-                            case 'missing':
-                                return ol.color.asArray("#f40500");
-                            case 'difference':
-                            case 'tagging':
-                                return ol.color.asArray("#ffa000");
-                        }
-                    } else {
-                        return ol.color.asArray("#13cd00");
-                    }
-                };
-
-                var loadOutput = function (file, index) {
-                    var vectorSource, vectorLayer;
-                    $.getJSON(file, function (json) {
-                        vectorSource = new ol.source.Vector({
-                            features: (new ol.format.GeoJSON()).readFeatures(json, {
-                                dataProjection: "EPSG:4326",
-                                featureProjection: "EPSG:3857"
-                            })
-
-                        });
-                        vectorLayer = new ol.layer.Vector({
-                            source: vectorSource,
-                            style: function (feature) {
-                                var properties = feature.getProperties();
-                                var color = getColor(properties);
-
-                                color[3] = 0.8;
-
-                                var stroke = new ol.style.Stroke({
-                                    color: color,
-                                    width: 10
-                                });
-                                return [
-                                    new ol.style.Style({
-                                        stroke: stroke
-                                    })
-                                ];
-                            }
-                        });
-                        map.addLayer(vectorLayer);
-                        vectorLayer.setVisible(true);
-                        //map.getView().fit(vectorSource.getExtent());
-
-                        outputs[index] = vectorLayer;
-                    });
-                };
-
-                $.each(routes, function (key, value) {
-
-                    loadLayers("{% static 'brumob/data/routes' %}/" + value + ".geojson", key);
-                });
-
-                $.each(routes, function (key, value) {
-
-                    loadOutput("{% static 'brumob/data/output' %}/" + value + ".geojson", key);
-                });
-
-            </script>
         </div>
     </div>
-</div>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://openlayers.org/en/v4.2.0/build/ol.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.4.3/proj4.js"
+        integrity="sha256-2ywP8gZSxQqabTEhcw+Xc3zpb/n6aAc3D0sneTtRNHw=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script>
+    const routes = {{ routes | safe }};
+    const routes_src = "{% static 'brumob/data/routes' %}/";
+    const output_src = "{% static 'brumob/data/output' %}/";
+    {% if last_updated is None %}
+        $("#timestamp").text("Information Unavailable");
+    {% else %}
+        $("#timestamp").text(new Date({{ last_updated }}));
+    {% endif %}
+</script>
+<script src="{% static 'brumob/script.js' %}"></script>
 
 </body>
 </html>

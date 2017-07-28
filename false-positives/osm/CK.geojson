@@ -1,0 +1,50 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "geometry": {
+        "type": "MultiLineString",
+        "coordinates": [
+          [
+            [
+              4.377445150412833,
+              50.88423426438833
+            ],
+            [
+              4.3777651663057835,
+              50.88448502648163
+            ],
+            [
+              4.3780836528246585,
+              50.884994537756
+            ],
+            [
+              4.378055065172211,
+              50.88535062886361
+            ],
+            [
+              4.378271022959022,
+              50.885305606782985
+            ]
+          ]
+        ]
+      },
+      "type": "Feature",
+      "bbox": null,
+      "properties": {
+        "@id": "relation/1119347",
+        "error_type": "difference",
+        "name:nl": "CK Gewestelijke Fietsroute",
+        "network": "lcn",
+        "type": "route",
+        "colour": "#00A9E9",
+        "difference_type": "missing",
+        "name:fr": "CK Itinéraire Cyclable Régional",
+        "operator": "Brussels Mobility",
+        "ref": "CK",
+        "route": "bicycle",
+        "name": "CK Itinéraire Cyclable Régional - Gewestelijke Fietsroute"
+      }
+    }
+  ]
+}

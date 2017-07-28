@@ -124,11 +124,16 @@ html, body {
 }
 
 .warning {
-    color: #e29000;
+    color: #ff8000;
 }
 
 .scrollable-menu {
     height: auto;
     max-height: 500px;
     overflow-x: hidden;
+}
+
+.navbar {
+    margin: 0;
+    border-radius: 0;
 }
