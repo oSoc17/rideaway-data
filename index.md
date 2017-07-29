@@ -35,7 +35,7 @@ The result of our work is a web tool that supports the Belgian OSM community by 
 
 The webtool continuously refreshes itself and automatically identifies potential issues on OSM. Map editors can then use the website to guide their editing. The technical underpinning of the verification allows two main approaches to analysis of data per individual route by identifying:
 
-- Geometric conflicts of issues of general overlap when the OSM data does not match the Brussels data, and vice-versa
+- Geometric conflicts: issues of general overlap when the OSM data does not match the Brussels data, and vice-versa
 - Possible misplaced attribute data known as tags in the OSM data, including route code and colour, network name, and the operator of the route
 
 The image below provides an example of all the cycling routes and routes that are apparently missing in OSM. Apart from this visual aid, the website provides more technical information, such as tagging issues, and also an option to download geojsons of routes.
