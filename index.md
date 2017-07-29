@@ -67,6 +67,8 @@ The tool that we developed aims to assist and encourage the verification of the 
 - [Dieter Debast (developer)](https://linkedin.com/in/ddieter)
 - [Moustapha Ramachi (developer)](mailto:moustapha.ramachi@gmail.com)
 
+
+
 <p align="center">
 <img src="./images/partners.PNG">
 </p>
