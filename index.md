@@ -13,7 +13,7 @@ Brussels have has developed region wide cycling network. Known as the ICR (Itin√
 </p>
 
 ## A dedicated cycling app for the Brussels cycling network
-Nowadays most people use their phone to route themselves while they're driving or using public transport. These apps usually incorporate the signage that travellers will see in their surrounding environment. The #oSoc Bike for Brussels team is pursuing this same strategy. This means that cyclists can better situate themselves in relation to signage.
+Nowadays most people use their phone to route themselves while they're driving or using public transport. These apps usually incorporate the signage that travellers will see in their surrounding environment. The #oSoc Bike for Brussels team is pursuing this same strategy. This means that cyclists can better situate and wayfind themselves in relation to signage.
 
 The development of the app demonstrates the power of high-quality open data and would inspire the creation of other advanced apps for the public to support them through everyday activities. This work highlights the importance of supporting open map data creators to support third party applications. 
 
