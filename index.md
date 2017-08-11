@@ -9,7 +9,7 @@ During the month of July 2017 three students, guided by expert coaches, worked o
 Our project developed an OSM bike route validation online platform. Using bike map data from the Brussels government's online open data portal as a reference, OSM bike route for Brussels is verified for its completeness and correctness. This comparison, which is constantly updated, provides both visual and technical output that guides the local mapping community to make corrections on OSM. Third party applications using OSM bike data would now have a reliable data source for Brussels. 
 
 ## The Brussels regional bike network
-Brussels has developed region wide cycling network. Known as the ICR (Itinéraires Cyclables Régionaux) in French or the GFR (Gewestelijke Fietsroutes) in Dutch, the network aims for fluid and safe journeys spanning all 19 communes of the region. To encourage more cyclists on more efficient and safer routes, one approach is to ensure that traveller information is robust enough to guide cyclists to these routes. 
+Brussels has developed a region wide cycling network. Known as the ICR (Itinéraires Cyclables Régionaux) in French or the GFR (Gewestelijke Fietsroutes) in Dutch, the network aims for fluid and safe journeys spanning all 19 communes of the region. To encourage more cyclists on more efficient and safer routes, one approach is to ensure that traveller information is robust enough to guide cyclists to these routes. 
 
 <p align="center">
 <img src="./images/brusselsregioncyclingroutes.png" width="500">
